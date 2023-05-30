@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\BasedController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProfilController;
 use App\Http\Controllers\admin\ProjectController;
@@ -39,16 +39,16 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         });
         // end:: stack
 
-        // begin:: category
-        Route::prefix('/category')->group(function () {
-            Route::get('/', [CategoryController::class, 'index'])->name('category');
-            Route::get('/get', [CategoryController::class, 'get'])->name('category.get');
-            Route::get('/get_all', [CategoryController::class, 'get_all'])->name('category.get_all');
-            Route::get('/get_data_dt', [CategoryController::class, 'get_data_dt'])->name('category.get_data_dt');
-            Route::post('/save', [CategoryController::class, 'save'])->name('category.save');
-            Route::post('/del', [CategoryController::class, 'del'])->name('category.del');
+        // begin:: based
+        Route::prefix('/based')->group(function () {
+            Route::get('/', [BasedController::class, 'index'])->name('based');
+            Route::get('/get_all', [BasedController::class, 'get_all'])->name('based.get_all');
+            Route::get('/get_data_dt', [BasedController::class, 'get_data_dt'])->name('based.get_data_dt');
+            Route::post('/show', [BasedController::class, 'show'])->name('based.show');
+            Route::post('/save', [BasedController::class, 'save'])->name('based.save');
+            Route::post('/del', [BasedController::class, 'del'])->name('based.del');
         });
-        // end:: category
+        // end:: based
 
         // begin:: project
         Route::prefix('/project')->group(function () {

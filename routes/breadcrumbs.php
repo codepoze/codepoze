@@ -20,10 +20,10 @@ Breadcrumbs::for('admin.stack', function (BreadcrumbTrail $trail) {
     $trail->push('Stack', route('admin.stack'));
 });
 
-Breadcrumbs::for('admin.category', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.based', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Category', route('admin.category'));
+    $trail->push('Based', route('admin.based'));
 });
 
 Breadcrumbs::for('admin.project', function (BreadcrumbTrail $trail) {

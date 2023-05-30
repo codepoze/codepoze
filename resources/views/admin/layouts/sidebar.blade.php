@@ -39,8 +39,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.category') }}">
-                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Kategori</span>
+                    <a class="nav-link menu-link" href="{{ route('admin.based') }}">
+                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Based</span>
                     </a>
                 </li>
                 <li class="menu-title"><span data-key="t-menu">Blog</span></li>

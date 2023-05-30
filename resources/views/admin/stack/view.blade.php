@@ -91,6 +91,7 @@
 
 <script>
     var table;
+
     let untukTabel = function() {
         table = $('#tabel-stack-dt').DataTable({
             serverSide: true,

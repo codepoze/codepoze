@@ -11,43 +11,26 @@
 
 <!-- begin:: content -->
 @section('content')
-<div class="page-content">
-    <div class="container-fluid">
-        <!-- begin:: breadcumb -->
-        <div class="row">
-            <div class="col-12">
-                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">{{ $title }}</h4>
-                    <div class="page-title-right">
-                        {{ Breadcrumbs::render('admin.category') }}
-                    </div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header align-items-center d-flex">
+                <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
+                <div class="flex-shrink-0">
+                    <button type="button" id="add" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-upd" data-bs-backdrop="static" data-bs-keyboard="false">
+                        <i class="fa fa-plus"></i>&nbsp;Create
+                    </button>
                 </div>
             </div>
-        </div>
-        <!-- end:: breadcumb -->
-        <!-- begin:: body -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header align-items-center d-flex">
-                        <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
-                        <div class="flex-shrink-0">
-                            <button type="button" id="add" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-upd" data-bs-backdrop="static" data-bs-keyboard="false">
-                                <i class="fa fa-plus"></i>&nbsp;Create
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table" id="tabel-category-dt">
-                        </table>
-                    </div>
-                </div>
+            <div class="card-body">
+                <table class="table" id="tabel-category-dt">
+                </table>
             </div>
         </div>
-        <!-- end:: body -->
     </div>
 </div>
 
+<!-- begin:: modal add & upd -->
 <div class="modal fade" id="modal-add-upd" tabindex="-1" aria-modal="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -55,7 +38,7 @@
                 <h5 class="modal-title"><span id="judul-add-upd"></span> {{ $title }}</h5>
             </div>
             <div class="modal-body">
-                <form id="form-add-upd" action="{{ route('admin.category.save') }}" method="POST">
+                <form id="form-add-upd" action="{{ route('admin.based.save') }}" method="POST">
                     <!-- begin:: id -->
                     <input type="hidden" name="id_category" id="id_category" />
                     <!-- end:: id -->
@@ -88,6 +71,7 @@
         </div>
     </div>
 </div>
+<!-- end:: modal add & upd -->
 @endsection
 <!-- end:: content -->
 
@@ -100,6 +84,7 @@
 
 <script>
     var table;
+
     let untukTabel = function() {
         table = $('#tabel-category-dt').DataTable({
             serverSide: true,
@@ -111,7 +96,7 @@
                 emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                 processing: "Data sedang diproses...",
             },
-            ajax: "{{ route('admin.category.get_data_dt') }}",
+            ajax: "{{ route('admin.based.get_data_dt') }}",
             columns: [{
                     title: 'No.',
                     data: 'DT_RowIndex',
@@ -124,17 +109,11 @@
                 },
                 {
                     title: 'Aksi',
-                    data: null,
+                    data: 'action',
                     className: 'text-center',
                     responsivePriority: -1,
                     orderable: false,
                     searchable: false,
-                    render: function(data, type, full, meta) {
-                        return `
-                            <button type="button" id="upd" data-id="` + full.id_category + `" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-upd" data-bs-backdrop="static" data-bs-keyboard="false"><i class="fa fa-edit"></i>&nbsp;Ubah</button>&nbsp;
-                            <button type="button" id="del" data-id="` + full.id_category + `" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
-                        `;
-                    },
                 },
             ],
         });
@@ -164,9 +143,6 @@
                     processData: false,
                     cache: false,
                     dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
                     beforeSend: function() {
                         $('#save').attr('disabled', 'disabled');
                         $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
@@ -189,11 +165,12 @@
         $(document).on('click', '#add', function(e) {
             e.preventDefault();
             $('#judul-add-upd').text('Tambah');
+
+            $('#id_category').removeAttr('value');
+
             $('#form-add-upd').parsley().destroy();
             $('#form-add-upd').parsley().reset();
             $('#form-add-upd')[0].reset();
-
-            $('#id_category').removeAttr('value');
         });
     }();
 
@@ -201,9 +178,9 @@
         $(document).on('click', '#upd', function(e) {
             var ini = $(this);
             $.ajax({
-                type: 'GET',
+                type: 'POST',
                 dataType: 'json',
-                url: "{{ route('admin.category.get') }}",
+                url: "{{ route('admin.based.show') }}",
                 data: {
                     id: ini.data('id')
                 },
@@ -221,8 +198,13 @@
                     $('#form-loading').empty();
                     $('#form-show').removeAttr('style');
 
-                    $('#id_category').val(response.id_category);
-                    $('#nama').val(response.nama);
+                    $.each(response, function(key, value) {
+                        if (key) {
+                            if (($('#' + key).prop('tagName') === 'INPUT' || $('#' + key).prop('tagName') === 'TEXTAREA')) {
+                                $('#' + key).val(value);
+                            }
+                        }
+                    });
 
                     ini.removeAttr('disabled');
                     ini.html('<i class="fa fa-edit"></i>&nbsp;Ubah');
@@ -249,13 +231,10 @@
                 if (del.isConfirmed) {
                     $.ajax({
                         type: "post",
-                        url: "{{ route('admin.category.del') }}",
+                        url: "{{ route('admin.based.del') }}",
                         dataType: 'json',
                         data: {
                             id: ini.data('id'),
-                        },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         beforeSend: function() {
                             ini.attr('disabled', 'disabled');
