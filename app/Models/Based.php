@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Stack extends Model
+class Based extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'stacks';
+    protected $table = 'baseds';
     // untuk default primary key
-    protected $primaryKey = 'id_stack';
+    protected $primaryKey = 'id_based';
     // untuk tabel yang bisa di isi
     protected $fillable = [
         'nama',
-        'icon',
         'by_users',
     ];
 }

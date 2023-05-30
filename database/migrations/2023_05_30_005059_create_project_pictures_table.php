@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStackTable extends Migration
+class CreateProjectPicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateStackTable extends Migration
      */
     public function up()
     {
-        Schema::create('stack', function (Blueprint $table) {
-            $table->increments('id_stack');
-            $table->string('nama', 25)->nullable();
-            $table->string('icon', 25)->nullable();
+        Schema::create('project_pictures', function (Blueprint $table) {
+            $table->increments('id_project_picture');
+            $table->integer('id_project')->unsigned()->nullable();
+            $table->string('picture', 100)->nullable();
             $table->integer('by_users')->nullable();
+
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+
+            $table->foreign('id_project')->references('id_project')->on('projects')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -30,6 +33,6 @@ class CreateStackTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stack');
+        Schema::dropIfExists('project_pictures');
     }
 }

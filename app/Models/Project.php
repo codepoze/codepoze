@@ -8,22 +8,31 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-
     // untuk default tabel
-    protected $table = 'project';
-    // untuk default id
+    protected $table = 'projects';
+    // untuk default primary key
     protected $primaryKey = 'id_project';
-    // untuk fillable
+    // untuk tabel yang bisa di isi
     protected $fillable = [
-        'id_project',
+        'id_based',
+        'id_type',
         'judul',
         'deskripsi',
-        'link',
-        'by_users'
+        'link_demo',
+        'link_github',
+        'gambar',
+        'by_users',
     ];
-    // untuk relasi
-    public function toCategory()
+
+    // untuk relasi ke based
+    public function toBased()
     {
-        return $this->belongsTo(Category::class, 'id_category');
+        return $this->belongsTo(Based::class, 'id_based', 'id_based');
+    }
+
+    // untuk relasi ke type
+    public function toType()
+    {
+        return $this->belongsTo(Type::class, 'id_type', 'id_type');
     }
 }
