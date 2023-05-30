@@ -31,9 +31,9 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         // begin:: stack
         Route::prefix('/stack')->group(function () {
             Route::get('/', [StackController::class, 'index'])->name('stack');
-            Route::get('/get', [StackController::class, 'get'])->name('stack.get');
             Route::get('/get_all', [StackController::class, 'get_all'])->name('stack.get_all');
             Route::get('/get_data_dt', [StackController::class, 'get_data_dt'])->name('stack.get_data_dt');
+            Route::post('/show', [StackController::class, 'show'])->name('stack.show');
             Route::post('/save', [StackController::class, 'save'])->name('stack.save');
             Route::post('/del', [StackController::class, 'del'])->name('stack.del');
         });

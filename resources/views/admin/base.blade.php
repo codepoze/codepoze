@@ -2,13 +2,14 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="description" content="my blog" />
-    <meta name="keywords" content="my blog" />
-    <meta name="author" content="my blog" />
+    <meta name="description" content="CodePoze">
+    <meta name="keywords" content="CodePoze">
+    <meta name="author" content="CodePoze">
+    <title>CodePoze | {{ $title }}</title>
 
     <title>My Blog | {{ $title }}</title>
     <!-- begin:: icon -->
@@ -31,7 +32,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <!-- end:: css global -->
 
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- begin:: css local -->
@@ -53,9 +53,25 @@
 
         <!-- begin:: main content -->
         <div class="main-content">
-            <!-- begin:: body -->
-            @yield('content')
-            <!-- end:: body -->
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- begin:: breadcumb -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">{{ $title }}</h4>
+                                <div class="page-title-right">
+                                    {!! $breadcrumb !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end:: breadcumb -->
+                    <!-- begin:: body -->
+                    @yield('content')
+                    <!-- end:: body -->
+                </div>
+            </div>
 
             <!-- begin:: footer -->
             @include('admin.layouts.footer')
