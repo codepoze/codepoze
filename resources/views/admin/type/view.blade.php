@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="tabel-based-dt">
+                <table class="table" id="tabel-type-dt">
                 </table>
             </div>
         </div>
@@ -38,9 +38,9 @@
                 <h5 class="modal-title"><span id="judul-add-upd"></span> {{ $title }}</h5>
             </div>
             <div class="modal-body">
-                <form id="form-add-upd" action="{{ route('admin.based.save') }}" method="POST">
+                <form id="form-add-upd" action="{{ route('admin.type.save') }}" method="POST">
                     <!-- begin:: id -->
-                    <input type="hidden" name="id_based" id="id_based" />
+                    <input type="hidden" name="id_type" id="id_type" />
                     <!-- end:: id -->
 
                     <!-- begin:: untuk loading -->
@@ -86,7 +86,7 @@
     var table;
 
     let untukTabel = function() {
-        table = $('#tabel-based-dt').DataTable({
+        table = $('#tabel-type-dt').DataTable({
             serverSide: true,
             responsive: true,
             processing: true,
@@ -96,7 +96,7 @@
                 emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                 processing: "Data sedang diproses...",
             },
-            ajax: "{{ route('admin.based.get_data_dt') }}",
+            ajax: "{{ route('admin.type.get_data_dt') }}",
             columns: [{
                     title: 'No.',
                     data: 'DT_RowIndex',
@@ -166,7 +166,7 @@
             e.preventDefault();
             $('#judul-add-upd').text('Tambah');
 
-            $('#id_based').removeAttr('value');
+            $('#id_type').removeAttr('value');
 
             $('#form-add-upd').parsley().destroy();
             $('#form-add-upd').parsley().reset();
@@ -180,7 +180,7 @@
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: "{{ route('admin.based.show') }}",
+                url: "{{ route('admin.type.show') }}",
                 data: {
                     id: ini.data('id')
                 },
@@ -231,7 +231,7 @@
                 if (del.isConfirmed) {
                     $.ajax({
                         type: "post",
-                        url: "{{ route('admin.based.del') }}",
+                        url: "{{ route('admin.type.del') }}",
                         dataType: 'json',
                         data: {
                             id: ini.data('id'),

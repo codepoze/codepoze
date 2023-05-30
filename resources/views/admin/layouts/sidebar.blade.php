@@ -43,6 +43,11 @@
                         <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Based</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="{{ route('admin.type') }}">
+                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Type</span>
+                    </a>
+                </li>
                 <li class="menu-title"><span data-key="t-menu">Blog</span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#">

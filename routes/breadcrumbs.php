@@ -26,6 +26,12 @@ Breadcrumbs::for('admin.based', function (BreadcrumbTrail $trail) {
     $trail->push('Based', route('admin.based'));
 });
 
+Breadcrumbs::for('admin.type', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Type', route('admin.type'));
+});
+
 Breadcrumbs::for('admin.project', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 

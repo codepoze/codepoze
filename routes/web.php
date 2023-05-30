@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ProfilController;
 use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\StackController;
+use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,17 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
             Route::post('/del', [BasedController::class, 'del'])->name('based.del');
         });
         // end:: based
+
+        // begin:: type
+        Route::prefix('/type')->group(function () {
+            Route::get('/', [TypeController::class, 'index'])->name('type');
+            Route::get('/get_all', [TypeController::class, 'get_all'])->name('type.get_all');
+            Route::get('/get_data_dt', [TypeController::class, 'get_data_dt'])->name('type.get_data_dt');
+            Route::post('/show', [TypeController::class, 'show'])->name('type.show');
+            Route::post('/save', [TypeController::class, 'save'])->name('type.save');
+            Route::post('/del', [TypeController::class, 'del'])->name('type.del');
+        });
+        // end:: type
 
         // begin:: project
         Route::prefix('/project')->group(function () {
