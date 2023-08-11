@@ -9,11 +9,12 @@ class Stack extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'stacks';
+    protected $table = 'stack';
     // untuk default primary key
     protected $primaryKey = 'id_stack';
     // untuk tabel yang bisa di isi
     protected $fillable = [
+        'id_stack',
         'nama',
         'icon',
         'by_users',

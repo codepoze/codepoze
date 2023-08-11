@@ -9,11 +9,12 @@ class Based extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'baseds';
+    protected $table = 'based';
     // untuk default primary key
     protected $primaryKey = 'id_based';
     // untuk tabel yang bisa di isi
     protected $fillable = [
+        'id_based',
         'nama',
         'by_users',
     ];

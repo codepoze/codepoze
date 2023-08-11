@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('active', ['y', 'n'])->nullable();
             $table->string('username', 180)->unique();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamp('created_at')->nullable()->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrent()->useCurrentOnUpdate();
         });

@@ -9,11 +9,12 @@ class Type extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'types';
+    protected $table = 'type';
     // untuk default primary key
     protected $primaryKey = 'id_type';
     // untuk tabel yang bisa di isi
     protected $fillable = [
+        'id_type',
         'nama',
         'by_users',
     ];

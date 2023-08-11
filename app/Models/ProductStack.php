@@ -5,28 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectStack extends Model
+class ProductStack extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'project_stacks';
+    protected $table = 'product_stack';
     // untuk default primary key
-    protected $primaryKey = 'id_project_stack';
+    protected $primaryKey = 'id_product_stack';
     // untuk tabel yang bisa di isi
     protected $fillable = [
-        'id_project_stack',
-        'id_project',
+        'id_product_stack',
+        'id_product',
         'id_stack',
         'by_users',
     ];
 
-    // untuk relasi ke project
-    public function toProject()
+    // untuk relasi ke tabel product
+    public function toProduct()
     {
-        return $this->belongsTo(Project::class, 'id_project', 'id_project');
+        return $this->belongsTo(Product::class, 'id_product', 'id_product');
     }
 
-    // untuk relasi ke stack
+    // untuk relasi ke tabel stack
     public function toStack()
     {
         return $this->belongsTo(Stack::class, 'id_stack', 'id_stack');

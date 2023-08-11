@@ -13,16 +13,16 @@ class CreateProjectPicturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_pictures', function (Blueprint $table) {
+        Schema::create('project_picture', function (Blueprint $table) {
             $table->increments('id_project_picture');
             $table->integer('id_project')->unsigned()->nullable();
             $table->string('picture', 100)->nullable();
-            $table->integer('by_users')->nullable();
 
+            $table->integer('by_users')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('id_project')->references('id_project')->on('projects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_project')->references('id_project')->on('project')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

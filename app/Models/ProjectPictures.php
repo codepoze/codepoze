@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProjectStack extends Model
+class ProjectPictures extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'project_stacks';
+    protected $table = 'project_pictures';
     // untuk default primary key
-    protected $primaryKey = 'id_project_stack';
+    protected $primaryKey = 'id_project_picture';
     // untuk tabel yang bisa di isi
     protected $fillable = [
-        'id_project_stack',
+        'id_project_picture',
         'id_project',
-        'id_stack',
+        'picture',
         'by_users',
     ];
 
@@ -24,11 +24,5 @@ class ProjectStack extends Model
     public function toProject()
     {
         return $this->belongsTo(Project::class, 'id_project', 'id_project');
-    }
-
-    // untuk relasi ke stack
-    public function toStack()
-    {
-        return $this->belongsTo(Stack::class, 'id_stack', 'id_stack');
     }
 }

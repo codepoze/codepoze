@@ -14,13 +14,13 @@ class Project extends Model
     protected $primaryKey = 'id_project';
     // untuk tabel yang bisa di isi
     protected $fillable = [
+        'id_project',
         'id_based',
-        'id_type',
         'judul',
+        'gambar',
         'deskripsi',
         'link_demo',
         'link_github',
-        'gambar',
         'by_users',
     ];
 
@@ -30,9 +30,15 @@ class Project extends Model
         return $this->belongsTo(Based::class, 'id_based', 'id_based');
     }
 
-    // untuk relasi ke type
-    public function toType()
+    // untuk relasi ke project stack
+    public function toProjectStack()
     {
-        return $this->belongsTo(Type::class, 'id_type', 'id_type');
+        return $this->hasMany(ProjectStack::class, 'id_project', 'id_project');
+    }
+
+    // untuk relasi ke project picture
+    public function toProjectPicture()
+    {
+        return $this->hasMany(ProjectPicture::class, 'id_project', 'id_project');
     }
 }

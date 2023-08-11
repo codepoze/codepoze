@@ -13,12 +13,12 @@ class CreateStacksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stacks', function (Blueprint $table) {
+        Schema::create('stack', function (Blueprint $table) {
             $table->increments('id_stack');
             $table->string('nama', 25)->nullable();
             $table->string('icon', 25)->nullable();
-            $table->integer('by_users')->nullable();
 
+            $table->integer('by_users')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
@@ -31,6 +31,6 @@ class CreateStacksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stacks');
+        Schema::dropIfExists('stack');
     }
 }
