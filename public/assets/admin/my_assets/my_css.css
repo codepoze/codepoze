@@ -10,7 +10,7 @@
 
 /* table */
 .table thead th {
-    background-color: #1071BA !important;
+    background-color: #2a3042 !important;
     border-color: #fff;
     color: white;
 }
@@ -27,7 +27,7 @@
     margin-left: auto;
     border: 16px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 16px solid #1071BA;
+    border-top: 16px solid #2a3042;
     width: 90px;
     height: 90px;
     -webkit-animation: spin 2s linear infinite;

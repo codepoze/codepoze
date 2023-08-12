@@ -14,17 +14,16 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header align-items-center d-flex">
+            <div class="card-header bg-transparent border-bottom align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
                 <div class="flex-shrink-0">
-                    <button type="button" id="add" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-upd" data-bs-backdrop="static" data-bs-keyboard="false">
-                        <i class="fa fa-plus"></i>&nbsp;Create
+                    <button type="button" id="add" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#modal-add-upd">
+                        <i class="fa fa-plus"></i>&nbsp;Tambah
                     </button>
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="tabel-stack-dt">
-                </table>
+                <table class="table" id="tabel-stack-dt"></table>
             </div>
         </div>
     </div>
@@ -49,27 +48,23 @@
 
                     <!-- begin:: untuk form -->
                     <div id="form-show">
-                        <div class="row g-3">
-                            <div class="row mb-3">
-                                <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="nama" id="nama" class="form-control" placeholder="Enter Nama" />
-                                    <span class="errorInput"></span>
-                                </div>
+                        <div class="mb-3 row field-input">
+                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="nama" id="nama" class="form-control form-control-sm" placeholder="Masukkan nama" />
+                                <span class="invalid-feedback"></span>
                             </div>
-                            <div class="row mb-3">
-                                <label for="icon" class="col-sm-2 col-form-label">Icon</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="icon" id="icon" class="form-control" placeholder="Enter Icon" />
-                                    <span class="errorInput"></span>
-                                </div>
+                        </div>
+                        <div class="mb-3 row field-input">
+                            <label for="icon" class="col-sm-2 col-form-label">Icon</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="icon" id="icon" class="form-control form-control-sm" placeholder="Masukkan icon" />
+                                <span class="invalid-feedback"></span>
                             </div>
-                            <div class="col-lg-12">
-                                <div class="hstack gap-2 justify-content-end">
-                                    <button type="button" id="cancel" class="btn btn-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Cancel</button>
-                                    <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Save</button>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="hstack gap-2 justify-content-end">
+                            <button type="button" id="cancel" class="btn btn-danger btn-sm" data-bs-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Cancel</button>
+                            <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Save</button>
                         </div>
                     </div>
                     <!-- end:: untuk form -->
@@ -135,41 +130,71 @@
         $(document).on('submit', '#form-add-upd', function(e) {
             e.preventDefault();
 
-            $('#nama').attr('required', 'required');
-            $('#icon').attr('required', 'required');
-
-            var parsleyConfig = {
-                errorsContainer: function(parsleyField) {
-                    var $err = parsleyField.$element.siblings('.errorInput');
-                    return $err;
-                }
-            };
-
-            $("#form-add-upd").parsley(parsleyConfig);
-
-            if ($('#form-add-upd').parsley().isValid() == true) {
-                $.ajax({
-                    method: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
-                    cache: false,
-                    dataType: 'json',
-                    beforeSend: function() {
-                        $('#save').attr('disabled', 'disabled');
-                        $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
-                    },
-                    success: function(response) {
-                        swal(response.title, response.text, response.type, response.button).then((value) => {
+            $.ajax({
+                method: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#save').attr('disabled', 'disabled');
+                    $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                },
+                success: function(response) {
+                    if (response.type === 'success') {
+                        Swal.fire({
+                            title: response.title,
+                            text: response.text,
+                            icon: response.type,
+                            confirmButtonText: response.button,
+                            customClass: {
+                                confirmButton: `btn btn-sm btn-${response.class}`,
+                            },
+                            buttonsStyling: false,
+                        }).then((value) => {
                             table.ajax.reload();
                             $('#modal-add-upd').modal('hide');
                         });
+                    } else {
+                        $.each(response.errors, function(key, value) {
+                            if (key) {
+                                if (($('#' + key).prop('tagName') === 'INPUT' || $('#' + key).prop('tagName') === 'TEXTAREA')) {
+                                    $('#' + key).addClass('is-invalid');
+                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                } else if ($('#' + key).prop('tagName') === 'SELECT') {
+                                    $('#' + key).addClass('is-invalid');
+                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                }
+                            }
+                        });
 
-                        $('#save').removeAttr('disabled');
-                        $('#save').html('<i class="fa fa-save"></i>&nbsp;Simpan');
+                        Swal.fire({
+                            title: response.title,
+                            text: response.text,
+                            icon: response.type,
+                            confirmButtonText: response.button,
+                            customClass: {
+                                confirmButton: `btn btn-sm btn-${response.class}`,
+                            },
+                            buttonsStyling: false,
+                        });
                     }
-                });
+
+                    $('#save').removeAttr('disabled');
+                    $('#save').html('<i class="fa fa-save"></i>&nbsp;Simpan');
+                }
+            });
+        });
+
+        $(document).on('keyup', '#form-add-upd input', function(e) {
+            e.preventDefault();
+
+            if ($(this).val() == '') {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
             }
         });
     }();
@@ -180,6 +205,9 @@
             $('#judul-add-upd').text('Tambah');
 
             $('#id_stack').removeAttr('value');
+
+            $('#form-add-upd').find('input, textarea, select').removeClass('is-valid');
+            $('#form-add-upd').find('input, textarea, select').removeClass('is-invalid');
 
             $('#form-add-upd').parsley().destroy();
             $('#form-add-upd').parsley().reset();
@@ -254,7 +282,16 @@
                             ini.html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
                         },
                         success: function(response) {
-                            swal(response.title, response.text, response.type, response.button).then((value) => {
+                            Swal.fire({
+                                title: response.title,
+                                text: response.text,
+                                icon: response.type,
+                                confirmButtonText: response.button,
+                                customClass: {
+                                    confirmButton: `btn btn-sm btn-${response.class}`,
+                                },
+                                buttonsStyling: false,
+                            }).then((value) => {
                                 table.ajax.reload();
                             });
                         }

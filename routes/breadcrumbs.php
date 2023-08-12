@@ -14,22 +14,22 @@ Breadcrumbs::for('admin.profil', function (BreadcrumbTrail $trail) {
     $trail->push('Profil', route('admin.profil'));
 });
 
-Breadcrumbs::for('admin.stack', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.based.based', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Stack', route('admin.stack'));
+    $trail->push('Based', route('admin.based.based'));
 });
 
-Breadcrumbs::for('admin.based', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.stack.stack', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Based', route('admin.based'));
+    $trail->push('Stack', route('admin.stack.stack'));
 });
 
-Breadcrumbs::for('admin.type', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.type.type', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Type', route('admin.type'));
+    $trail->push('Type', route('admin.type.type'));
 });
 
 Breadcrumbs::for('admin.project', function (BreadcrumbTrail $trail) {

@@ -29,36 +29,36 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         });
         // end:: profil
 
-        // begin:: stack
-        Route::prefix('/stack')->group(function () {
-            Route::get('/', [StackController::class, 'index'])->name('stack');
-            Route::get('/get_all', [StackController::class, 'get_all'])->name('stack.get_all');
-            Route::get('/get_data_dt', [StackController::class, 'get_data_dt'])->name('stack.get_data_dt');
-            Route::post('/show', [StackController::class, 'show'])->name('stack.show');
-            Route::post('/save', [StackController::class, 'save'])->name('stack.save');
-            Route::post('/del', [StackController::class, 'del'])->name('stack.del');
-        });
-        // end:: stack
-
         // begin:: based
-        Route::prefix('/based')->group(function () {
-            Route::get('/', [BasedController::class, 'index'])->name('based');
-            Route::get('/get_all', [BasedController::class, 'get_all'])->name('based.get_all');
-            Route::get('/get_data_dt', [BasedController::class, 'get_data_dt'])->name('based.get_data_dt');
-            Route::post('/show', [BasedController::class, 'show'])->name('based.show');
-            Route::post('/save', [BasedController::class, 'save'])->name('based.save');
-            Route::post('/del', [BasedController::class, 'del'])->name('based.del');
+        Route::controller(BasedController::class)->prefix('based')->as('based.')->group(function () {
+            Route::get('/', 'index')->name('based');
+            Route::get('/get_all', 'get_all')->name('get_all');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+            Route::post('/show', 'show')->name('show');
+            Route::post('/save', 'save')->name('save');
+            Route::post('/del', 'del')->name('del');
         });
         // end:: based
 
+        // begin:: stack
+        Route::controller(StackController::class)->prefix('stack')->as('stack.')->group(function () {
+            Route::get('/', 'index')->name('stack');
+            Route::get('/get_all', 'get_all')->name('get_all');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+            Route::post('/show', 'show')->name('show');
+            Route::post('/save', 'save')->name('save');
+            Route::post('/del', 'del')->name('del');
+        });
+        // end:: stack
+
         // begin:: type
-        Route::prefix('/type')->group(function () {
-            Route::get('/', [TypeController::class, 'index'])->name('type');
-            Route::get('/get_all', [TypeController::class, 'get_all'])->name('type.get_all');
-            Route::get('/get_data_dt', [TypeController::class, 'get_data_dt'])->name('type.get_data_dt');
-            Route::post('/show', [TypeController::class, 'show'])->name('type.show');
-            Route::post('/save', [TypeController::class, 'save'])->name('type.save');
-            Route::post('/del', [TypeController::class, 'del'])->name('type.del');
+        Route::controller(TypeController::class)->prefix('type')->as('type.')->group(function () {
+            Route::get('/', 'index')->name('type');
+            Route::get('/get_all', 'get_all')->name('get_all');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+            Route::post('/show', 'show')->name('show');
+            Route::post('/save', 'save')->name('save');
+            Route::post('/del', 'del')->name('del');
         });
         // end:: type
 

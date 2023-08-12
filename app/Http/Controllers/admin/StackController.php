@@ -7,6 +7,7 @@ use App\Libraries\Template;
 use App\Models\Stack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 
 class StackController extends Controller
@@ -54,6 +55,24 @@ class StackController extends Controller
 
     public function save(Request $request)
     {
+        $rules = [
+            'nama' => 'required',
+            'icon' => 'required',
+        ];
+
+        $messages = [
+            'nama.required' => 'Nama harus diisi!',
+            'icon.required' => 'Icon harus diisi!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $response = ['title'  => 'Gagal!', 'text'   => 'Data gagal ditambahkan!', 'type'   => 'error', 'button' => 'Okay!', 'class'  => 'danger', 'errors' => $validator->errors()];
+
+            return Response::json($response);
+        }
+
         try {
             Stack::updateOrCreate(
                 [
@@ -66,9 +85,9 @@ class StackController extends Controller
                 ]
             );
 
-            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Proses!', 'type' => 'success', 'button' => 'Ok!'];
+            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {
-            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Proses!', 'type' => 'error', 'button' => 'Ok!'];
+            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Simpan!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
         }
 
         return Response::json($response);
@@ -81,9 +100,9 @@ class StackController extends Controller
 
             $data->delete();
 
-            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Hapus!', 'type' => 'success', 'button' => 'Ok!'];
+            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Hapus!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {
-            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Proses!', 'type' => 'error', 'button' => 'Ok!'];
+            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Hapus!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
         }
 
         return Response::json($response);

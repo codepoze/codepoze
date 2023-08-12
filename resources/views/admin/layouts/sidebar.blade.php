@@ -1,57 +1,45 @@
-<div class="app-menu navbar-menu">
-    <div class="navbar-brand-box">
-        <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
-            <span class="logo-sm">
-                <img src="{{ asset_admin('images/logo-sm.png') }}" alt="" height="22">
-            </span>
-            <span class="logo-lg">
-                <img src="{{ asset_admin('images/logo-dark.png') }}" alt="" height="50">
-            </span>
-        </a>
-        <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
-            <span class="logo-sm">
-                <img src="{{ asset_admin('images/logo-sm.png') }}" alt="" height="22">
-            </span>
-            <span class="logo-lg">
-                <img src="{{ asset_admin('images/logo-light.png') }}" alt="" height="50">
-            </span>
-        </a>
-        <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
-            <i class="ri-record-circle-line"></i>
-        </button>
-    </div>
+<div class="vertical-menu">
+    <div data-simplebar class="h-100">
+        <div id="sidebar-menu">
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li>
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                        <i class="bx bx-home-circle"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
 
-    <div id="scrollbar">
-        <div class="container-fluid">
-            <div id="two-column-menu">
-            </div>
-            <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span data-key="t-menu">Dashboard</span></li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.dashboard') }}">
-                        <i data-feather="home" class="icon-dual"></i> <span data-key="t-dashboards">Dashboards</span>
+                <li class="menu-title">Master</li>
+                <li>
+                    <a href="{{ route('admin.based.based') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Based</span>
                     </a>
                 </li>
-                <li class="menu-title"><span data-key="t-menu">Project</span></li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.stack') }}">
-                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Stack</span>
+                <li>
+                    <a href="{{ route('admin.stack.stack') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Stack</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.based') }}">
-                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Based</span>
+                <li>
+                    <a href="{{ route('admin.type.type') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Type</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.type') }}">
-                        <i data-feather="list" class="icon-dual"></i> <span data-key="t-dashboards">Type</span>
+
+                <li class="menu-title">Pustaka</li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Produk</span>
                     </a>
                 </li>
-                <li class="menu-title"><span data-key="t-menu">Pustaka</span></li>
-                <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('admin.project') }}">
-                        <i data-feather="code" class="icon-dual"></i> <span data-key="t-dashboards">Project</span>
+                <li>
+                    <a href="{{ route('admin.project') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Project</span>
                     </a>
                 </li>
             </ul>
