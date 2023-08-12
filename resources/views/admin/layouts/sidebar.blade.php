@@ -11,24 +11,45 @@
 
                 <li class="menu-title">Master</li>
                 <li>
-                    <a href="{{ route('admin.based.based') }}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-box"></i>
-                        <span>Based</span>
+                        <span>Produk & Project</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="{{ route('admin.based.based') }}">
+                                <i class="bx bx-box"></i>
+                                <span>Based</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.stack.stack') }}">
+                                <i class="bx bx-box"></i>
+                                <span>Stack</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('admin.type.type') }}">
+                                <i class="bx bx-box"></i>
+                                <span>Type</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="{{ route('admin.stack.stack') }}" class="waves-effect">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-box"></i>
-                        <span>Stack</span>
+                        <span>Blog</span>
                     </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="#">
+                                <i class="bx bx-box"></i>
+                                <span>Tag</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{ route('admin.type.type') }}" class="waves-effect">
-                        <i class="bx bx-box"></i>
-                        <span>Type</span>
-                    </a>
-                </li>
-
                 <li class="menu-title">Pustaka</li>
                 <li>
                     <a href="#" class="waves-effect">
@@ -40,6 +61,12 @@
                     <a href="{{ route('admin.project') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Project</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Blog</span>
                     </a>
                 </li>
             </ul>
