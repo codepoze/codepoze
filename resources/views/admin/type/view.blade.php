@@ -49,7 +49,7 @@
                     <!-- begin:: untuk form -->
                     <div id="form-show">
                         <div class="mb-3 row field-input">
-                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="nama" class="col-sm-2 col-form-label">Nama&nbsp;*</label>
                             <div class="col-md-10 my-auto">
                                 <input type="text" name="nama" id="nama" class="form-control form-control-sm" placeholder="Masukkan nama" />
                                 <span class="invalid-feedback"></span>
@@ -219,6 +219,9 @@
 
                     $('#form-loading').html(`<div class="center"><div class="loader"></div></div>`);
                     $('#form-show').attr('style', 'display: none');
+
+                    $('#form-add-upd').find('input, textarea, select').removeClass('is-valid');
+                    $('#form-add-upd').find('input, textarea, select').removeClass('is-invalid');
 
                     ini.attr('disabled', 'disabled');
                     ini.html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');

@@ -6,6 +6,8 @@
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables/1.11.3/css/dataTables.bootstrap4.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables-responsive/2.2.9/css/responsive.dataTables.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/select2/css/select2.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/choices.js/public/assets/styles/choices.min.css') }}" />
 @endsection
 <!-- end:: css local -->
 
@@ -14,96 +16,75 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header align-items-center d-flex">
+            <div class="card-header bg-transparent border-bottom align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
             </div>
             <div class="card-body">
-                <div class="row gy-4">
-                    <form id="form-add-upd" action="{{ route('admin.project.save') }}" method="POST" enctype="multipart/form-data">
-                        <!-- begin:: id -->
-                        <input type="hidden" name="id_project" id="id_project" />
-                        <!-- end:: id -->
+                <form id="form-add-upd" class="form" action="{{ route('admin.project.save') }}" method="POST" enctype="multipart/form-data">
+                    <!-- begin:: id -->
+                    <input type="hidden" name="id_project" id="id_project" />
+                    <!-- end:: id -->
 
-                        <div class="row mb-3">
-                            <label for="judul" class="col-sm-2 col-form-label">Judul&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="judul" id="judul" class="form-control" placeholder="Enter judul" />
-                                <span class="errorInput"></span>
-                            </div>
+                    <div class="mb-3 row field-input">
+                        <label for="judul" class="col-sm-3 col-form-label">Judul&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <input type="text" name="judul" id="judul" class="form-control" placeholder="Masukkan judul" />
+                            <span class="invalid-feedback"></span>
                         </div>
-                        <div class="row mb-3">
-                            <label for="id_category" class="col-sm-2 col-form-label">Kategori&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <select name="id_category" id="id_category" class="form-control">
-                                    <option value="">Pilih</option>
-                                    @foreach($category as $row)
-                                    <option value="{{ $row->id_category }}">{{ $row->nama }}</option>
-                                    @endforeach
-                                </select>
-                                <span class="errorInput"></span>
-                            </div>
+                    </div>
+                    <div class="mb-3 row field-input">
+                        <label for="id_based" class="col-sm-3 col-form-label">Based&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <select name="id_based" id="id_based" class="form-control">
+                                <option value="">Pilih based</option>
+                            </select>
+                            <span class="invalid-feedback"></span>
                         </div>
-                        <div class="row mb-3">
-                            <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Enter deskripsi"></textarea>
-                                <span class="errorInput"></span>
-                            </div>
+                    </div>
+                    <div class="mb-3 row field-input">
+                        <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                            <span class="invalid-feedback"></span>
                         </div>
-                        <div class="row mb-3">
-                            <label for="link_demo" class="col-sm-2 col-form-label">Link Demo&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="link_demo" id="link_demo" class="form-control" placeholder="Enter demo link" />
-                                <span class="errorInput"></span>
-                            </div>
+                    </div>
+                    <div class="mb-3 row field-input">
+                        <label for="project_stack" class="col-sm-3 col-form-label">Stack&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <select name="project_stack[]" id="project_stack" class="form-control" multiple="multiple">
+                                <option value="">Pilih stack</option>
+                            </select>
+                            <span class="invalid-feedback d-block"></span>
                         </div>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Link Github&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <input type="text" name="link_github" id="link_github" class="form-control" placeholder="Enter github link" />
-                                <span class="errorInput"></span>
-                            </div>
+                    </div>
+                    <div class="mb-3 row field-input">
+                        <label for="gambar" class="col-sm-3 col-form-label">Gambar&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <input type="file" name="gambar" id="gambar" class="form-control" placeholder="Masukkan judul" />
+                            <span class="invalid-feedback"></span>
                         </div>
-                        <div class="row mb-3">
-                            <label for="id_stack" class="col-sm-2 col-form-label">Stack&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="id_stack[]" id="id_stack" multiple>
-                                    <option value="" disabled>Select stack</option>
-                                </select>
-                                <span class="errorInput"></span>
-                            </div>
+                    </div>
+                    <div class="mb-3 row field-input">
+                        <label for="project_picture" class="col-sm-3 col-form-label">Gambar Detail&nbsp;*</label>
+                        <div class="col-md-9 my-auto">
+                            <input type="file" name="project_picture[]" id="project_picture" class="form-control" multiple />
+                            <span class="invalid-feedback"></span>
                         </div>
-                        <hr>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Gambar&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="gambar" id="gambar" class="form-control" />
-                                <span class="errorInput"></span>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Detail Gambar&nbsp;*</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="picture[]" id="picture" class="form-control" multiple />
-                                <span class="errorInput"></span>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <div class="col-lg-12">
                             <div class="mt-1 text-center">
                                 <div class="preview-image row"></div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="hstack gap-2 justify-content-end">
-                                <a href="{{ route('admin.project') }}" id="cancel" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-times"></i>&nbsp;Cancel
-                                </a>
-                                <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Save</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="hstack gap-2 justify-content-end">
+                        <a href="{{ route('admin.project.project') }}" id="cancel" class="btn btn-warning btn-sm">
+                            <i class="fa fa-times"></i>&nbsp;Batal
+                        </a>
+                        <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -117,13 +98,129 @@
 <script type="text/javascript" src="{{ asset_admin('my_assets/datatables/1.11.3/js/dataTables.bootstrap4.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('my_assets/datatables-responsive/2.2.9/js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
+<script type="text/javascript" src="{{ asset_admin('libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset_admin('libs/select2/js/select2.full.min.js') }}"></script>
 
 <script>
-    let StackChoice;
+    let untukSimpanData = function() {
+        $(document).on('submit', '#form-add-upd', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                method: $(this).attr('method'),
+                url: $(this).attr('action'),
+                data: new FormData(this),
+                contentType: false,
+                processData: false,
+                cache: false,
+                dataType: 'json',
+                beforeSend: function() {
+                    $('#save').attr('disabled', 'disabled');
+                    $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                },
+                success: function(response) {
+                    if (response.type === 'success') {
+                        Swal.fire({
+                            title: response.title,
+                            text: response.text,
+                            icon: response.type,
+                            confirmButtonText: response.button,
+                            customClass: {
+                                confirmButton: `btn btn-sm btn-${response.class}`,
+                            },
+                            buttonsStyling: false,
+                        }).then((value) => {
+                            table.ajax.reload();
+                            $('#modal-add-upd').modal('hide');
+                        });
+                    } else {
+                        $.each(response.errors, function(key, value) {
+                            if (key) {
+                                if (($('#' + key).prop('tagName') === 'INPUT' || $('#' + key).prop('tagName') === 'TEXTAREA')) {
+                                    $('#' + key).addClass('is-invalid');
+                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                } else if ($('#' + key).prop('tagName') === 'SELECT') {
+                                    $('#' + key).addClass('is-invalid');
+                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                } else if ($('#' + key).prop('tagName') === 'DIV') {
+                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                }
+                            }
+                        });
+
+                        Swal.fire({
+                            title: response.title,
+                            text: response.text,
+                            icon: response.type,
+                            confirmButtonText: response.button,
+                            customClass: {
+                                confirmButton: `btn btn-sm btn-${response.class}`,
+                            },
+                            buttonsStyling: false,
+                        });
+                    }
+
+                    $('#save').removeAttr('disabled');
+                    $('#save').html('<i class="fa fa-save"></i>&nbsp;Simpan');
+                }
+            });
+        });
+
+        $(document).on('keyup', '#form-add-upd input', function(e) {
+            e.preventDefault();
+
+            if ($(this).val() == '') {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+
+        $(document).on('change', '#form-add-upd select', function(e) {
+            e.preventDefault();
+
+            if ($(this).val() == '') {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+
+        $(document).on('keyup', '#form-add-upd textarea', function(e) {
+            e.preventDefault();
+
+            if ($(this).val() == '') {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+
+        $(document).on('change', '#form-add-upd input[type="file"]', function(e) {
+            e.preventDefault();
+
+            if ($(this).val() == '') {
+                $(this).removeClass('is-valid').addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+    }();
+
+    let untukSelectBased = function() {
+        $.get("{{ route('admin.based.get_all') }}", function(response) {
+            $("#id_based").select2({
+                placeholder: "Pilih based",
+                width: '100%',
+                allowClear: true,
+                data: response,
+            });
+        }, 'json');
+    }();
 
     let untukMultipleSelectStack = function() {
         $.get("{{ route('admin.stack.get_all') }}", function(response) {
-            StackChoice = new Choices('#id_stack', {
+            new Choices('#project_stack', {
                 removeItemButton: true,
                 removeItems: true,
                 duplicateItems: false,
@@ -133,7 +230,7 @@
     }();
 
     let untukPreviewDetailGambar = function() {
-        $('#picture').on('change', function() {
+        $('#project_picture').on('change', function() {
             multiImgPreview(this, 'div.preview-image');
         });
     }();
@@ -145,7 +242,7 @@
 
             var id = $(this).data('id');
             var dt = new DataTransfer();
-            var input = document.getElementById('picture');
+            var input = document.getElementById('project_picture');
             var {
                 files
             } = input;
@@ -158,56 +255,6 @@
             }
 
             input.files = dt.files
-        });
-    }();
-
-    let untukSimpanData = function() {
-        $(document).on('submit', '#form-add-upd', function(e) {
-            e.preventDefault();
-
-            $('#judul').attr('required', 'required');
-            $('#id_category').attr('required', 'required');
-            $('#deskripsi').attr('required', 'required');
-            $('#id_stack').attr('required', 'required');
-            $('#gambar').attr('required', 'required');
-            $('#picture').attr('required', 'required');
-
-            var parsleyConfig = {
-                errorsContainer: function(parsleyField) {
-                    var $err = parsleyField.$element.siblings('.errorInput');
-                    return $err;
-                }
-            };
-
-            $("#form-add-upd").parsley(parsleyConfig);
-
-            if ($('#form-add-upd').parsley().isValid() == true) {
-                $.ajax({
-                    method: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: new FormData(this),
-                    contentType: false,
-                    processData: false,
-                    cache: false,
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    beforeSend: function() {
-                        $('#save').attr('disabled', 'disabled');
-                        $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
-                    },
-                    success: function(response) {
-                        swal(response.title, response.text, response.type, response.button).then((value) => {
-                            location.href = "{{ route('admin.project') }}";
-                            $('#modal-add-upd').modal('hide');
-                        });
-
-                        $('#save').removeAttr('disabled');
-                        $('#save').html('<i class="fa fa-save"></i>&nbsp;Simpan');
-                    }
-                });
-            }
         });
     }();
 

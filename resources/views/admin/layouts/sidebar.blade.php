@@ -34,6 +34,12 @@
                                 <span>Type</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.price.price') }}">
+                                <i class="bx bx-box"></i>
+                                <span>Price</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -58,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.project') }}" class="waves-effect">
+                    <a href="{{ route('admin.project.project') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Project</span>
                     </a>

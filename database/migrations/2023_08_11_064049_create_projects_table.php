@@ -19,8 +19,6 @@ class CreateProjectsTable extends Migration
             $table->string('judul', 50)->nullable();
             $table->binary('gambar')->nullable();
             $table->text('deskripsi')->nullable();
-            $table->text('link_demo')->nullable();
-            $table->text('link_github')->nullable();
 
             $table->integer('by_users')->nullable();
             $table->timestamp('created_at')->nullable()->useCurrent();

@@ -32,26 +32,60 @@ Breadcrumbs::for('admin.type.type', function (BreadcrumbTrail $trail) {
     $trail->push('Type', route('admin.type.type'));
 });
 
-Breadcrumbs::for('admin.project', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.price.price', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Project', route('admin.project'));
+    $trail->push('Price', route('admin.price.price'));
+});
+
+Breadcrumbs::for('admin.project.project', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Project', route('admin.project.project'));
 });
 
 Breadcrumbs::for('admin.project.add', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.project');
+    $trail->parent('admin.project.project');
 
-    $trail->push('Tambah', route('admin.project.add'));
+    $trail->push('Add', route('admin.project.add'));
 });
 
-Breadcrumbs::for('admin.project.upd', function (BreadcrumbTrail $trail, Project $post) {
-    $trail->parent('admin.project');
 
-    $trail->push('Ubah', route('admin.project.upd', $post->id_project));
-});
 
-Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail, Project $post) {
-    $trail->parent('admin.project');
 
-    $trail->push('Detail', route('admin.project.det', $post->id_project));
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Breadcrumbs::for('admin.project.upd', function (BreadcrumbTrail $trail, Project $post) {
+//     $trail->parent('admin.project');
+
+//     $trail->push('Ubah', route('admin.project.upd', $post->id_project));
+// });
+
+// Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail, Project $post) {
+//     $trail->parent('admin.project');
+
+//     $trail->push('Detail', route('admin.project.det', $post->id_project));
+// });

@@ -14,17 +14,16 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header align-items-center d-flex">
+            <div class="card-header bg-transparent border-bottom align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
                 <div class="flex-shrink-0">
-                    <a href="{{ route('admin.project.add') }}" id="add" class="btn btn-light btn-sm">
-                        <i class="fa fa-plus"></i>&nbsp;Create
+                    <a href="{{ route('admin.project.add') }}" id="add" class="btn btn-secondary btn-sm">
+                        <i class="fa fa-plus"></i>&nbsp;Tambah
                     </a>
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="tabel-project-dt">
-                </table>
+                <table class="table" id="tabel-project-dt"></table>
             </div>
         </div>
     </div>
@@ -39,6 +38,8 @@
 <script type="text/javascript" src="{{ asset_admin('my_assets/datatables-responsive/2.2.9/js/dataTables.responsive.min.js') }}"></script>
 
 <script>
+    let table;
+
     let untukTabel = function() {
         table = $('#tabel-project-dt').DataTable({
             serverSide: true,
@@ -64,16 +65,6 @@
                 {
                     title: 'Kategori',
                     data: 'to_category.nama',
-                    class: 'text-center'
-                },
-                {
-                    title: 'Link Demo',
-                    data: 'link_demo',
-                    class: 'text-center'
-                },
-                {
-                    title: 'Link Github',
-                    data: 'link_github',
                     class: 'text-center'
                 },
                 {
@@ -120,15 +111,21 @@
                         data: {
                             id: ini.data('id'),
                         },
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
                         beforeSend: function() {
                             ini.attr('disabled', 'disabled');
                             ini.html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
                         },
                         success: function(response) {
-                            swal(response.title, response.text, response.type, response.button).then((value) => {
+                            Swal.fire({
+                                title: response.title,
+                                text: response.text,
+                                icon: response.type,
+                                confirmButtonText: response.button,
+                                customClass: {
+                                    confirmButton: `btn btn-sm btn-${response.class}`,
+                                },
+                                buttonsStyling: false,
+                            }).then((value) => {
                                 table.ajax.reload();
                             });
                         }

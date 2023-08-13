@@ -17,6 +17,12 @@ class CreateProductsTable extends Migration
             $table->increments('id_product');
             $table->integer('id_type')->unsigned()->nullable();
             $table->integer('id_based')->unsigned()->nullable();
+            $table->integer('id_price')->unsigned()->nullable();
+            $table->string('judul', 50)->nullable();
+            $table->binary('gambar')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->text('link_demo')->nullable();
+            $table->text('link_github')->nullable();
 
             $table->integer('by_users')->nullable();
             $table->timestamp('created_at')->useCurrent();
@@ -24,6 +30,7 @@ class CreateProductsTable extends Migration
 
             $table->foreign('id_type')->references('id_type')->on('type')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_based')->references('id_based')->on('based')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_price')->references('id_price')->on('price')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

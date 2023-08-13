@@ -15,25 +15,32 @@ class Product extends Model
     // untuk tabel yang bisa di isi
     protected $fillable = [
         'id_product',
-        'id_product_type',
+        'id_type',
+        'id_based',
+        'id_price',
+        'judul',
+        'gambar',
+        'deskripsi',
+        'link_demo',
+        'link_github',
         'by_users',
     ];
 
-    // untuk relasi ke tabel product type
-    public function toProductType()
+    // untuk relasi ke tabel type
+    public function toType()
     {
-        return $this->belongsTo(ProductType::class, 'id_product_type', 'id_product_type');
+        return $this->belongsTo(Type::class, 'id_type', 'id_type');
     }
 
-    // untuk relasi ke tabel product stack
-    public function toProductStack()
+    // untuk relasi ke tabel based
+    public function toBased()
     {
-        return $this->hasMany(ProductStack::class, 'id_product', 'id_product');
+        return $this->belongsTo(Based::class, 'id_based', 'id_based');
     }
 
-    // untuk relasi ke tabel product picture
-    public function toProductPicture()
+    // untuk relasi ke tabel price
+    public function toPrice()
     {
-        return $this->hasMany(ProductPicture::class, 'id_product', 'id_product');
+        return $this->belongsTo(Price::class, 'id_price', 'id_price');
     }
 }

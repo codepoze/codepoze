@@ -9,7 +9,7 @@ class ProjectPictures extends Model
 {
     use HasFactory;
     // untuk default tabel
-    protected $table = 'project_pictures';
+    protected $table = 'project_picture';
     // untuk default primary key
     protected $primaryKey = 'id_project_picture';
     // untuk tabel yang bisa di isi
