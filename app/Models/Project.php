@@ -39,6 +39,6 @@ class Project extends Model
     // untuk relasi ke project picture
     public function toProjectPicture()
     {
-        return $this->hasMany(ProjectPicture::class, 'id_project', 'id_project');
+        return $this->hasMany(ProjectPictures::class, 'id_project', 'id_project');
     }
 }

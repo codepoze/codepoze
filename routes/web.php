@@ -78,6 +78,8 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         Route::controller(ProjectController::class)->prefix('project')->as('project.')->group(function () {
             Route::get('/', 'index')->name('project');
             Route::get('/add', 'add')->name('add');
+            Route::get('/upd/{id}', 'upd')->name('upd');
+            Route::get('/det/{id}', 'det')->name('det');
 
 
 

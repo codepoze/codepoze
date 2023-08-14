@@ -13,84 +13,68 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header align-items-center d-flex">
+            <div class="card-header bg-transparent border-bottom align-items-center d-flex">
                 <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
             </div>
             <div class="card-body">
-                <div class="row gy-4">
-                    <form>
-                        <div class="row mb-3">
-                            <label for="judul" class="col-sm-2 col-form-label">Judul</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="judul" class="form-control-plaintext" value="{{ $project->judul }}" />
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Judul</label>
+                    <div class="col-md-9 my-auto">
+                        <input type="text" class="form-control-plaintext" value="{{ $project->judul }}" readonly />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Based</label>
+                    <div class="col-md-9 my-auto">
+                        <input type="text" class="form-control-plaintext" value="{{ $project->toBased->nama }}" readonly />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Deskripsi</label>
+                    <div class="col-md-9 my-auto">
+                        <textarea class="form-control-plaintext" readonly>{{ $project->deskripsi }}</textarea>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Stacks</label>
+                    <div class="col-md-9 my-auto">
+                        <div class="row">
+                            @foreach($project->toProjectStack as $row)
+                            <div class="col-lg-2 align-items-center text-center">
+                                <i class="devicon-{{ $row->toStack->icon }}-plain colored" style="font-size: 35px;"></i>
+                                <br>
+                                {{ $row->toStack->nama }}
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Gambar</label>
+                    <div class="col-md-9 my-auto">
+                        <div class="row">
+                            <div class="col-lg-3 pt-3 pb-3">
+                                <img src="{{ asset_upload('picture/'.$project->gambar) }}" alt="{{ $project->judul }}" class="img-fluid" width="300" />
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="id_category" class="col-sm-2 col-form-label">Kategori</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="id_category" class="form-control-plaintext" value="{{ $project->toCategory->nama }}" />
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label class="col-sm-3 col-form-label">Gambar</label>
+                    <div class="col-md-9 my-auto">
+                        <div class="row">
+                            @foreach($project->toProjectPicture as $row)
+                            <div class="col-lg-3 pt-3 pb-3">
+                                <img src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $row->judul }}" class="img-fluid" width="300" />
                             </div>
+                            @endforeach
                         </div>
-                        <div class="row mb-3">
-                            <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="deskripsi" class="form-control-plaintext" value="{{ $project->deskripsi }}" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="link_demo" class="col-sm-2 col-form-label">Link Demo</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="link_demo" class="form-control-plaintext" value="{{ $project->link_demo ?? '-' }}" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Link Github</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="link_github" class="form-control-plaintext" value="{{ $project->link_github ?? '-' }}" />
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="id_stack" class="col-sm-2 col-form-label">Stack</label>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    @foreach($project_stack as $row)
-                                    <div class="col-lg-2 align-items-center text-center">
-                                        <i class="devicon-{{ $row->toStack->icon }}-plain colored" style="font-size: 25px;"></i>
-                                        <br>
-                                        {{ $row->toStack->nama }}
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Gambar</label>
-                            <div class="col-sm-10">
-                                <img src="{{ asset_upload('picture/'.$project->gambar) }}" alt="{{ $project->judul }}" class="img-fluid" width="500" />
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row mb-3">
-                            <label for="link_github" class="col-sm-2 col-form-label">Detail Gambar</label>
-                            <div class="col-sm-10">
-                                <div class="row">
-                                    @foreach($project_picture as $row)
-                                    <div class="col-lg-3 pt-3 pb-3">
-                                        <img src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $row->judul }}" class="img-fluid" />
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="hstack gap-2 justify-content-end">
-                                <a href="{{ route('admin.project') }}" id="back" class="btn btn-primary btn-sm">
-                                    <i class="fa fa-arrow-left"></i>&nbsp;Back
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
+                </div>
+                <div class="hstack gap-2 justify-content-end">
+                    <a href="{{ route('admin.project.project') }}" id="back" class="btn btn-primary btn-sm">
+                        <i class="fa fa-arrow-left"></i>&nbsp;Back
+                    </a>
                 </div>
             </div>
         </div>

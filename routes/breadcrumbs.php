@@ -50,6 +50,12 @@ Breadcrumbs::for('admin.project.add', function (BreadcrumbTrail $trail) {
     $trail->push('Add', route('admin.project.add'));
 });
 
+Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.project.project');
+
+    $trail->push('Detail', '#');
+});
+
 
 
 
@@ -82,10 +88,4 @@ Breadcrumbs::for('admin.project.add', function (BreadcrumbTrail $trail) {
 //     $trail->parent('admin.project');
 
 //     $trail->push('Ubah', route('admin.project.upd', $post->id_project));
-// });
-
-// Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail, Project $post) {
-//     $trail->parent('admin.project');
-
-//     $trail->push('Detail', route('admin.project.det', $post->id_project));
 // });

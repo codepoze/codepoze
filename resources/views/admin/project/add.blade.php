@@ -4,10 +4,25 @@
 
 <!-- begin:: css local -->
 @section('css')
+<link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/select2/css/select2.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables/1.11.3/css/dataTables.bootstrap4.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables-responsive/2.2.9/css/responsive.dataTables.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/select2/css/select2.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/choices.js/public/assets/styles/choices.min.css') }}" />
+
+<style>
+    .is-invalid {
+        border: 1px solid #dc3545 !important;
+    }
+
+    .is-invalid::after {
+        position: absolute;
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: #dc3545;
+        font-size: 20px;
+        right: 40px;
+    }
+</style>
 @endsection
 <!-- end:: css local -->
 
@@ -35,8 +50,11 @@
                     <div class="mb-3 row field-input">
                         <label for="id_based" class="col-sm-3 col-form-label">Based&nbsp;*</label>
                         <div class="col-md-9 my-auto">
-                            <select name="id_based" id="id_based" class="form-control">
+                            <select name="id_based" id="id_based" class="form-select select2">
                                 <option value="">Pilih based</option>
+                                @foreach($based as $row)
+                                <option value="{{ $row->id_based }}">{{ $row->nama }}</option>
+                                @endforeach
                             </select>
                             <span class="invalid-feedback"></span>
                         </div>
@@ -72,7 +90,8 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <div class="col-lg-12">
+                        <label class="col-sm-3"></label>
+                        <div class="col-lg-9">
                             <div class="mt-1 text-center">
                                 <div class="preview-image row"></div>
                             </div>
@@ -102,6 +121,25 @@
 <script type="text/javascript" src="{{ asset_admin('libs/select2/js/select2.full.min.js') }}"></script>
 
 <script>
+    let untukMultipleSelectStack = function() {
+        $.get("{{ route('admin.stack.get_all') }}", function(response) {
+            new Choices('#project_stack', {
+                removeItemButton: true,
+                removeItems: true,
+                duplicateItems: false,
+                choices: response
+            });
+        }, 'json');
+    }();
+
+    let untukSelectBased = function() {
+        $("#id_based").select2({
+            placeholder: "Pilih based",
+            width: '100%',
+            allowClear: true,
+        });
+    }();
+
     let untukSimpanData = function() {
         $(document).on('submit', '#form-add-upd', function(e) {
             e.preventDefault();
@@ -130,8 +168,7 @@
                             },
                             buttonsStyling: false,
                         }).then((value) => {
-                            table.ajax.reload();
-                            $('#modal-add-upd').modal('hide');
+                            location.href = "{{ route('admin.project.project') }}";
                         });
                     } else {
                         $.each(response.errors, function(key, value) {
@@ -141,8 +178,6 @@
                                     $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
                                 } else if ($('#' + key).prop('tagName') === 'SELECT') {
                                     $('#' + key).addClass('is-invalid');
-                                    $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
-                                } else if ($('#' + key).prop('tagName') === 'DIV') {
                                     $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
                                 }
                             }
@@ -205,28 +240,6 @@
                 $(this).removeClass('is-invalid').addClass('is-valid');
             }
         });
-    }();
-
-    let untukSelectBased = function() {
-        $.get("{{ route('admin.based.get_all') }}", function(response) {
-            $("#id_based").select2({
-                placeholder: "Pilih based",
-                width: '100%',
-                allowClear: true,
-                data: response,
-            });
-        }, 'json');
-    }();
-
-    let untukMultipleSelectStack = function() {
-        $.get("{{ route('admin.stack.get_all') }}", function(response) {
-            new Choices('#project_stack', {
-                removeItemButton: true,
-                removeItems: true,
-                duplicateItems: false,
-                choices: response
-            });
-        }, 'json');
     }();
 
     let untukPreviewDetailGambar = function() {

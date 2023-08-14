@@ -63,8 +63,8 @@
                     class: 'text-center'
                 },
                 {
-                    title: 'Kategori',
-                    data: 'to_category.nama',
+                    title: 'Based',
+                    data: 'to_based.nama',
                     class: 'text-center'
                 },
                 {
@@ -73,7 +73,7 @@
                     class: 'text-center',
                     render: function(data, type, full, meta) {
                         var checkGambar = (full.gambar === null ? '//placehold.co/150' : `{{ asset_upload('picture/` + full.gambar + `') }}`);
-                        return `<img src="` + checkGambar + `" width="170" height="100" >`;
+                        return `<img src="` + checkGambar + `" width="100" height="100" >`;
                     },
                 },
                 {

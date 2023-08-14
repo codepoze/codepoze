@@ -4,8 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Libraries\Template;
+use App\Models\Based;
 use App\Models\Project;
-use App\Models\ProjectPicture;
 use App\Models\ProjectPictures;
 use App\Models\ProjectStack;
 use Illuminate\Http\Request;
@@ -30,54 +30,48 @@ class ProjectController extends Controller
 
     public function add()
     {
-        return Template::load($this->session['roles'], 'Tambah Project', 'project', 'add');
+        $data = [
+            'based' => Based::all(),
+        ];
+
+        return Template::load($this->session['roles'], 'Tambah Project', 'project', 'add', $data);
     }
 
-    // public function upd($id)
-    // {
-    //     $data = [
-    //         'category'        => Category::all(),
-    //         'project'         => Project::find(my_decrypt($id)),
-    //         'project_stack'   => ProjectStack::where('id_project', my_decrypt($id))->get(),
-    //         'project_picture' => ProjectPicture::where('id_project', my_decrypt($id))->get(),
-    //     ];
+    public function upd($id)
+    {
+        $data = [
+            'based'   => Based::all(),
+            'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
+        ];
 
-    //     return Template::load($this->session['roles'], 'Ubah Project', 'project', 'upd', $data);
-    // }
+        return Template::load($this->session['roles'], 'Ubah Project', 'project', 'upd', $data);
+    }
 
-    // public function det($id)
-    // {
-    //     $data = [
-    //         'category'        => Category::all(),
-    //         'project'         => Project::with(['toCategory'])->find(my_decrypt($id)),
-    //         'project_stack'   => ProjectStack::where('id_project', my_decrypt($id))->get(),
-    //         'project_picture' => ProjectPicture::where('id_project', my_decrypt($id))->get(),
-    //     ];
+    public function det($id)
+    {
+        $data = [
+            'based'   => Based::all(),
+            'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
+        ];
 
-    //     return Template::load($this->session['roles'], 'Detail Project', 'project', 'det', $data);
-    // }
+        return Template::load($this->session['roles'], 'Detail Project', 'project', 'det', $data);
+    }
 
-    // public function get_data_dt()
-    // {
-    //     $data = Project::with(['toCategory'])->orderBy('id_project', 'desc')->get();
+    public function get_data_dt()
+    {
+        $data = Project::with(['toBased'])->orderBy('id_project', 'desc')->get();
 
-    //     return DataTables::of($data)
-    //         ->addIndexColumn()
-    //         ->addColumn('link_github', function ($row) {
-    //             return $row->link_github ?? '-';
-    //         })
-    //         ->addColumn('link_demo', function ($row) {
-    //             return $row->link_demo ?? '-';
-    //         })
-    //         ->addColumn('action', function ($row) {
-    //             return '
-    //                 <a href="' . route('admin.project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
-    //                 <a href="' . route('admin.project.upd', my_encrypt($row->id_project)) . '" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>&nbsp;Ubah</a>&nbsp;
-    //                 <button type="button" id="del" data-id="' . my_encrypt($row->id_project) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
-    //             ';
-    //         })
-    //         ->make(true);
-    // }
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                return '
+                    <a href="' . route('admin.project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
+                    <a href="' . route('admin.project.upd', my_encrypt($row->id_project)) . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Ubah</a>&nbsp;
+                    <button type="button" id="del" data-id="' . my_encrypt($row->id_project) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
+                ';
+            })
+            ->make(true);
+    }
 
     public function save(Request $request)
     {
@@ -148,36 +142,35 @@ class ProjectController extends Controller
                 ProjectPictures::insert($project_picture);
                 DB::commit();
 
-                $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Ok!'];
+                $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
             }
         } catch (\Exception $e) {
-            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Simpan!', 'type' => 'error', 'button' => 'Ok!'];
+            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Simpan!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
         }
 
         return Response::json($response);
     }
 
-    // public function del(Request $request)
-    // {
-    //     try {
-    //         $project         = Project::find(my_decrypt($request->id));
-    //         $project_picture = ProjectPicture::whereIdProject(my_decrypt($request->id))->get();
+    public function del(Request $request)
+    {
+        try {
+            $data = Project::with(['toProjectPicture'])->find(my_decrypt($request->id));
 
-    //         del_picture($project->gambar);
+            del_picture($data->gambar);
 
-    //         foreach ($project_picture as $key => $value) {
-    //             del_picture($value->picture);
-    //         }
+            foreach ($data->toProjectPicture as $key => $value) {
+                del_picture($value->picture);
+            }
 
-    //         $project->delete();
+            $data->delete();
 
-    //         $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Hapus!', 'type' => 'success', 'button' => 'Ok!'];
-    //     } catch (\Exception $e) {
-    //         $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Proses!', 'type' => 'error', 'button' => 'Ok!'];
-    //     }
+            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Hapus!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
+        } catch (\Exception $e) {
+            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Hapus!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
+        }
 
-    //     return response()->json($response);
-    // }
+        return response()->json($response);
+    }
 
     // public function get_stack_detail($id)
     // {
