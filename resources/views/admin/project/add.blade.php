@@ -5,24 +5,7 @@
 <!-- begin:: css local -->
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/select2/css/select2.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables/1.11.3/css/dataTables.bootstrap4.min.css') }}" />
-<link rel="stylesheet" type="text/css" href="{{ asset_admin('my_assets/datatables-responsive/2.2.9/css/responsive.dataTables.min.css') }}" />
 <link rel="stylesheet" type="text/css" href="{{ asset_admin('libs/choices.js/public/assets/styles/choices.min.css') }}" />
-
-<style>
-    .is-invalid {
-        border: 1px solid #dc3545 !important;
-    }
-
-    .is-invalid::after {
-        position: absolute;
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        color: #dc3545;
-        font-size: 20px;
-        right: 40px;
-    }
-</style>
 @endsection
 <!-- end:: css local -->
 
@@ -78,7 +61,7 @@
                     <div class="mb-3 row field-input">
                         <label for="gambar" class="col-sm-3 col-form-label">Gambar&nbsp;*</label>
                         <div class="col-md-9 my-auto">
-                            <input type="file" name="gambar" id="gambar" class="form-control" placeholder="Masukkan judul" />
+                            <input type="file" name="gambar" id="gambar" class="form-control" />
                             <span class="invalid-feedback"></span>
                         </div>
                     </div>
@@ -113,9 +96,6 @@
 
 <!-- begin:: js local -->
 @section('js')
-<script type="text/javascript" src="{{ asset_admin('my_assets/datatables/1.11.3/js/jquery.dataTables.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset_admin('my_assets/datatables/1.11.3/js/dataTables.bootstrap4.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset_admin('my_assets/datatables-responsive/2.2.9/js/dataTables.responsive.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('libs/select2/js/select2.full.min.js') }}"></script>

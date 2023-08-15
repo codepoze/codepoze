@@ -5,16 +5,18 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Libraries\Template;
 use App\Models\Based;
-use App\Models\Project;
-use App\Models\ProjectPictures;
-use App\Models\ProjectStack;
+use App\Models\Price;
+use App\Models\Product;
+use App\Models\ProductPicture;
+use App\Models\ProductStack;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 
-class ProjectController extends Controller
+class ProductController extends Controller
 {
     public function __construct(Request $request)
     {
@@ -25,51 +27,67 @@ class ProjectController extends Controller
 
     public function index()
     {
-        return Template::load($this->session['roles'], 'Project', 'project', 'view');
+        return Template::load($this->session['roles'], 'Product', 'product', 'view');
     }
 
     public function add()
     {
         $data = [
+            'type'  => Type::all(),
             'based' => Based::all(),
+            'price' => Price::all(),
         ];
 
-        return Template::load($this->session['roles'], 'Tambah Project', 'project', 'add', $data);
+        return Template::load($this->session['roles'], 'Tambah Product', 'product', 'add', $data);
     }
 
     public function upd($id)
     {
         $data = [
+            'type'    => Type::all(),
             'based'   => Based::all(),
-            'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
+            'price'   => Price::all(),
+            'product' => Product::findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Ubah Project', 'project', 'upd', $data);
+        return Template::load($this->session['roles'], 'Ubah Product', 'product', 'upd', $data);
     }
 
     public function det($id)
     {
         $data = [
-            'based'   => Based::all(),
-            'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
+            'product' => Product::with(['toType', 'toBased', 'toPrice', 'toProductStack', 'toProductPicture'])->findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Detail Project', 'project', 'det', $data);
+        return Template::load($this->session['roles'], 'Detail Product', 'product', 'det', $data);
     }
 
     public function get_data_dt()
     {
-        $data = Project::with(['toBased'])->orderBy('id_project', 'desc')->get();
+        $data = Product::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('type', function ($row) {
+                return $row->toType->nama;
+            })
+            ->addColumn('based', function ($row) {
+                return $row->toBased->nama;
+            })
+            ->addColumn('price', function ($row) {
+                return ucfirst($row->toPrice->jenis) . ' | ' . rupiah($row->toPrice->nilai_normal);
+            })
+            ->addColumn('gambar', function ($row) {
+                return '<img src="' . asset_upload('picture/' . $row->gambar) . '" class="img-fluid" width="100px">';
+            })
             ->addColumn('action', function ($row) {
                 return '
-                    <a href="' . route('admin.project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
-                    <a href="' . route('admin.project.upd', my_encrypt($row->id_project)) . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Ubah</a>&nbsp;
-                    <button type="button" id="del" data-id="' . my_encrypt($row->id_project) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
+                    <a href="' . route('admin.product.det', my_encrypt($row->id_product)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
+                    <a href="' . route('admin.product.upd', my_encrypt($row->id_product)) . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Ubah</a>&nbsp;
+                    <button type="button" id="del" data-id="' . my_encrypt($row->id_product) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
                 ';
             })
+            ->rawColumns(['gambar', 'action'])
             ->make(true);
     }
 
@@ -83,12 +101,12 @@ class ProjectController extends Controller
                 $data[$key] = $value;
             }
 
-            if ($request->id_project === null) {
+            if ($request->id_product === null) {
                 $rules['gambar']          = 'required';
-                $rules['project_picture'] = 'required';
+                $rules['product_picture'] = 'required';
 
                 $messages['gambar.required']          = 'Gambar harus diisi!';
-                $messages['project_picture.required'] = 'Gambar Detail harus diisi!';
+                $messages['product_picture.required'] = 'Gambar Detail harus diisi!';
             } else {
                 if (isset($request->change_picture) && $request->change_picture === 'on') {
                     $rules['gambar'] = 'required';
@@ -98,14 +116,22 @@ class ProjectController extends Controller
             }
 
             $rules['judul']           = 'required';
+            $rules['id_type']         = 'required';
             $rules['id_based']        = 'required';
-            $rules['project_stack']   = 'required';
+            $rules['id_price']        = 'required';
+            $rules['product_stack']   = 'required';
             $rules['deskripsi']       = 'required';
+            $rules['link_demo']       = 'required';
+            $rules['link_github']     = 'required';
 
             $messages['judul.required']           = 'Judul harus diisi!';
+            $messages['id_type.required']         = 'Type harus diisi!';
             $messages['id_based.required']        = 'Based harus diisi!';
-            $messages['project_stack.required']   = 'Stack harus diisi!';
+            $messages['id_price.required']        = 'Price harus diisi!';
+            $messages['product_stack.required']   = 'Stack harus diisi!';
             $messages['deskripsi.required']       = 'Deskripsi harus diisi!';
+            $messages['link_demo.required']       = 'Link Demo harus diisi!';
+            $messages['link_github.required']     = 'Link Github harus diisi!';
 
             $validator = Validator::make($request->all(), $rules, $messages);
 
@@ -115,86 +141,94 @@ class ProjectController extends Controller
                 return Response::json($response);
             }
 
-            if ($request->id_project === null) {
+            if ($request->id_product === null) {
                 $nama_gambar = add_picture($request->gambar);
 
-                // project
-                $project = new Project();
-                $project->judul       = $request->judul;
-                $project->id_based    = $request->id_based;
-                $project->deskripsi   = $request->deskripsi;
-                $project->gambar      = $nama_gambar;
-                $project->by_users    = $this->session['id_users'];
-                $project->save();
+                // product
+                $product = new Product();
+                $product->judul       = $request->judul;
+                $product->id_type     = $request->id_type;
+                $product->id_based    = $request->id_based;
+                $product->id_price    = $request->id_price;
+                $product->deskripsi   = $request->deskripsi;
+                $product->link_demo   = $request->link_demo;
+                $product->link_github = $request->link_github;
+                $product->gambar      = $nama_gambar;
+                $product->by_users    = $this->session['id_users'];
+                $product->save();
 
-                // project stack
-                $stacks = $request->project_stack;
+                // product stack
+                $stacks = $request->product_stack;
                 for ($i = 0; $i < count($stacks); $i++) {
-                    $project_stack[] = [
-                        'id_project' => $project->id_project,
+                    $product_stack[] = [
+                        'id_product' => $product->id_product,
                         'id_stack'   => $stacks[$i],
                         'by_users'   => $this->session['id_users'],
                     ];
                 }
-                ProjectStack::insert($project_stack);
+                ProductStack::insert($product_stack);
 
-                // project picture
-                $pictures = $request->project_picture;
+                // product picture
+                $pictures = $request->product_picture;
                 for ($i = 0; $i < count($pictures); $i++) {
-                    $nama_foto[$i] = add_picture($request->project_picture[$i]);
+                    $nama_foto[$i] = add_picture($request->product_picture[$i]);
 
-                    $project_picture[] = [
-                        'id_project' => $project->id_project,
+                    $product_picture[] = [
+                        'id_product' => $product->id_product,
                         'picture'    => $nama_foto[$i],
                         'by_users'   => $this->session['id_users'],
                     ];
                 }
-                ProjectPictures::insert($project_picture);
+                ProductPicture::insert($product_picture);
                 DB::commit();
 
                 $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
             } else {
-                // project
-                $project = Project::find($request->id_project);
+                // product
+                $product = Product::find($request->id_product);
 
                 if (isset($request->change_picture) && $request->change_picture === 'on') {
-                    $nama_gambar     = upd_picture($request->gambar, $project->gambar);
-                    $project->gambar = $nama_gambar;
+                    $nama_gambar     = upd_picture($request->gambar, $product->gambar);
+                    $product->gambar = $nama_gambar;
                 }
 
-                $project->judul     = $request->judul;
-                $project->id_based  = $request->id_based;
-                $project->deskripsi = $request->deskripsi;
-                $project->by_users  = $this->session['id_users'];
-                $project->save();
+                $product->judul     = $request->judul;
+                $product->id_type   = $request->id_type;
+                $product->id_based  = $request->id_based;
+                $product->id_price  = $request->id_price;
+                $product->deskripsi = $request->deskripsi;
+                $product->link_demo = $request->link_demo;
+                $product->link_github = $request->link_github;
+                $product->by_users  = $this->session['id_users'];
+                $product->save();
 
-                // project stack
-                $find_project_stack = ProjectStack::whereIdProject($request->id_project);
-                $find_project_stack->delete();
+                // product stack
+                $find_product_stack = ProductStack::whereIdProduct($request->id_product);
+                $find_product_stack->delete();
 
-                $stacks = $request->project_stack;
+                $stacks = $request->product_stack;
                 for ($i = 0; $i < count($stacks); $i++) {
-                    $project_stack[] = [
-                        'id_project' => $request->id_project,
+                    $product_stack[] = [
+                        'id_product' => $request->id_product,
                         'id_stack'   => $stacks[$i],
                         'by_users'   => $this->session['id_users'],
                     ];
                 }
-                ProjectStack::insert($project_stack);
+                ProductStack::insert($product_stack);
 
-                // project picture
-                $pictures = $request->project_picture;
+                // product picture
+                $pictures = $request->product_picture;
                 if ($pictures !== null) {
                     for ($i = 0; $i < count($pictures); $i++) {
                         $nama_foto[$i] = add_picture($request->picture[$i]);
 
-                        $project_picture[] = [
-                            'id_project' => $project->id_project,
+                        $product_picture[] = [
+                            'id_product' => $product->id_product,
                             'picture'    => $nama_foto[$i],
                             'by_users'   => $this->session['id_users'],
                         ];
                     }
-                    ProjectPictures::insert($project_picture);
+                    ProductPicture::insert($product_picture);
                 }
                 DB::commit();
 
@@ -210,11 +244,11 @@ class ProjectController extends Controller
     public function del(Request $request)
     {
         try {
-            $data = Project::with(['toProjectPicture'])->find(my_decrypt($request->id));
+            $data = Product::with(['toProductPicture'])->find(my_decrypt($request->id));
 
             del_picture($data->gambar);
 
-            foreach ($data->toProjectPicture as $key => $value) {
+            foreach ($data->toproductPicture as $key => $value) {
                 del_picture($value->picture);
             }
 
@@ -230,7 +264,7 @@ class ProjectController extends Controller
 
     public function get_stack_detail($id)
     {
-        $get = ProjectStack::with('toStack')->whereIdProject($id)->get();
+        $get = ProductStack::with('toStack')->whereIdProduct($id)->get();
 
         $response = [];
 
@@ -243,13 +277,13 @@ class ProjectController extends Controller
 
     public function get_picture_detail($id)
     {
-        $get = ProjectPictures::whereIdProject($id)->get();
+        $get = ProductPicture::whereIdProduct($id)->get();
 
         $response = [];
 
         foreach ($get as $value) {
             $response[] = [
-                'id_project_picture' => $value->id_project_picture,
+                'id_product_picture' => $value->id_product_picture,
                 'picture'            => $value->picture,
             ];
         }
@@ -260,7 +294,7 @@ class ProjectController extends Controller
     public function del_picture_detail(Request $request)
     {
         try {
-            $data = ProjectPictures::find($request->id);
+            $data = ProductPicture::find($request->id);
 
             del_picture($data->picture);
 

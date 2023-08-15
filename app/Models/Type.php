@@ -16,6 +16,7 @@ class Type extends Model
     protected $fillable = [
         'id_type',
         'nama',
+        'singkatan',
         'by_users',
     ];
 }

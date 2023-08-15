@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Project;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
@@ -38,6 +37,30 @@ Breadcrumbs::for('admin.price.price', function (BreadcrumbTrail $trail) {
     $trail->push('Price', route('admin.price.price'));
 });
 
+Breadcrumbs::for('admin.product.product', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Product', route('admin.product.product'));
+});
+
+Breadcrumbs::for('admin.product.add', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.product.product');
+
+    $trail->push('Add', route('admin.product.add'));
+});
+
+Breadcrumbs::for('admin.product.upd', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.product.product');
+
+    $trail->push('Ubah', '#');
+});
+
+Breadcrumbs::for('admin.product.det', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.product.product');
+
+    $trail->push('Detail', '#');
+});
+
 Breadcrumbs::for('admin.project.project', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
@@ -50,42 +73,14 @@ Breadcrumbs::for('admin.project.add', function (BreadcrumbTrail $trail) {
     $trail->push('Add', route('admin.project.add'));
 });
 
+Breadcrumbs::for('admin.project.upd', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.project.project');
+
+    $trail->push('Ubah', '#');
+});
+
 Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.project.project');
 
     $trail->push('Detail', '#');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Breadcrumbs::for('admin.project.upd', function (BreadcrumbTrail $trail, Project $post) {
-//     $trail->parent('admin.project');
-
-//     $trail->push('Ubah', route('admin.project.upd', $post->id_project));
-// });

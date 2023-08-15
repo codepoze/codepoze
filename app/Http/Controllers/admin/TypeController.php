@@ -56,11 +56,13 @@ class TypeController extends Controller
     public function save(Request $request)
     {
         $rules = [
-            'nama' => 'required',
+            'nama'      => 'required',
+            'singkatan' => 'required',
         ];
 
         $messages = [
-            'nama.required' => 'Nama harus diisi!',
+            'nama.required'      => 'Nama harus diisi!',
+            'singkatan.required' => 'Singkatan harus diisi!',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -77,8 +79,9 @@ class TypeController extends Controller
                     'id_type' => $request->id_type,
                 ],
                 [
-                    'nama'     => $request->nama,
-                    'by_users' => $this->session['id_users'],
+                    'nama'      => $request->nama,
+                    'singkatan' => $request->singkatan,
+                    'by_users'  => $this->session['id_users'],
                 ]
             );
 

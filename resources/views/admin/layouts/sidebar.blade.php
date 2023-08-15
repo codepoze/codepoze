@@ -58,7 +58,7 @@
                 </li>
                 <li class="menu-title">Pustaka</li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="{{ route('admin.product.product') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Produk</span>
                     </a>

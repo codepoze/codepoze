@@ -43,4 +43,16 @@ class Product extends Model
     {
         return $this->belongsTo(Price::class, 'id_price', 'id_price');
     }
+
+    // untuk relasi ke tabel product stack
+    public function toProductStack()
+    {
+        return $this->hasMany(ProductStack::class, 'id_product', 'id_product');
+    }
+
+    // untuk relasi ke tabel product picture
+    public function toProductPicture()
+    {
+        return $this->hasMany(ProductPicture::class, 'id_product', 'id_product');
+    }
 }

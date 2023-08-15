@@ -55,6 +55,13 @@
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
+                        <div class="mb-3 row field-input">
+                            <label for="singkatan" class="col-sm-2 col-form-label">Singkatan&nbsp;*</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="singkatan" id="singkatan" class="form-control form-control-sm" placeholder="Masukkan singkatan" />
+                                <span class="invalid-feedback"></span>
+                            </div>
+                        </div>
                         <div class="hstack gap-2 justify-content-end">
                             <button type="button" id="cancel" class="btn btn-warning btn-sm" data-bs-dismiss="modal"><i class="fa fa-times"></i>&nbsp;Batal</button>
                             <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Simpan</button>
@@ -100,6 +107,11 @@
                 {
                     title: 'Nama',
                     data: 'nama',
+                    class: 'text-center'
+                },
+                {
+                    title: 'Singkatan',
+                    data: 'singkatan',
                     class: 'text-center'
                 },
                 {
