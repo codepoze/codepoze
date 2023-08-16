@@ -8,6 +8,14 @@ if (!function_exists('asset_admin')) {
     }
 }
 
+// untuk akses assets pages
+if (!function_exists('asset_pages')) {
+    function asset_pages($path)
+    {
+        return asset("assets/pages/{$path}");
+    }
+}
+
 // untuk akses upload file
 if (!function_exists('asset_upload')) {
     function asset_upload($path)

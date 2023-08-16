@@ -91,6 +91,8 @@ function swal(title, text, type, button) {
     };
 }(jQuery));
 
+$('.copyright').html(`<em>&copy; ${new Date().getFullYear()}. Developed with <span style="color: #e25555;">&#9829;</span> by <a href="https://alanlengkoan.com" target="_blank">alanlengkoan</a></em>`);
+
 $(".inputNumber").inputFilter(function (value) {
     return /^-?\d*$/.test(value);
 });

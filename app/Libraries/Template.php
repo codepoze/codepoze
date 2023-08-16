@@ -29,4 +29,15 @@ class Template
 
         return view("{$role}/{$module}/{$view}", $data);
     }
+
+    // untuk load pages
+    public static function pages($title, $module, $view, array $data = [])
+    {
+        // untuk judul halaman
+        $data['title'] = $title;
+        // untuk breadcrumb
+        // $data['breadcrumb'] = Breadcrumbs::render(Route::currentRouteName());
+
+        return view("pages/{$module}/{$view}", $data);
+    }
 }
