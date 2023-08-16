@@ -4,19 +4,19 @@
             <div class="navbar-brand-box">
                 <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset_admin('images/logo.svg') }}" alt="" height="22">
+                        <img src="{{ asset_admin('images/logo.svg') }}" alt="CodePoze Logo" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset_admin('images/logo-dark.png') }}" alt="" height="17">
+                        <img src="{{ asset_admin('images/logo-dark.png') }}" alt="CodePoze Logo" height="50">
                     </span>
                 </a>
 
                 <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset_admin('images/logo-light.svg') }}" alt="" height="22">
+                        <img src="{{ asset_admin('images/logo-light.svg') }}" alt="CodePoze Logo" height="50">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset_admin('images/logo-light.png') }}" alt="" height="19">
+                        <img src="{{ asset_admin('images/logo-light.png') }}" alt="CodePoze Logo" height="50">
                     </span>
                 </a>
             </div>

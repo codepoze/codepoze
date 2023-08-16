@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     public function login(Request $request)
     {
         checking_role_session($this->session, $request->session()->has('roles'));
-        
+
         $data = [
             'title' => "Login"
         ];
@@ -20,6 +22,24 @@ class AuthController extends Controller
 
     public function check(Request $request)
     {
+        $rules = [
+            'username' => 'required',
+            'password' => 'required',
+        ];
+
+        $messages = [
+            'username.required' => 'Username tidak boleh kosong!',
+            'password.required' => 'Password tidak boleh kosong!',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            $response = ['status' => 'error', 'errors' => $validator->errors()];
+
+            return Response::json($response);
+        }
+
         $username = $request->input('username');
         $password = $request->input('password');
 
@@ -43,15 +63,24 @@ class AuthController extends Controller
 
             // untuk check role
             if ($users->roles === 'admin') {
-                return redirect()->intended('admin');
-            } else if ($users->roles === 'operator') {
-                return redirect()->intended('operator');
+                $response = [
+                    'status' => 'success',
+                    'url'    => url('/admin')
+                ];
             } else {
-                return redirect()->intended('/');
+                $response = [
+                    'status'  => 'warning',
+                    'message' => '<strong>Username</strong> atau <strong>Password</strong> Anda salah!',
+                ];
             }
         } else {
-            return redirect()->intended('/');
+            $response = [
+                'status'  => 'warning',
+                'message' => '<strong>Username</strong> atau <strong>Password</strong> Anda salah!',
+            ];
         }
+
+        return Response::json($response);
     }
 
     public function logout(Request $request)

@@ -8,7 +8,7 @@
     <meta name="description" content="CodePoze">
     <meta name="keywords" content="CodePoze">
     <meta name="author" content="CodePoze">
-    <title>CodePoze | 404</title>
+    <title>CodePoze | 503</title>
 
     <!-- begin:: icon -->
     <link rel="apple-touch-icon" href="{{ asset_admin('images/icon/apple-touch-icon.png') }}" sizes="180x180" />
@@ -30,8 +30,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center mb-5">
-                        <h1 class="display-2 fw-medium">4<i class="bx bx-buoy bx-spin text-primary display-3"></i>4</h1>
-                        <h4 class="text-uppercase">Sorry, page not found</h4>
+                        <h1 class="display-2 fw-medium">5<i class="bx bx-buoy bx-spin text-primary display-3"></i>3</h1>
+                        <h4 class="text-uppercase">Sorry, for the inconvenience but we're performing some maintenance at the moment</h4>
                         <div class="mt-5 text-center">
                             <button onclick="history.back()" class="btn btn-primary waves-effect waves-light"><i class="mdi mdi-arrow-left me-1"></i>Kembali</button>
                         </div>
