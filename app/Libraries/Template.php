@@ -14,6 +14,7 @@
 
 namespace App\Libraries;
 
+use App\Models\Type;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,8 @@ class Template
         $data['title'] = $title;
         // untuk breadcrumb
         $data['breadcrumb'] = Breadcrumbs::render(Route::currentRouteName());
+        // untuk produk
+        $data['products'] = Type::all();
 
         return view("pages/{$module}/{$view}", $data);
     }

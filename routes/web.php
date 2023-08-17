@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pages\AboutController;
 use App\Http\Controllers\pages\ContactController;
 use App\Http\Controllers\pages\HomeController;
+use App\Http\Controllers\pages\ProductsController;
 use App\Http\Controllers\pages\SopController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,11 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/sop', [SopController::class, 'index'])->name('sop');
+
+    Route::controller(ProductsController::class)->prefix('products')->as('products.')->group(function () {
+        Route::get('/{slug}', 'index')->name('products');
+        Route::get('/{slug}/detail/{id}', 'detail')->name('detail');
+    });
     // end:: no auth
 
     // begin:: auth
