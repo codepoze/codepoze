@@ -36,7 +36,7 @@ class Template
         // untuk judul halaman
         $data['title'] = $title;
         // untuk breadcrumb
-        // $data['breadcrumb'] = Breadcrumbs::render(Route::currentRouteName());
+        $data['breadcrumb'] = Breadcrumbs::render(Route::currentRouteName());
 
         return view("pages/{$module}/{$view}", $data);
     }

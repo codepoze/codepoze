@@ -33,7 +33,7 @@ class StackController extends Controller
 
     public function get_data_dt()
     {
-        $data = Stack::orderBy('id_stack', 'desc')->get();
+        $data = Stack::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()

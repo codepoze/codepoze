@@ -9,18 +9,24 @@ use App\Http\Controllers\admin\ProjectController;
 use App\Http\Controllers\admin\StackController;
 use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\pages\AboutController;
+use App\Http\Controllers\pages\ContactController;
 use App\Http\Controllers\pages\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::group(['middleware' => ['guest']], function () {
+    // begin:: no auth
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+    // end:: no auth
 
-// begin:: auth
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    // begin:: auth
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
+    // end:: auth
+});
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
-// end:: auth
 
 Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
     // begin:: admin
@@ -28,11 +34,11 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         // begin:: profil
-        Route::prefix('/profil')->group(function () {
-            Route::get('/', [ProfilController::class, 'index'])->name('profil');
-            Route::post('/save_picture', [ProfilController::class, 'save_picture'])->name('profil.save_picture');
-            Route::post('/save_account', [ProfilController::class, 'save_account'])->name('profil.save_account');
-            Route::post('/save_security', [ProfilController::class, 'save_security'])->name('profil.save_security');
+        Route::controller(ProfilController::class)->prefix('profil')->as('profil.')->group(function () {
+            Route::get('/', 'index')->name('profil');
+            Route::post('/save_picture', 'save_picture')->name('save_picture');
+            Route::post('/save_account', 'save_account')->name('save_account');
+            Route::post('/save_security', 'save_security')->name('save_security');
         });
         // end:: profil
 

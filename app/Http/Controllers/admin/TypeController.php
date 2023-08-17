@@ -33,7 +33,7 @@ class TypeController extends Controller
 
     public function get_data_dt()
     {
-        $data = Type::orderBy('id_type', 'desc')->get();
+        $data = Type::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()

@@ -50,7 +50,6 @@ class ProjectController extends Controller
     public function det($id)
     {
         $data = [
-            'based'   => Based::all(),
             'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
         ];
 
@@ -59,10 +58,16 @@ class ProjectController extends Controller
 
     public function get_data_dt()
     {
-        $data = Project::with(['toBased'])->orderBy('id_project', 'desc')->get();
+        $data = Project::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('based', function ($row) {
+                return $row->toBased->nama;
+            })
+            ->addColumn('gambar', function ($row) {
+                return '<img src="' . asset_upload('picture/' . $row->gambar) . '" class="img-fluid" width="100px">';
+            })
             ->addColumn('action', function ($row) {
                 return '
                     <a href="' . route('admin.project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
@@ -70,6 +75,7 @@ class ProjectController extends Controller
                     <button type="button" id="del" data-id="' . my_encrypt($row->id_project) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
                 ';
             })
+            ->rawColumns(['gambar', 'action'])
             ->make(true);
     }
 

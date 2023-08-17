@@ -120,7 +120,7 @@
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('admin.profil') }}">
+                    <a class="dropdown-item" href="{{ route('admin.profil.profil') }}">
                         <i class="bx bx-user font-size-16 align-middle me-1"></i><span>Profile</span>
                     </a>
                     <div class="dropdown-divider"></div>

@@ -8,15 +8,15 @@
     <div class="container">
         <ul class="list-inline">
             <li class="list-inline-item">
-                <a href="">Home</a>
+                <a href="{{ route('home') }}">Home</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-                <a href="">About Us</a>
+                <a href="{{ route('about') }}">About Us</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-                <a href="">Contact Us</a>
+                <a href="{{ route('contact') }}">Contact Us</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">

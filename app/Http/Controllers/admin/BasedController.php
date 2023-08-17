@@ -33,7 +33,7 @@ class BasedController extends Controller
 
     public function get_data_dt()
     {
-        $data = Based::orderBy('id_based', 'desc')->get();
+        $data = Based::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()

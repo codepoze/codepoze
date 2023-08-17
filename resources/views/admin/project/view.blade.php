@@ -64,17 +64,13 @@
                 },
                 {
                     title: 'Based',
-                    data: 'to_based.nama',
+                    data: 'based',
                     class: 'text-center'
                 },
                 {
                     title: 'Gambar',
-                    data: null,
-                    class: 'text-center',
-                    render: function(data, type, full, meta) {
-                        var checkGambar = (full.gambar === null ? '//placehold.co/150' : `{{ asset_upload('picture/` + full.gambar + `') }}`);
-                        return `<img src="` + checkGambar + `" width="100" height="100" >`;
-                    },
+                    data: 'gambar',
+                    class: 'text-center'
                 },
                 {
                     title: 'Aksi',

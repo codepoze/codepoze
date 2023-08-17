@@ -33,7 +33,7 @@ class PriceController extends Controller
 
     public function get_data_dt()
     {
-        $data = Price::orderBy('id_price', 'desc')->get();
+        $data = Price::latest()->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
