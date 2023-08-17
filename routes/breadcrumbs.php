@@ -19,6 +19,12 @@ Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->push('Contact Us', route('contact'));
 });
 
+Breadcrumbs::for('sop', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+
+    $trail->push('Service Policy', route('sop'));
+});
+
 Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('admin.dashboard'));
 });
