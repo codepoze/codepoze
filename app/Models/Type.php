@@ -19,4 +19,10 @@ class Type extends Model
         'singkatan',
         'by_users',
     ];
+
+    // untuk relasi ke tabel product
+    public function toProduct()
+    {
+        return $this->hasMany(Product::class, 'id_type', 'id_type');
+    }
 }

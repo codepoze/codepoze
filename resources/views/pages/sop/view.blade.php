@@ -17,7 +17,7 @@
                 <h4>{{ $title }}</h4>
                 <div class="fs-6">
                     <nav aria-label="breadcrumb">
-                        {!! $breadcrumb !!}
+                        {{ Breadcrumbs::render(Route::currentRouteName()) }}
                     </nav>
                 </div>
             </div>

@@ -1,10 +1,30 @@
 <?php
 
+use App\Models\Product;
+use App\Models\Type;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push('Home', route('home'));
+});
+
+Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+
+    $trail->push('Product', route('products'));
+});
+
+Breadcrumbs::for('products.type', function (BreadcrumbTrail $trail, Type $type) {
+    $trail->parent('products');
+
+    $trail->push(ucfirst($type->singkatan), route('products.type', $type->singkatan));
+});
+
+Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type, Product $product) {
+    $trail->parent('products.type', $type);
+
+    $trail->push('Detail', route('products.detail', ['slug' => $type->singkatan, 'id' => $product->id_product]));
 });
 
 Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {

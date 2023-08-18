@@ -27,7 +27,8 @@ Route::group(['middleware' => ['guest']], function () {
         Route::post('/save', 'save')->name('contact.save');
     });
     Route::controller(ProductsController::class)->prefix('products')->group(function () {
-        Route::get('/{slug}', 'index')->name('products');
+        Route::get('/', 'index')->name('products');
+        Route::get('/{slug}', 'type')->name('products.type');
         Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
     });
     // end:: no auth
