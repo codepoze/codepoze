@@ -20,6 +20,7 @@
 
     <!-- begin:: css global -->
     <link href="{{ asset_admin('css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="{{ asset_admin('libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset_pages('css/styles.css') }}" rel="stylesheet" type="text/css" />
     <!-- end:: css global -->
 
@@ -45,6 +46,8 @@
 
     <!-- begin:: js global -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ asset_admin('libs/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js') }}"></script>
     <!-- end:: js global -->
 

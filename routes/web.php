@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\BasedController;
+use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\PriceController;
 use App\Http\Controllers\admin\ProductController;
@@ -10,7 +11,7 @@ use App\Http\Controllers\admin\StackController;
 use App\Http\Controllers\admin\TypeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pages\AboutController;
-use App\Http\Controllers\pages\ContactController;
+use App\Http\Controllers\pages\ContactsController;
 use App\Http\Controllers\pages\HomeController;
 use App\Http\Controllers\pages\ProductsController;
 use App\Http\Controllers\pages\SopController;
@@ -20,12 +21,14 @@ Route::group(['middleware' => ['guest']], function () {
     // begin:: no auth
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
-    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     Route::get('/sop', [SopController::class, 'index'])->name('sop');
-
-    Route::controller(ProductsController::class)->prefix('products')->as('products.')->group(function () {
+    Route::controller(ContactsController::class)->prefix('contact')->group(function () {
+        Route::get('/', 'index')->name('contact');
+        Route::post('/save', 'save')->name('contact.save');
+    });
+    Route::controller(ProductsController::class)->prefix('products')->group(function () {
         Route::get('/{slug}', 'index')->name('products');
-        Route::get('/{slug}/detail/{id}', 'detail')->name('detail');
+        Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
     });
     // end:: no auth
 
@@ -127,6 +130,14 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
             Route::post('/del', 'del')->name('del');
         });
         // end:: project
+
+        // begin:: contact
+        Route::controller(ContactController::class)->prefix('contact')->as('contact.')->group(function () {
+            Route::get('/', 'index')->name('contact');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+            Route::post('/del', 'del')->name('del');
+        });
+        // end:: contact
     });
     // end:: admin
 });

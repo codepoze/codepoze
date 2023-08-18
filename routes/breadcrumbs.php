@@ -106,3 +106,9 @@ Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail) {
 
     $trail->push('Detail', '#');
 });
+
+Breadcrumbs::for('admin.contact.contact', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Contact', route('admin.contact.contact'));
+});

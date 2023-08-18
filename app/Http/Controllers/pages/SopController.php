@@ -10,6 +10,6 @@ class SopController extends Controller
 {
     public function index()
     {
-        return Template::pages('Service Policy', 'contact', 'view');
+        return Template::pages('Service Policy', 'sop', 'view');
     }
 }

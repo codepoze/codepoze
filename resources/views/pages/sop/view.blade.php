@@ -10,7 +10,7 @@
 <!-- begin:: content -->
 @section('content')
 <section class="py-5">
-    <div class="container px-4 px-lg-5">
+    <div class="container px-4 px-lg-5 min-vh-100">
         <!-- begin:: breadcrumb -->
         <div class="mb-3">
             <div class="d-sm-flex align-items-center justify-content-between">

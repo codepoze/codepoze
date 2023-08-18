@@ -17,11 +17,11 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
-                            <a class="dropdown-item" href="{{ route('products.products', 'all') }}">Semua</a>
+                            <a class="dropdown-item" href="{{ route('products', 'all') }}">Semua</a>
                         </li>
                         @foreach ($products as $product)
                         <li>
-                            <a class="dropdown-item" href="{{ route('products.products', $product->singkatan) }}">{{ $product->nama }}</a>
+                            <a class="dropdown-item" href="{{ route('products', $product->singkatan) }}">{{ $product->nama }}</a>
                         </li>
                         @endforeach
                     </ul>
