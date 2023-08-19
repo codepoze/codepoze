@@ -30,11 +30,12 @@
                 <div class="col-lg-12 mb-5">
                     <form action="{{ route('products.type', $type->singkatan) }}" method="get">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="q" id="q" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                            <input class="form-control" type="text" name="q" id="q" placeholder="Masukkan nama sistem...">
                             <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
                         </div>
                     </form>
                 </div>
+                @if (count($product) > 0)
                 @foreach ($product as $row)
                 <div class="col-lg-4 mb-5">
                     <div class="card h-100">
@@ -54,6 +55,25 @@
                 </div>
                 @endforeach
                 {{ $product->onEachSide(0)->links('vendor.pagination.custom') }}
+                @else
+                @if (Request::get('q'))
+                <div class="col-lg-12">
+                    <div class="alert alert-warning">
+                        <strong>Info Message</strong>
+                        <hr class="message-inner-separator">
+                        <p>Maaf, produk yang Anda cari dengan kata kunci <strong>{{ Request::get('q') }}</strong> tidak ditemukan.</p>
+                    </div>
+                </div>
+                @else
+                <div class="col-lg-12">
+                    <div class="alert alert-info">
+                        <strong>Info Message</strong>
+                        <hr class="message-inner-separator">
+                        <p>Maaf, produk belum tersedia.</p>
+                    </div>
+                </div>
+                @endif
+                @endif
             </div>
         </div>
     </div>

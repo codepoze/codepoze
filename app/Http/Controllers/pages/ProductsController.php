@@ -14,11 +14,11 @@ class ProductsController extends Controller
     {
         if ($request->q) {
             $get     = Product::where('judul', 'like', '%' . $request->q . '%')->get();
-            $product = paginate($get);
+            $product = paginate($get, 6);
             $product->setPath('products?q=' . $request->q);
         } else {
             $get     = Product::all();
-            $product = paginate($get);
+            $product = paginate($get, 6);
             $product->setPath('products');
         }
 
@@ -36,14 +36,14 @@ class ProductsController extends Controller
                 $query->whereSingkatan($slug);
             })->where('judul', 'like', '%' . $request->q . '%')->get();
 
-            $product = paginate($get);
+            $product = paginate($get, 6);
             $product->setPath($slug . '?q=' . $request->q);
         } else {
             $get = Product::whereHas('toType', function ($query) use ($slug) {
                 $query->whereSingkatan($slug);
             })->get();
 
-            $product = paginate($get);
+            $product = paginate($get, 6);
             $product->setPath($slug);
         }
 

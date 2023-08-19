@@ -40,6 +40,7 @@
                         </div>
                     </div>
                     @endforeach
+                    {{ $product->onEachSide(0)->links('vendor.pagination.custom') }}
                 </div>
             </div>
             <div class="col-lg-4">
@@ -47,7 +48,7 @@
                     <h4 class="blockquote-footer fs-4">Search</h4>
                     <form action="{{ route('products') }}" method="get">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="q" id="q" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                            <input class="form-control" type="text" name="q" id="q" placeholder="Masukkan nama sistem...">
                             <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
                         </div>
                     </form>
