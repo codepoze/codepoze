@@ -27,6 +27,14 @@
         <!-- begin:: content -->
         <div class="gx-4 gx-lg-5">
             <div class="row">
+                <div class="col-lg-12 mb-5">
+                    <form action="{{ route('products') }}" method="get">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="q" id="q" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                            <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                        </div>
+                    </form>
+                </div>
                 @foreach ($product as $row)
                 <div class="col-lg-4 mb-5">
                     <div class="card h-100">
@@ -45,6 +53,7 @@
                     </div>
                 </div>
                 @endforeach
+                {{ $product->onEachSide(0)->links('vendor.pagination.custom') }}
             </div>
         </div>
     </div>

@@ -3,6 +3,9 @@
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 
 if (!function_exists('my_encrypt')) {
     function my_encrypt($value)
@@ -325,5 +328,14 @@ if (!function_exists('count_mounth')) {
     {
         $result = Carbon::parse($to)->diffInMonths(Carbon::parse($from)) + 1;
         return $result;
+    }
+}
+
+if (!function_exists('paginate')) {
+    function paginate($items, $perPage = 5, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }

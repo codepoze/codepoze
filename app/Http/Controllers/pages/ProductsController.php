@@ -6,23 +6,50 @@ use App\Http\Controllers\Controller;
 use App\Libraries\Template;
 use App\Models\Product;
 use App\Models\Type;
+use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if ($request->q) {
+            $get     = Product::where('judul', 'like', '%' . $request->q . '%')->get();
+            $product = paginate($get);
+            $product->setPath('products?q=' . $request->q);
+        } else {
+            $get     = Product::all();
+            $product = paginate($get);
+            $product->setPath('products');
+        }
+
         $data = [
-            'product' => Product::all()
+            'product' => $product
         ];
 
         return Template::pages('Product', 'product', 'view', $data);
     }
 
-    public function type($slug)
+    public function type(Request $request, $slug)
     {
+        if ($request->q) {
+            $get = Product::whereHas('toType', function ($query) use ($slug) {
+                $query->whereSingkatan($slug);
+            })->where('judul', 'like', '%' . $request->q . '%')->get();
+
+            $product = paginate($get);
+            $product->setPath($slug . '?q=' . $request->q);
+        } else {
+            $get = Product::whereHas('toType', function ($query) use ($slug) {
+                $query->whereSingkatan($slug);
+            })->get();
+
+            $product = paginate($get);
+            $product->setPath($slug);
+        }
+
         $data = [
             'type'    => Type::whereSingkatan($slug)->first(),
-            'product' => Type::whereSingkatan($slug)->first()->toProduct
+            'product' => $product
         ];
 
         return Template::pages('Product', 'product', 'type', $data);

@@ -45,10 +45,12 @@
             <div class="col-lg-4">
                 <div class="mb-4">
                     <h4 class="blockquote-footer fs-4">Search</h4>
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
-                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                    </div>
+                    <form action="{{ route('products') }}" method="get">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="q" id="q" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                            <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="mb-4">
                     <h4 class="blockquote-footer fs-4">Categories</h4>
