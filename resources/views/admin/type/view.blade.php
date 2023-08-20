@@ -140,7 +140,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#save').attr('disabled', 'disabled');
-                    $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    $('#save').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     if (response.type === 'success') {
@@ -236,7 +236,7 @@
                     $('#form-add-upd').find('input, textarea, select').removeClass('is-invalid');
 
                     ini.attr('disabled', 'disabled');
-                    ini.html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    ini.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     $('#form-loading').empty();
@@ -267,8 +267,8 @@
                 showCancelButton: !0,
                 confirmButtonText: "Yes",
                 cancelButtonText: "No",
-                confirmButtonClass: "btn btn-primary w-xs me-2 mt-2",
-                cancelButtonClass: "btn btn-danger w-xs mt-2",
+                confirmButtonClass: "btn btn-sm btn-primary",
+                cancelButtonClass: "btn btn-sm btn-danger ms-1",
                 buttonsStyling: !1,
                 showCloseButton: !0
             }).then((del) => {
@@ -282,7 +282,7 @@
                         },
                         beforeSend: function() {
                             ini.attr('disabled', 'disabled');
-                            ini.html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                            ini.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                         },
                         success: function(response) {
                             Swal.fire({

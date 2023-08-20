@@ -146,7 +146,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#save').attr('disabled', 'disabled');
-                    $('#save').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    $('#save').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     if (response.type === 'success') {

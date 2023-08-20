@@ -18,7 +18,7 @@
                 <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
             </div>
             <div class="card-body">
-                <table class="table" id="tabel-contact-dt"></table>
+                <table class="table" id="tabel-testimony-dt"></table>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
     var table;
 
     let untukTabel = function() {
-        table = $('#tabel-contact-dt').DataTable({
+        table = $('#tabel-testimony-dt').DataTable({
             serverSide: true,
             responsive: true,
             processing: true,
@@ -46,15 +46,20 @@
                 emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                 processing: "Data sedang diproses...",
             },
-            ajax: "{{ route('admin.contact.get_data_dt') }}",
+            ajax: "{{ route('admin.testimony.get_data_dt') }}",
             columns: [{
                     title: 'No.',
                     data: 'DT_RowIndex',
                     class: 'text-center'
                 },
                 {
-                    title: 'Nama',
-                    data: 'nama',
+                    title: 'First Name',
+                    data: 'first_name',
+                    class: 'text-center'
+                },
+                {
+                    title: 'Last Name',
+                    data: 'last_name',
                     class: 'text-center'
                 },
                 {
@@ -63,14 +68,19 @@
                     class: 'text-center'
                 },
                 {
-                    title: 'Judul',
-                    data: 'judul',
+                    title: 'Phone',
+                    data: 'phone',
                     class: 'text-center'
                 },
                 {
-                    title: 'Pesan',
-                    data: 'pesan',
+                    title: 'Message',
+                    data: 'message',
                     class: 'text-center'
+                },
+                {
+                    title: 'Status',
+                    data: 'posting',
+                    className: 'text-center',
                 },
                 {
                     title: 'Aksi',
@@ -83,6 +93,53 @@
             ],
         });
     }();
+
+    let untukPosting = function() {
+        $(document).on('click', '#sts', function() {
+            var ini = $(this);
+
+            Swal.fire({
+                title: "Apakah Anda yakin ingin memposting data tersebut?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: 'Iya, Ubah!',
+                customClass: {
+                    confirmButton: 'btn btn-sm btn-success',
+                    cancelButton: 'btn btn-sm btn-danger ms-1'
+                },
+                buttonsStyling: false
+            }).then(function(result) {
+                $.ajax({
+                    type: "post",
+                    url: "{{ route('admin.testimony.posting') }}",
+                    dataType: 'json',
+                    data: {
+                        id: ini.data('id'),
+                        password: result.value,
+                    },
+                    beforeSend: function() {
+                        ini.attr('disabled', 'disabled');
+                        ini.html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: response.title,
+                            text: response.text,
+                            icon: response.type,
+                            confirmButtonText: response.button,
+                            customClass: {
+                                confirmButton: `btn btn-sm btn-${response.class}`,
+                            },
+                            buttonsStyling: false,
+                        }).then((value) => {
+                            table.ajax.reload();
+                        });
+                    }
+                });
+            });
+        });
+    }();
+
 
     let untukHapusData = function() {
         $(document).on('click', '#del', function() {
@@ -102,7 +159,7 @@
                 if (del.isConfirmed) {
                     $.ajax({
                         type: "post",
-                        url: "{{ route('admin.contact.del') }}",
+                        url: "{{ route('admin.testimony.del') }}",
                         dataType: 'json',
                         data: {
                             id: ini.data('id'),

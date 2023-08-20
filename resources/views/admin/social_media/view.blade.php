@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <table class="table" id="tabel-price-dt"></table>
+                <table class="table" id="tabel-social_media-dt"></table>
             </div>
         </div>
     </div>
@@ -37,9 +37,9 @@
                 <h5 class="modal-title"><span id="judul-add-upd"></span> {{ $title }}</h5>
             </div>
             <div class="modal-body">
-                <form id="form-add-upd" action="{{ route('admin.price.save') }}" method="POST">
+                <form id="form-add-upd" action="{{ route('admin.social_media.save') }}" method="POST">
                     <!-- begin:: id -->
-                    <input type="hidden" name="id_price" id="id_price" />
+                    <input type="hidden" name="id_social_media" id="id_social_media" />
                     <!-- end:: id -->
 
                     <!-- begin:: untuk loading -->
@@ -49,38 +49,23 @@
                     <!-- begin:: untuk form -->
                     <div id="form-show">
                         <div class="mb-3 row field-input">
-                            <label for="jenis" class="col-sm-3 col-form-label">Jenis&nbsp;*</label>
-                            <div class="col-md-9 my-auto">
-                                <select name="jenis" id="jenis" class="form-control form-control-sm">
-                                    <option value="">Pilih jenis</option>
-                                    <option value="free">Free</option>
-                                    <option value="paid">Paid</option>
-                                </select>
+                            <label for="nama" class="col-sm-2 col-form-label">Nama&nbsp;*</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="nama" id="nama" class="form-control form-control-sm" placeholder="Masukkan nama" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
                         <div class="mb-3 row field-input">
-                            <label for="nilai_normal" class="col-sm-3 col-form-label">Nilai Normal&nbsp;*</label>
-                            <div class="col-md-9 my-auto">
-                                <input type="text" name="nilai_normal" id="nilai_normal" class="form-control form-control-sm inputNumber" placeholder="Masukkan nilai normal" />
+                            <label for="icon" class="col-sm-2 col-form-label">Icon&nbsp;*</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="icon" id="icon" class="form-control form-control-sm" placeholder="Masukkan icon" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
                         <div class="mb-3 row field-input">
-                            <label for="diskon" class="col-sm-3 col-form-label">Diskon&nbsp;*</label>
-                            <div class="col-md-9 my-auto">
-                                <select name="diskon" id="diskon" class="form-control form-control-sm">
-                                    <option value="">Pilih diskon</option>
-                                    <option value="y">Yes</option>
-                                    <option value="n">No</option>
-                                </select>
-                                <span class="invalid-feedback"></span>
-                            </div>
-                        </div>
-                        <div class="mb-3 row field-input">
-                            <label for="nilai_diskon" class="col-sm-3 col-form-label">Nilai Diskon&nbsp;*</label>
-                            <div class="col-md-9 my-auto">
-                                <input type="text" name="nilai_diskon" id="nilai_diskon" class="form-control form-control-sm inputNumber" placeholder="Masukkan nilai diskon" />
+                            <label for="link" class="col-sm-2 col-form-label">Link&nbsp;*</label>
+                            <div class="col-md-10 my-auto">
+                                <input type="text" name="link" id="link" class="form-control form-control-sm" placeholder="Masukkan link" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
@@ -109,7 +94,7 @@
     var table;
 
     let untukTabel = function() {
-        table = $('#tabel-price-dt').DataTable({
+        table = $('#tabel-social_media-dt').DataTable({
             serverSide: true,
             responsive: true,
             processing: true,
@@ -119,30 +104,25 @@
                 emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                 processing: "Data sedang diproses...",
             },
-            ajax: "{{ route('admin.price.get_data_dt') }}",
+            ajax: "{{ route('admin.social_media.get_data_dt') }}",
             columns: [{
                     title: 'No.',
                     data: 'DT_RowIndex',
                     class: 'text-center'
                 },
                 {
-                    title: 'Jenis',
-                    data: 'jenis',
+                    title: 'Nama',
+                    data: 'nama',
                     class: 'text-center'
                 },
                 {
-                    title: 'Nilai normal',
-                    data: 'nilai_normal',
+                    title: 'Icon',
+                    data: 'icon',
                     class: 'text-center'
                 },
                 {
-                    title: 'Diskon',
-                    data: 'diskon',
-                    class: 'text-center'
-                },
-                {
-                    title: 'Nilai diskon',
-                    data: 'nilai_diskon',
+                    title: 'Link',
+                    data: 'link',
                     class: 'text-center'
                 },
                 {
@@ -228,16 +208,6 @@
                 $(this).removeClass('is-invalid').addClass('is-valid');
             }
         });
-
-        $(document).on('change', '#form-add-upd select', function(e) {
-            e.preventDefault();
-
-            if ($(this).val() == '') {
-                $(this).removeClass('is-valid').addClass('is-invalid');
-            } else {
-                $(this).removeClass('is-invalid').addClass('is-valid');
-            }
-        });
     }();
 
     let untukTambahData = function() {
@@ -245,7 +215,7 @@
             e.preventDefault();
             $('#judul-add-upd').text('Tambah');
 
-            $('#id_price').removeAttr('value');
+            $('#id_social_media').removeAttr('value');
 
             $('#form-add-upd').find('input, textarea, select').removeClass('is-valid');
             $('#form-add-upd').find('input, textarea, select').removeClass('is-invalid');
@@ -262,7 +232,7 @@
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
-                url: "{{ route('admin.price.show') }}",
+                url: "{{ route('admin.social_media.show') }}",
                 data: {
                     id: ini.data('id')
                 },
@@ -286,8 +256,6 @@
                     $.each(response, function(key, value) {
                         if (key) {
                             if (($('#' + key).prop('tagName') === 'INPUT' || $('#' + key).prop('tagName') === 'TEXTAREA')) {
-                                $('#' + key).val(value);
-                            } else if ($('#' + key).prop('tagName') === 'SELECT') {
                                 $('#' + key).val(value);
                             }
                         }
@@ -318,7 +286,7 @@
                 if (del.isConfirmed) {
                     $.ajax({
                         type: "post",
-                        url: "{{ route('admin.price.del') }}",
+                        url: "{{ route('admin.social_media.del') }}",
                         dataType: 'json',
                         data: {
                             id: ini.data('id'),

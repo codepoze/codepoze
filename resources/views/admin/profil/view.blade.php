@@ -148,7 +148,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#save-foto').attr('disabled', 'disabled');
-                    $('#save-foto').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    $('#save-foto').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     if (response.type === 'success') {
@@ -217,7 +217,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#save-akun').attr('disabled', 'disabled');
-                    $('#save-akun').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    $('#save-akun').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     if (response.type === 'success') {
@@ -286,7 +286,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#save-keamanan').attr('disabled', 'disabled');
-                    $('#save-keamanan').html('<i class="fa fa-spinner"></i>&nbsp;Menunggu...');
+                    $('#save-keamanan').html('<i class="fa fa-spinner fa-spin"></i>&nbsp;Menunggu...');
                 },
                 success: function(response) {
                     if (response.type === 'success') {

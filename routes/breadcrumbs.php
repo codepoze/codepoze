@@ -45,6 +45,12 @@ Breadcrumbs::for('sop', function (BreadcrumbTrail $trail) {
     $trail->push('Service Policy', route('sop'));
 });
 
+Breadcrumbs::for('testimonies', function (BreadcrumbTrail $trail) {
+    $trail->parent('home');
+
+    $trail->push('Testimonies', route('testimonies'));
+});
+
 Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('admin.dashboard'));
 });
@@ -77,6 +83,18 @@ Breadcrumbs::for('admin.price.price', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
     $trail->push('Price', route('admin.price.price'));
+});
+
+Breadcrumbs::for('admin.social_media.social_media', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Social Media', route('admin.social_media.social_media'));
+});
+
+Breadcrumbs::for('admin.testimony.testimony', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Testimony', route('admin.testimony.testimony'));
 });
 
 Breadcrumbs::for('admin.product.product', function (BreadcrumbTrail $trail) {

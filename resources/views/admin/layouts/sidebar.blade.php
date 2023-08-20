@@ -56,6 +56,18 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('admin.social_media.social_media') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Social Media</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.testimony.testimony') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Testimony</span>
+                    </a>
+                </li>
                 <li class="menu-title">Pustaka</li>
                 <li>
                     <a href="{{ route('admin.product.product') }}" class="waves-effect">
