@@ -14,6 +14,7 @@
 
 namespace App\Libraries;
 
+use App\Models\SocialMedia;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -38,6 +39,8 @@ class Template
         $data['title'] = $title;
         // untuk produk
         $data['products'] = DB::select("SELECT t.nama, t.singkatan, IFNULL( a.jumlah, 0) AS jumlah FROM type AS t LEFT JOIN( SELECT p.id_type, COUNT(*) AS jumlah FROM product AS p GROUP BY p.id_type) AS a ON a.id_type = t.id_type ORDER BY IFNULL( a.jumlah, 0) DESC");
+        // untuk social media
+        $data['social_media'] = SocialMedia::all();
 
         return view("pages/{$module}/{$view}", $data);
     }

@@ -19,7 +19,8 @@
     <!-- end:: icon -->
 
     <!-- begin:: css global -->
-    <link href="{{ asset_admin('css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset_admin('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset_admin('libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset_pages('css/styles.css') }}" rel="stylesheet" type="text/css" />
     <!-- end:: css global -->

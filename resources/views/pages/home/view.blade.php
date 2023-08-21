@@ -9,7 +9,7 @@
 
 <!-- begin:: content -->
 @section('content')
-<header class="bg-dark py-5">
+<header class="bg-dark py-4">
     <div class="container px-4 px-lg-5 my-5">
         <div class="text-center text-white">
             <h1 class="display-4 fw-bolder">Welcome to CodePoze</h1>
@@ -17,10 +17,22 @@
         </div>
     </div>
 </header>
-<section class="py-5">
+<!-- begin:: product -->
+<section class="py-4">
     <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-xl-12 text-center">
+                <h3 class="mb-4">Product</h3>
+                <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+                    numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+                    quisquam eum porro a pariatur veniam.
+                </p>
+            </div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-md-12 col-lg-8 col-xl-8">
                 <div class="row">
                     @foreach ($product as $row)
                     <div class="col-lg-4 mb-5">
@@ -40,10 +52,10 @@
                         </div>
                     </div>
                     @endforeach
-                    {{ $product->onEachSide(0)->links('vendor.pagination.custom') }}
+                    {{ $product->onEachSide(0)->links('partials.custom') }}
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-12 col-lg-4 col-xl-4">
                 <div class="mb-4">
                     <h4 class="blockquote-footer fs-4">Search</h4>
                     <form action="{{ route('products') }}" method="get">
@@ -72,6 +84,50 @@
         </div>
     </div>
 </section>
+<!-- end:: product -->
+<!-- begin:: testimonies -->
+<section class="py-4">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-xl-12 text-center">
+                <h3 class="mb-4">Testimonials</h3>
+                <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+                    numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+                    quisquam eum porro a pariatur veniam.
+                </p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-5 mb-md-0 text-center">
+                <h5 class="mb-3">Maria Smantha</h5>
+                <p class="px-xl-3">
+                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
+                    tenetur.
+                </p>
+            </div>
+            <div class="col-md-4 mb-5 mb-md-0 text-center">
+                <h5 class="mb-3">Maria Smantha</h5>
+                <p class="px-xl-3">
+                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
+                    tenetur.
+                </p>
+            </div>
+            <div class="col-md-4 mb-5 mb-md-0 text-center">
+                <h5 class="mb-3">Maria Smantha</h5>
+                <p class="px-xl-3">
+                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
+                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
+                    tenetur.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end:: testimonies -->
 @endsection
 <!-- end:: content -->
 

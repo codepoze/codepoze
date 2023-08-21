@@ -9,7 +9,7 @@
 
 <!-- begin:: content -->
 @section('content')
-<section class="py-5">
+<section class="py-4">
     <div class="container px-4 px-lg-5">
         <!-- begin:: breadcrumb -->
         <div class="mb-3">

@@ -9,7 +9,7 @@
 
 <!-- begin:: content -->
 @section('content')
-<section class="py-5">
+<section class="py-4">
     <div class="container px-4 px-lg-5">
         <!-- begin:: breadcrumb -->
         <div class="mb-3">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
                 @endforeach
-                {{ $product->onEachSide(0)->links('vendor.pagination.custom') }}
+                {{ $product->onEachSide(0)->links('partials.custom') }}
                 @else
                 @if (Request::get('q'))
                 <div class="col-lg-12">
