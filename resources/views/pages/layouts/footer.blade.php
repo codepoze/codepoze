@@ -17,6 +17,8 @@
                 <a class="text-muted" href="{{ route('sop') }}">Service Policy</a>
             </li>
         </ul>
+
+        @if (count($social_media) > 0)
         <div class="d-flex justify-content-between align-items-center">
             <p class="copyright text-muted my-auto"></p>
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
@@ -29,5 +31,10 @@
                 @endforeach
             </ul>
         </div>
+        @else
+        <div class="d-flex justify-content-center">
+            <p class="copyright text-muted my-auto"></p>
+        </div>
+        @endif
     </div>
 </footer>

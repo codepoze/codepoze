@@ -31,6 +31,7 @@
             </div>
         </div>
 
+        @if (count($product) > 0)
         <div class="row">
             <div class="col-md-12 col-lg-8 col-xl-8">
                 <div class="row">
@@ -38,7 +39,7 @@
                     <div class="col-lg-4 mb-5">
                         <div class="card h-100">
                             <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="..." />
-                            <div class="card-body p-4">
+                            <div class="card-body">
                                 <div class="text-center">
                                     <h5 class="fw-bolder">{{ $row->judul }}</h5>
                                     {{ rupiah($row->toPrice->nilai_normal) }}
@@ -46,7 +47,7 @@
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <a class="btn btn-outline-dark mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">View options</a>
+                                    <a class="btn btn-outline-dark mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
                                 </div>
                             </div>
                         </div>
@@ -82,10 +83,20 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="col-lg-12">
+            <div class="alert alert-info">
+                <strong>Info Message</strong>
+                <hr class="message-inner-separator">
+                <p>Maaf, produk belum tersedia.</p>
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 <!-- end:: product -->
 <!-- begin:: testimonies -->
+@if (count($testimony) > 0)
 <section class="py-4">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
@@ -100,33 +111,18 @@
         </div>
 
         <div class="row justify-content-center">
+            @foreach ($testimony as $row)
             <div class="col-md-4 mb-5 mb-md-0 text-center">
-                <h5 class="mb-3">Maria Smantha</h5>
+                <h5 class="mb-3">{{ $row->first_name }} {{ $row->last_name }}</h5>
                 <p class="px-xl-3">
-                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
-                    tenetur.
+                    <i class="fa fa-quote-left pe-2"></i>{{ $row->message }}
                 </p>
             </div>
-            <div class="col-md-4 mb-5 mb-md-0 text-center">
-                <h5 class="mb-3">Maria Smantha</h5>
-                <p class="px-xl-3">
-                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
-                    tenetur.
-                </p>
-            </div>
-            <div class="col-md-4 mb-5 mb-md-0 text-center">
-                <h5 class="mb-3">Maria Smantha</h5>
-                <p class="px-xl-3">
-                    <i class="fa fa-quote-left pe-2"></i>Lorem ipsum dolor sit amet, consectetur
-                    adipisicing elit. Quod eos id officiis hic tenetur quae quaerat ad velit ab hic
-                    tenetur.
-                </p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
+@endif
 <!-- end:: testimonies -->
 @endsection
 <!-- end:: content -->

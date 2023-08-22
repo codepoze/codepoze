@@ -40,7 +40,7 @@
                 <div class="col-lg-4 mb-5">
                     <div class="card h-100">
                         <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
-                        <div class="card-body p-4">
+                        <div class="card-body">
                             <div class="text-center">
                                 <h5 class="fw-bolder">{{ $row->judul }}</h5>
                                 {{ rupiah($row->toPrice->nilai_normal) }}
@@ -48,7 +48,7 @@
                         </div>
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                             <div class="text-center">
-                                <a class="btn btn-outline-dark mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">View options</a>
+                                <a class="btn btn-outline-dark mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
                             </div>
                         </div>
                     </div>
