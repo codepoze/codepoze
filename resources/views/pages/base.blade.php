@@ -46,10 +46,12 @@
     <!-- end:: footer -->
 
     <!-- begin:: js global -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script type="text/javascript" src="{{ asset_admin('libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js') }}"></script>
+    <script type="text/javascript" src="{{ asset_pages('js/scripts.js') }}"></script>
     <!-- end:: js global -->
 
     <!-- begin:: js local -->

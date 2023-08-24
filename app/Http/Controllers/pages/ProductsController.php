@@ -13,11 +13,17 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         if ($request->q) {
-            $get     = Product::where('judul', 'like', '%' . $request->q . '%')->get();
+            $get = Product::where('judul', 'like', '%' . $request->q . '%')->get();
             $product = paginate($get, 6);
             $product->setPath('products?q=' . $request->q);
+        } else if ($request->type) {
+            $get = Product::whereHas('toPrice', function ($query) use ($request) {
+                $query->whereJenis($request->type);
+            })->get();
+            $product = paginate($get, 6);
+            $product->setPath('products?type=' . $request->type);
         } else {
-            $get     = Product::all();
+            $get = Product::all();
             $product = paginate($get, 6);
             $product->setPath('products');
         }

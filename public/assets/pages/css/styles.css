@@ -105,6 +105,36 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.intro {
+  color: #fff;
+  height: 95vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-shaped {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header {
+  min-height: 95vh;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+#particles-js {
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;

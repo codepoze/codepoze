@@ -9,9 +9,10 @@
 
 <!-- begin:: content -->
 @section('content')
-<header class="bg-dark py-4">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
+<header class="py-4 intro section-shaped bg-dark">
+    <div class="page-header">
+        <div id="particles-js"></div>
+        <div class="container text-center text-white">
             <h1 class="display-4 fw-bolder">Welcome to CodePoze</h1>
             <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
         </div>
@@ -31,9 +32,9 @@
             </div>
         </div>
 
-        @if (count($product) > 0)
+        @if (count($product_paid) > 0)
         <div class="row justify-content-center">
-            @foreach ($product as $row)
+            @foreach ($product_paid as $row)
             <div class="col-md-12 col-lg-3 col-xl-3 mb-5">
                 <div class="card h-100">
                     <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="..." />
@@ -51,7 +52,9 @@
                 </div>
             </div>
             @endforeach
-            {{ $product->onEachSide(0)->links('partials.custom') }}
+            <div class="col-md-12 col-lg-12 col-xl-12 text-center">
+                <a class="btn btn-outline-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
+            </div>
         </div>
         @else
         <div class="row">
@@ -81,9 +84,9 @@
             </div>
         </div>
 
-        @if (count($product) > 0)
+        @if (count($product_free) > 0)
         <div class="row justify-content-center">
-            @foreach ($product as $row)
+            @foreach ($product_free as $row)
             <div class="col-md-12 col-lg-3 col-xl-3 mb-5">
                 <div class="card h-100">
                     <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="..." />
@@ -101,7 +104,9 @@
                 </div>
             </div>
             @endforeach
-            {{ $product->onEachSide(0)->links('partials.custom') }}
+            <div class="col-md-12 col-lg-12 col-xl-12 text-center">
+                <a class="btn btn-outline-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
+            </div>
         </div>
         @else
         <div class="row">
@@ -118,7 +123,6 @@
 </section>
 <!-- end:: product gratis -->
 <!-- begin:: testimonies -->
-@if (count($testimony) > 0)
 <section class="py-4">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
@@ -132,6 +136,7 @@
             </div>
         </div>
 
+        @if (count($testimony) > 0)
         <div class="row justify-content-center">
             @foreach ($testimony as $row)
             <div class="col-md-4 mb-5 mb-md-0 text-center">
@@ -142,9 +147,19 @@
             </div>
             @endforeach
         </div>
+        @else
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12">
+                <div class="alert alert-info">
+                    <strong>Info Message</strong>
+                    <hr class="message-inner-separator">
+                    <p>Maaf, testimonials belum tersedia.</p>
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </section>
-@endif
 <!-- end:: testimonies -->
 @endsection
 <!-- end:: content -->

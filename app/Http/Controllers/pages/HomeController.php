@@ -11,13 +11,18 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $get       = Product::all();
-        $product   = paginate($get, 6);
-        $testimony = Testimony::whereStatus(1)->limit(3)->get();
+        $product_paid = Product::whereHas('toPrice', function ($query) {
+            $query->whereJenis('paid');
+        })->limit(4)->get();
+        $product_free = Product::whereHas('toPrice', function ($query) {
+            $query->whereJenis('free');
+        })->limit(4)->get();
+        $testimony    = Testimony::whereStatus(1)->limit(3)->get();
 
         $data = [
-            'product'   => $product,
-            'testimony' => $testimony
+            'product_paid' => $product_paid,
+            'product_free' => $product_free,
+            'testimony'    => $testimony
         ];
 
         return Template::pages('Home', 'home', 'view', $data);
