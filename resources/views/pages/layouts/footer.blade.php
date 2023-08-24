@@ -2,19 +2,19 @@
     <div class="container px-4 px-lg-5">
         <ul class="list-inline nav justify-content-center border-bottom pb-3 mb-3">
             <li class="list-inline-item">
-                <a class="text-muted" href="{{ route('home') }}">Home</a>
+                <a class="fw-bold" href="{{ route('home') }}">Home</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-                <a class="text-muted" href="{{ route('about') }}">About Us</a>
+                <a class="fw-bold" href="{{ route('about') }}">About Us</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-                <a class="text-muted" href="{{ route('contact') }}">Contact Us</a>
+                <a class="fw-bold" href="{{ route('contact') }}">Contact Us</a>
             </li>
             <li class="footer-menu-divider list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-                <a class="text-muted" href="{{ route('sop') }}">Service Policy</a>
+                <a class="fw-bold" href="{{ route('sop') }}">Service Policy</a>
             </li>
         </ul>
 

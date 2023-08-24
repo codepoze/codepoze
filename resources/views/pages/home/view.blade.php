@@ -14,12 +14,14 @@
         <div id="particles-js"></div>
         <div class="container text-center text-white">
             <h1 class="display-4 fw-bolder">Welcome to CodePoze</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+            <p class="lead fw-normal text-white-50 mb-0">
+                Penyedia jasa source code program aplikasi gratis, berbayar, jasa pembuatan dan pengembangan.
+            </p>
         </div>
     </div>
 </header>
 <!-- begin:: product berbayar -->
-<section class="py-4">
+<section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">
@@ -71,7 +73,7 @@
 </section>
 <!-- end:: product berbayar -->
 <!-- begin:: product gratis -->
-<section class="py-4">
+<section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">
@@ -123,7 +125,7 @@
 </section>
 <!-- end:: product gratis -->
 <!-- begin:: testimonies -->
-<section class="py-4">
+<section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">

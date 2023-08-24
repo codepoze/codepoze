@@ -45,7 +45,7 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-box"></i>
-                        <span>Blog</span>
+                        <span>Article</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
@@ -84,7 +84,7 @@
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="bx bx-box"></i>
-                        <span>Blog</span>
+                        <span>Article</span>
                     </a>
                 </li>
                 <li>

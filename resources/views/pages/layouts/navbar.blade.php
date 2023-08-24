@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 bg-dark my-nav">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="{{ route('home') }}">CodePoze</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
