@@ -17,7 +17,7 @@ class HomeController extends Controller
         $product_free = Product::whereHas('toPrice', function ($query) {
             $query->whereJenis('free');
         })->limit(4)->get();
-        $testimony    = Testimony::whereStatus(1)->limit(3)->get();
+        $testimony    = Testimony::whereStatus('1')->limit(3)->get();
 
         $data = [
             'product_paid' => $product_paid,
