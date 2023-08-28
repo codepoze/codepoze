@@ -4,6 +4,24 @@
 
 <!-- begin:: css local -->
 @section('css')
+<style>
+    .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+        transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+        border: 0;
+        border-radius: 1rem;
+    }
+
+    .card-img-top {
+        border-top-left-radius: calc(1rem - 1px);
+        border-top-right-radius: calc(1rem - 1px)
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
+    }
+</style>
 @endsection
 <!-- end:: css local -->
 
@@ -40,9 +58,9 @@
                     <div class="col-md-12 col-lg-8 col-xl-8">
                         <div class="row">
                             @foreach ($product as $row)
-                            <div class="col-lg-4 mb-5">
-                                <div class="card h-100">
-                                    <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="..." />
+                            <div class="col-md-12 col-lg-4 col-xl-4 mb-2">
+                                <div class="card">
+                                    <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
                                     <div class="card-body">
                                         <div class="text-center">
                                             <h5 class="fw-bolder">{{ $row->judul }}</h5>
@@ -51,7 +69,7 @@
                                     </div>
                                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                         <div class="text-center">
-                                            <a class="btn btn-outline-dark mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
+                                            <a class="btn btn-primary mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
                                         </div>
                                     </div>
                                 </div>

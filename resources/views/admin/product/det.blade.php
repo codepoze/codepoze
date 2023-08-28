@@ -61,7 +61,7 @@
                         <div class="row">
                             @foreach($product->toproductStack as $row)
                             <div class="col-lg-2 align-items-center text-center">
-                                <i class="devicon-{{ $row->toStack->icon }}-plain colored" style="font-size: 35px;"></i>
+                                <i class="devicon-{{ $row->toStack->icon }} colored" style="font-size: 35px;"></i>
                                 <br>
                                 {{ $row->toStack->nama }}
                             </div>
