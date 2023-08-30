@@ -13,7 +13,7 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        return Template::pages('Contact Us', 'contact', 'view');
+        return Template::pages(__('menu.contact'), 'contact', 'view');
     }
 
     public function save(Request $request)

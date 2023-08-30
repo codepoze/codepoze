@@ -13,7 +13,7 @@ class TestimoniesController extends Controller
 {
     public function index()
     {
-        return Template::pages('Testimonies', 'testimonies', 'view');
+        return Template::pages(__('menu.testimony'), 'testimonies', 'view');
     }
 
     public function save(Request $request)

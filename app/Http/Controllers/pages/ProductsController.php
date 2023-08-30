@@ -32,7 +32,7 @@ class ProductsController extends Controller
             'product' => $product
         ];
 
-        return Template::pages('Product', 'product', 'view', $data);
+        return Template::pages(__('menu.product'), 'product', 'view', $data);
     }
 
     public function type(Request $request, $slug)

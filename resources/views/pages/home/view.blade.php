@@ -45,9 +45,7 @@
             <div class="col-md-12 col-xl-12 text-center">
                 <h3 class="mb-4">Product Paid</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                    numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-                    quisquam eum porro a pariatur veniam.
+                    Akses Source Code dan Layanan Aplikasi Berkualitas
                 </p>
             </div>
         </div>
@@ -97,9 +95,7 @@
             <div class="col-md-12 col-xl-12 text-center">
                 <h3 class="mb-4">Product Free</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                    numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-                    quisquam eum porro a pariatur veniam.
+                    Akses Source Code Gratis untuk Semua
                 </p>
             </div>
         </div>
@@ -149,9 +145,7 @@
             <div class="col-md-12 col-xl-12 text-center">
                 <h3 class="mb-4">Testimonials</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                    numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
-                    quisquam eum porro a pariatur veniam.
+                    Pengalaman Luar Biasa dengan Layanan CodePoze
                 </p>
             </div>
         </div>

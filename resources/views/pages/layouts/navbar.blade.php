@@ -7,16 +7,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto ">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('about') }}">About Us</a>
+                    <a class="nav-link" href="{{ route('about') }}">{{ __('menu.about') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+                    <a class="nav-link" href="{{ route('contact') }}">{{ __('menu.contact') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('sop') }}">Service Policy</a>
+                    <a class="nav-link" href="{{ route('sop') }}">{{ __('menu.sop') }}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ __('menu.product') }}</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li>
                             <a class="dropdown-item" href="{{ route('products') }}">Semua</a>

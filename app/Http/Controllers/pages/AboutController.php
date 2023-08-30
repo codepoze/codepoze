@@ -9,6 +9,6 @@ class AboutController extends Controller
 {
     public function index()
     {
-        return Template::pages('About Us', 'about', 'view');
+        return Template::pages(__('menu.about'), 'about', 'view');
     }
 }

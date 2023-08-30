@@ -69,7 +69,7 @@
                     <div class="mb-3 row field-input">
                         <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi&nbsp;*</label>
                         <div class="col-md-9 my-auto">
-                            <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Masukkan deskripsi"></textarea>
+                            <textarea id="deskripsi" name="deskripsi"></textarea>
                             <span class="invalid-feedback"></span>
                         </div>
                     </div>
@@ -137,8 +137,13 @@
 <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('libs/choices.js/public/assets/scripts/choices.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset_admin('libs/select2/js/select2.full.min.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 
 <script>
+    CKEDITOR.replace('deskripsi', {
+        language: 'en',
+    });
+
     let untukMultipleSelectStack = function() {
         $.get("{{ route('admin.stack.get_all') }}", function(response) {
             new Choices('#product_stack', {

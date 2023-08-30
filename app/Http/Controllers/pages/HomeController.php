@@ -25,6 +25,6 @@ class HomeController extends Controller
             'testimony'    => $testimony
         ];
 
-        return Template::pages('Home', 'home', 'view', $data);
+        return Template::pages(__('menu.home'), 'home', 'view', $data);
     }
 }

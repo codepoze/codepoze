@@ -9,6 +9,6 @@ class SopController extends Controller
 {
     public function index()
     {
-        return Template::pages('Service Policy', 'sop', 'view');
+        return Template::pages(__('menu.sop'), 'sop', 'view');
     }
 }
