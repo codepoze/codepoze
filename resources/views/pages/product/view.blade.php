@@ -44,7 +44,7 @@
 
         <!-- begin:: content -->
         <div class="gx-4 gx-lg-5">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-lg-12 mb-5">
                     <form action="{{ route('products') }}" method="get">
                         <div class="input-group">
