@@ -30,7 +30,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <img src="{{ asset_pages('images/country/id.png') }}" class="pb-1" alt="ID">&nbsp;<span style="color: white; font-weight: bold;">ID</span>
+                        <img src="{{ asset_pages('images/country/id.png') }}" class="pb-1" alt="ID">&nbsp;<span>ID</span>
                     </a>
                 </li>
             </ul>
