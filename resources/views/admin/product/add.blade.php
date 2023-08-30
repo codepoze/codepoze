@@ -74,14 +74,14 @@
                         </div>
                     </div>
                     <div class="mb-3 row field-input">
-                        <label for="link_demo" class="col-sm-3 col-form-label">Link Demo&nbsp;*</label>
+                        <label for="link_demo" class="col-sm-3 col-form-label">Link Demo</label>
                         <div class="col-md-9 my-auto">
                             <input type="text" name="link_demo" id="link_demo" class="form-control" placeholder="Masukkan link demo" />
                             <span class="invalid-feedback"></span>
                         </div>
                     </div>
                     <div class="mb-3 row field-input">
-                        <label for="link_github" class="col-sm-3 col-form-label">Link Github&nbsp;*</label>
+                        <label for="link_github" class="col-sm-3 col-form-label">Link Github</label>
                         <div class="col-md-9 my-auto">
                             <input type="text" name="link_github" id="link_github" class="form-control" placeholder="Masukkan link github" />
                             <span class="invalid-feedback"></span>

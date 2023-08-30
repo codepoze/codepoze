@@ -121,8 +121,6 @@ class ProductController extends Controller
             $rules['id_price']        = 'required';
             $rules['product_stack']   = 'required';
             $rules['deskripsi']       = 'required';
-            $rules['link_demo']       = 'required';
-            $rules['link_github']     = 'required';
 
             $messages['judul.required']           = 'Judul harus diisi!';
             $messages['id_type.required']         = 'Type harus diisi!';
@@ -130,8 +128,6 @@ class ProductController extends Controller
             $messages['id_price.required']        = 'Price harus diisi!';
             $messages['product_stack.required']   = 'Stack harus diisi!';
             $messages['deskripsi.required']       = 'Deskripsi harus diisi!';
-            $messages['link_demo.required']       = 'Link Demo harus diisi!';
-            $messages['link_github.required']     = 'Link Github harus diisi!';
 
             $validator = Validator::make($request->all(), $rules, $messages);
 

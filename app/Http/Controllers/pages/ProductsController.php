@@ -65,7 +65,7 @@ class ProductsController extends Controller
     {
         $data = [
             'type'    => Type::whereSingkatan($slug)->first(),
-            'product' => Product::whereIdProduct($id)->first()
+            'product' => Product::with(['toProductStack.toStack', 'toProductPicture'])->whereIdProduct($id)->firstOrFail()
         ];
 
         return Template::pages('Product', 'product', 'detail', $data);
