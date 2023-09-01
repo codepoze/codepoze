@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\BasedController;
 use App\Http\Controllers\admin\ContactController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\NotificationController;
 use App\Http\Controllers\admin\PriceController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProfilController;
@@ -116,15 +117,6 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         });
         // end:: social_media
 
-        // begin:: testimony
-        Route::controller(TestimonyController::class)->prefix('testimony')->as('testimony.')->group(function () {
-            Route::get('/', 'index')->name('testimony');
-            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
-            Route::post('/posting', 'posting')->name('posting');
-            Route::post('/del', 'del')->name('del');
-        });
-        // end:: testimony
-
         // begin:: product
         Route::controller(ProductController::class)->prefix('product')->as('product.')->group(function () {
             Route::get('/', 'index')->name('product');
@@ -162,10 +154,31 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
         // begin:: contact
         Route::controller(ContactController::class)->prefix('contact')->as('contact.')->group(function () {
             Route::get('/', 'index')->name('contact');
+            Route::get('/det/{id}', 'det')->name('det');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/del', 'del')->name('del');
         });
         // end:: contact
+
+        // begin:: testimony
+        Route::controller(TestimonyController::class)->prefix('testimony')->as('testimony.')->group(function () {
+            Route::get('/', 'index')->name('testimony');
+            Route::get('/det/{id}', 'det')->name('det');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+            Route::post('/posting', 'posting')->name('posting');
+            Route::post('/del', 'del')->name('del');
+        });
+        // end:: testimony
+
+        // begin:: notification
+        Route::controller(NotificationController::class)->prefix('notification')->as('notification.')->group(function () {
+            Route::get('/{status}', 'index')->name('notification');
+            Route::post('/load', 'load')->name('load');
+            Route::post('/read', 'read')->name('read');
+            Route::post('/read_all', 'read_all')->name('read_all');
+            Route::post('/delete_all', 'delete_all')->name('delete_all');
+        });
+        // end:: notification
     });
     // end:: admin
 });

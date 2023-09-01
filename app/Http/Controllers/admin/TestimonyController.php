@@ -24,6 +24,15 @@ class TestimonyController extends Controller
         return Template::load($this->session['roles'], 'Testimony', 'testimony', 'view');
     }
 
+    public function det($id)
+    {
+        $data = [
+            'testimony' => Testimony::find(my_decrypt($id))
+        ];
+
+        return Template::load($this->session['roles'], 'Testimony', 'testimony', 'det', $data);
+    }
+
     public function get_data_dt()
     {
         $data = Testimony::latest()->get();
@@ -37,7 +46,10 @@ class TestimonyController extends Controller
                 return '<button type="button" id="sts" data-id="' . my_encrypt($row->id_testimonies) . '" class="btn btn-sm ' . $button . '">' . $status . '</button>';
             })
             ->addColumn('action', function ($row) {
-                return '<button type="button" id="del" data-id="' . my_encrypt($row->id_testimonies) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>';
+                return '
+                    <a href="' . route('admin.testimony.det', my_encrypt($row->id_testimonies)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
+                    <button type="button" id="del" data-id="' . my_encrypt($row->id_testimonies) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
+                ';
             })
             ->rawColumns(['posting', 'action'])
             ->make(true);

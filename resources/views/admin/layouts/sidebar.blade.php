@@ -62,12 +62,6 @@
                         <span>Social Media</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('admin.testimony.testimony') }}" class="waves-effect">
-                        <i class="bx bx-box"></i>
-                        <span>Testimony</span>
-                    </a>
-                </li>
                 <li class="menu-title">Pustaka</li>
                 <li>
                     <a href="{{ route('admin.product.product') }}" class="waves-effect">
@@ -91,6 +85,12 @@
                     <a href="{{ route('admin.contact.contact') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Contact</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.testimony.testimony') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Testimony</span>
                     </a>
                 </li>
             </ul>

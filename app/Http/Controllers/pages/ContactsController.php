@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\pages;
 
 use App\Http\Controllers\Controller;
+use App\Libraries\Notification;
 use App\Libraries\Template;
 use App\Models\Contact;
 use Illuminate\Http\Request;
@@ -42,12 +43,14 @@ class ContactsController extends Controller
         }
 
         try {
-            Contact::create([
+            $id = Contact::create([
                 'nama'  => $request->nama,
                 'email' => $request->email,
                 'judul' => $request->judul,
                 'pesan' => $request->pesan,
-            ]);
+            ])->id_contact;
+
+            Notification::send($id, 'admin.contact.det', 'Ada kontak baru dari ' . $request->nama);
 
             $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {

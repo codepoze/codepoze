@@ -91,12 +91,6 @@ Breadcrumbs::for('admin.social_media.social_media', function (BreadcrumbTrail $t
     $trail->push('Social Media', route('admin.social_media.social_media'));
 });
 
-Breadcrumbs::for('admin.testimony.testimony', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.dashboard');
-
-    $trail->push('Testimony', route('admin.testimony.testimony'));
-});
-
 Breadcrumbs::for('admin.product.product', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
@@ -149,4 +143,28 @@ Breadcrumbs::for('admin.contact.contact', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
     $trail->push('Contact', route('admin.contact.contact'));
+});
+
+Breadcrumbs::for('admin.contact.det', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.contact.contact');
+
+    $trail->push('Detail', '#');
+});
+
+Breadcrumbs::for('admin.testimony.testimony', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Testimony', route('admin.testimony.testimony'));
+});
+
+Breadcrumbs::for('admin.testimony.det', function (BreadcrumbTrail $trail) {
+    $trail->parent('admin.testimony.testimony');
+
+    $trail->push('Detail', '#');
+});
+
+Breadcrumbs::for('admin.notification.notification', function ($trail) {
+    $trail->parent('admin.dashboard');
+
+    $trail->push('Notification');
 });

@@ -23,6 +23,15 @@ class ContactController extends Controller
         return Template::load($this->session['roles'], 'Contact', 'contact', 'view');
     }
 
+    public function det($id)
+    {
+        $data = [
+            'contact' => Contact::find(my_decrypt($id))
+        ];
+
+        return Template::load($this->session['roles'], 'Contact', 'contact', 'det', $data);
+    }
+
     public function get_data_dt()
     {
         $data = Contact::latest()->get();
@@ -31,6 +40,7 @@ class ContactController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 return '
+                    <a href="' . route('admin.contact.det', my_encrypt($row->id_contact)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
                     <button type="button" id="del" data-id="' . my_encrypt($row->id_contact) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
                 ';
             })

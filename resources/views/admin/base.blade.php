@@ -117,6 +117,65 @@
     <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js') }}"></script>
     <script>
+        load_notification();
+
+        function load_notification() {
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("admin.notification.load") }}',
+                dataType: 'json',
+                success: function(response) {
+                    if (response.count > 0) {
+                        const order = response.data;
+                        var html = "";
+
+                        order.forEach(function(object) {
+                            html += `
+                                <a href="javascript: void(0);" class="text-reset notification-item" id="read" data-url=` + object.url + ` data-id=` + object.id + `>
+                                    <div class="d-flex">
+                                        <div class="avatar-xs me-3">
+                                            <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                <i class="bx bx-badge-check"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1" key="t-shipped">Pesan baru</h6>
+                                            <div class="font-size-12 text-muted">
+                                                <p class="mb-1" key="t-grammer">` + object.text + `</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                `;
+                        });
+                        $('#count-body').html(response.count);
+                        $('#notification-icon').addClass('bx-tada');
+                        $('#notification-info').html(html);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    var errorMsg = 'Request Ajax Gagal : ' + xhr.responseText;
+                    console.log(errorMsg);
+                }
+            });
+        }
+
+        $('#notification-info').on('click', '#read', function() {
+            var ini = $(this);
+            var url = ini.data('url');
+            var id = ini.data('id');
+
+            $.post('{{ route("admin.notification.read") }}', {
+                id: ini.data('id')
+            });
+
+            location.href = url;
+        });
+
+        setInterval(function() {
+            load_notification()
+        }, 7000);
+
         ! function(e) {
             "use strict";
             var t, a = localStorage.getItem("language");
