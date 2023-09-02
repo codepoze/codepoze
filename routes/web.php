@@ -21,7 +21,12 @@ use App\Http\Controllers\pages\SopController;
 use App\Http\Controllers\pages\TestimoniesController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['guest']], function () {
+Route::get('/lang/{locale}', function () {
+    session()->put('locale', request()->segment(2));
+    return redirect()->back();
+})->name('lang');
+
+Route::group(['middleware' => ['guest', 'set.locale']], function () {
     // begin:: no auth
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/about', [AboutController::class, 'index'])->name('about');

@@ -73,5 +73,6 @@ class Kernel extends HttpKernel
         'verified'             => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'session.auth'         => \App\Http\Middleware\Auth::class,
         'prevent.back.history' => \App\Http\Middleware\PreventBackHistory::class,
+        'set.locale'           => \App\Http\Middleware\SetLocale::class,
     ];
 }

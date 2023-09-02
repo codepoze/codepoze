@@ -29,8 +29,8 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <img src="{{ asset_pages('images/country/id.png') }}" class="pb-1" alt="ID">&nbsp;<span>ID</span>
+                    <a href="{{ (session()->has('locale') ? (session()->get('locale') !== 'id' ? route('lang', 'id') : route('lang', 'en')) : route('lang', 'en') ) }}" class="nav-link">
+                        <img class="pb-1" src="{{ (session()->has('locale') ? (session()->get('locale') !== 'id' ? asset_pages('images/country/id.png') : asset_pages('images/country/en.png')) : asset_pages('images/country/en.png') ) }}" alt="{{ (session()->has('locale') ? (session()->get('locale') !== 'id' ? 'ID' : 'EN') : 'EN' ) }}">&nbsp;<span>{{ (session()->has('locale') ? (session()->get('locale') !== 'id' ? 'ID' : 'EN') : 'EN' ) }}</span>
                     </a>
                 </li>
             </ul>

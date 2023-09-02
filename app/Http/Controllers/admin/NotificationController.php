@@ -58,38 +58,38 @@ class NotificationController extends Controller
         $notification->save();
     }
 
-    // public function read_all(Request $request)
-    // {
-    //     $id_notification = $request->id;
-    //     $notification    = Notification::whereIn('id_notification', $id_notification)->get();
-    //     try {
-    //         foreach ($notification as $key => $value) {
-    //             $value->status = 'read';
-    //             $value->save();
-    //         }
+    public function read_all(Request $request)
+    {
+        $id_notification = $request->id;
+        $notification    = Notification::whereIn('id_notification', $id_notification)->get();
+        try {
+            foreach ($notification as $key => $value) {
+                $value->status = 'read';
+                $value->save();
+            }
 
-    //         $response = ['title' => 'Berhasil!', 'text' => 'Pesan telah di baca!', 'status' => true];
-    //     } catch (\Exception $e) {
-    //         $response = ['title' => 'Gagal!', 'text' => 'Pesan gagal di baca!', 'status' => false];
-    //     }
+            $response = ['title' => 'Berhasil!', 'text' => 'Pesan telah di baca!', 'status' => true];
+        } catch (\Exception $e) {
+            $response = ['title' => 'Gagal!', 'text' => 'Pesan gagal di baca!', 'status' => false];
+        }
 
-    //     return Response::json($response);
-    // }
+        return Response::json($response);
+    }
 
-    // public function delete_all(Request $request)
-    // {
-    //     $id_notification = $request->id;
-    //     $notification    = Notification::whereIn('id_notification', $id_notification)->get();
-    //     try {
-    //         foreach ($notification as $key => $value) {
-    //             $value->delete();
-    //         }
+    public function delete_all(Request $request)
+    {
+        $id_notification = $request->id;
+        $notification    = Notification::whereIn('id_notification', $id_notification)->get();
+        try {
+            foreach ($notification as $key => $value) {
+                $value->delete();
+            }
 
-    //         $response = ['title' => 'Berhasil!', 'text' => 'Pesan telah di hapus!', 'status' => true];
-    //     } catch (\Exception $e) {
-    //         $response = ['title' => 'Gagal!', 'text' => 'Pesan gagal di hapus!', 'status' => false];
-    //     }
+            $response = ['title' => 'Berhasil!', 'text' => 'Pesan telah di hapus!', 'status' => true];
+        } catch (\Exception $e) {
+            $response = ['title' => 'Gagal!', 'text' => 'Pesan gagal di hapus!', 'status' => false];
+        }
 
-    //     return Response::json($response);
-    // }
+        return Response::json($response);
+    }
 }
