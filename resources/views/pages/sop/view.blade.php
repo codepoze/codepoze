@@ -26,7 +26,7 @@
 
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-12">
+            <div class="col-lg-12 " style="text-align: justify;">
                 <h4>{{ __('sop.text_1') }}</h4>
                 <p>
                     {{ __('sop.text_2') }}

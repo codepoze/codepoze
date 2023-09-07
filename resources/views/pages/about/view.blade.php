@@ -26,7 +26,7 @@
 
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-12">
+            <div class="col-lg-12" style="text-align: justify;">
                 <p>
                     {{ __('about.text_1') }}
                 </p>
