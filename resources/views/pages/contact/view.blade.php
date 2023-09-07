@@ -80,7 +80,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     $('#submit').attr('disabled', 'disabled');
-                    $('#submit').html('Menunggu...');
+                    $('#submit').html("{{ __('contact.loading') }}");
                 },
                 success: function(response) {
                     if (response.type === 'success') {
@@ -124,7 +124,7 @@
                     }
 
                     $('#submit').removeAttr('disabled');
-                    $('#submit').html('Submit');
+                    $('#submit').html("{{ __('contact.button') }}");
                 }
             });
         });

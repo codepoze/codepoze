@@ -16,6 +16,7 @@ return [
     'input_4'     => "Enter message",
     'validasi_4'  => "The Message field is required!",
     'button'      => "Submit",
+    'loading'     => "Waiting...",
 
     'success_title' => 'Succeed!',
     'success_text'  => 'Data processed successfully!',

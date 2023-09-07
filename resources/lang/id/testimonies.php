@@ -20,6 +20,7 @@ return [
     'input_4'     => "Masukkan pesan",
     'validasi_4'  => "Pesan harus diisi!",
     'button'      => "Kirim",
+    'loading'     => "Menunggu...",
 
     'success_title' => 'Berhasil!',
     'success_text'  => 'Data sukses diproses!',
