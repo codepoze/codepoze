@@ -48,8 +48,8 @@
                 <div class="col-lg-12 mb-5">
                     <form action="{{ route('products') }}" method="get">
                         <div class="input-group">
-                            <input class="form-control" type="text" name="q" id="q" placeholder="Masukkan nama sistem...">
-                            <button class="btn btn-primary" id="button-search" type="submit">Go!</button>
+                            <input class="form-control" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
+                            <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>
                         </div>
                     </form>
                 </div>
@@ -100,17 +100,17 @@
                 @if (Request::get('q'))
                 <div class="col-lg-12">
                     <div class="alert alert-warning">
-                        <strong>Info Message</strong>
+                        <strong>{{ __('product.info') }}</strong>
                         <hr class="message-inner-separator">
-                        <p>Maaf, produk yang Anda cari dengan kata kunci <strong>{{ Request::get('q') }}</strong> tidak ditemukan.</p>
+                        <p>{{ __('product.text_1') }} <strong>{{ Request::get('q') }}</strong> {{ __('product.text_2') }}</p>
                     </div>
                 </div>
                 @else
                 <div class="col-lg-12">
                     <div class="alert alert-info">
-                        <strong>Info Message</strong>
+                        <strong>{{ __('product.info') }}</strong>
                         <hr class="message-inner-separator">
-                        <p>Maaf, produk belum tersedia.</p>
+                        <p>{{ __('product.text_3') }}</p>
                     </div>
                 </div>
                 @endif
