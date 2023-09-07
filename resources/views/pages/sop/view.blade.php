@@ -27,91 +27,91 @@
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-12">
-                <h4>Selamat Datang di CodePoze</h4>
+                <h4>{{ __('sop.text_1') }}</h4>
                 <p>
-                    Sebelum memanfaatkan layanan dari CodePoze, harap teliti dalam membaca kebijakan layanan kami. Dengan memilih untuk menggunakan layanan kami, ini menandakan bahwa Anda telah memahami dan menyetujui kebijakan kami seperti yang dijelaskan di bawah ini.
+                    {{ __('sop.text_2') }}
                 </p>
 
                 <ol type="1">
                     <li>
-                        <h5>Kebijakan Unduh Aplikasi Gratis</h5>
+                        <h5>{{ __('sop.text_3') }}</h5>
                         <ul>
                             <li>
-                                Perangkat lunak/aplikasi dapat diunduh secara gratis melalui tautan yang telah disediakan.
+                                {{ __('sop.text_4') }}
                             </li>
                             <li>
-                                Kami tidak lagi bertanggung jawab atas perangkat lunak/aplikasi yang telah diunduh dan diperoleh.
+                                {{ __('sop.text_5') }}
                             </li>
                             <li>
-                                Tidak ada jaminan atau layanan dukungan yang diberikan untuk perangkat lunak/aplikasi yang diunduh secara gratis.
+                                {{ __('sop.text_6') }}
                             </li>
                             <li>
-                                Pembaruan perangkat lunak/aplikasi akan dilakukan, namun perubahan tidak akan diumumkan secara individu.
+                                {{ __('sop.text_7') }}
                             </li>
                             <li>
-                                Layanan dukungan, perbaikan, dan penambahan fitur berdasarkan permintaan pada aplikasi yang diunduh dan diperoleh secara gratis akan dikenakan biaya tambahan.
+                                {{ __('sop.text_8') }}
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <h5>Kebijakan Pembelian Aplikasi</h5>
+                        <h5>{{ __('sop.text_9') }}</h5>
                         <ul>
                             <li>
-                                Setelah dibeli, perangkat lunak/aplikasi tidak dapat dikembalikan.
+                                {{ __('sop.text_10') }}
                             </li>
                             <li>
-                                Tidak ada jaminan atau layanan dukungan yang diberikan untuk perangkat lunak/aplikasi yang telah dibeli.
+                                {{ __('sop.text_11') }}
                             </li>
                             <li>
-                                Pembelian perangkat lunak/aplikasi dengan penjualan masal menerapkan sistem jual putus.
+                                {{ __('sop.text_12') }}
                             </li>
                             <li>
-                                Pembaruan perangkat lunak/aplikasi akan tetap dilakukan namun perubahan tidak akan diumumkan secara individu.
+                                {{ __('sop.text_13') }}
                             </li>
                             <li>
-                                Layanan dukungan, perbaikan, dan penambahan fitur berdasarkan permintaan untuk aplikasi yang telah atau belum dibeli akan dikenakan biaya tambahan.
+                                {{ __('sop.text_14') }}
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <h5>Kebijakan Layanan Pengerjaan Aplikasi</h5>
+                        <h5>{{ __('sop.text_15') }}</h5>
                         <ul>
                             <li>
-                                Untuk memulai proyek, Anda diharuskan membayar uang muka sebesar 50% dari total harga via transfer ke akun bank kami.
+                                {{ __('sop.text_16') }}
                             </li>
                             <li>
-                                Pelunasan dilakukan setelah aplikasi rampung.
+                                {{ __('sop.text_17') }}
                             </li>
                             <li>
-                                Kami mulai mengerjakan aplikasi setelah menerima pembayaran awal sesuai dengan presentase yang telah ditetapkan.
+                                {{ __('sop.text_18') }}
                             </li>
                             <li>
-                                Dana yang sudah Anda transfer tidak dapat kami kembalikan jika Anda membatalkan proyek atas inisiatif Anda sendiri.
+                                {{ __('sop.text_19') }}
                             </li>
                             <li>
-                                Estimasi waktu pengerjaan aplikasi berkisar antara 30 hari (untuk sistem standar) hingga 90 hari kerja (untuk sistem lebih kompleks), namun durasi ini dapat berubah tergantung pada kesulitan, perjanjian awal, dan ketersediaan data yang diperlukan.
+                                {{ __('sop.text_20') }}
                             </li>
                             <li>
-                                Garansi dukungan teknis diberikan mulai dari 7 hari hingga periode sesuai kesepakatan, berlaku sejak aplikasi diserahkan.
+                                {{ __('sop.text_21') }}
                             </li>
                             <li>
-                                Jika kami gagal menyelesaikan proyek sesuai jadwal yang disepakati, kami akan mengembalikan 100% dari dana yang Anda bayar dan menyampaikan apa yang telah kami kerjakan.
+                                {{ __('sop.text_22') }}
                             </li>
                             <li>
-                                Layanan dukungan tersedia melalui WA dan email pada jam operasional kami (09.00 – 04.00 WIB).
+                                {{ __('sop.text_23') }}
                             </li>
                             <li>
-                                Setiap ketidaksesuaian dalam interpretasi atau pelaksanaan kesepakatan akan dicari solusinya melalui diskusi hingga mencapai kesepakatan.
+                                {{ __('sop.text_24') }}
                             </li>
                             <li>
-                                Klausula yang belum dicantumkan dalam kebijakan ini, jika diperlukan, akan ditambahkan nantinya berdasarkan kesepakatan bersama antara kami dan Anda.
+                                {{ __('sop.text_25') }}
                             </li>
                         </ul>
                     </li>
                 </ol>
 
                 <p>
-                    Apabila pengguna melakukan pelanggaran terhadap kebijakan layanan, maka kami, selaku pemilik situs, memiliki hak untuk mengambil Langkah-langkah yang sesuai berdasarkan hukum yang ada di Negara Kesatuan Republik Indonesia.
+                    {{ __('sop.text_26') }}
                 </p>
             </div>
         </div>

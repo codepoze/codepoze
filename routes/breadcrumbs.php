@@ -5,14 +5,15 @@ use App\Models\Type;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
+// begin:: pages
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
-    $trail->push('Home', route('home'));
+    $trail->push(__('menu.home'), route('home'));
 });
 
 Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push('Product', route('products'));
+    $trail->push(__('menu.product'), route('products'));
 });
 
 Breadcrumbs::for('products.type', function (BreadcrumbTrail $trail, Type $type) {
@@ -30,27 +31,29 @@ Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type
 Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push('About Us', route('about'));
+    $trail->push(__('menu.about'), route('about'));
 });
 
 Breadcrumbs::for('contact', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push('Contact Us', route('contact'));
+    $trail->push(__('menu.contact'), route('contact'));
 });
 
 Breadcrumbs::for('sop', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push('Service Policy', route('sop'));
+    $trail->push(__('menu.sop'), route('sop'));
 });
 
 Breadcrumbs::for('testimonies', function (BreadcrumbTrail $trail) {
     $trail->parent('home');
 
-    $trail->push('Testimonies', route('testimonies'));
+    $trail->push(__('menu.testimony'), route('testimonies'));
 });
+// end:: pages
 
+// begin:: admin
 Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('admin.dashboard'));
 });
@@ -168,3 +171,4 @@ Breadcrumbs::for('admin.notification.notification', function ($trail) {
 
     $trail->push('Notification');
 });
+// end:: admin

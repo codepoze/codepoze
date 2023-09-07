@@ -6,5 +6,6 @@ return [
     'contact'   => 'Hubungi Kami',
     'sop'       => 'Kebijakan Layanan',
     'product'   => 'Produk',
+    'all'       => 'Semua',
     'testimony' => 'Testimoni',
 ];

@@ -27,29 +27,33 @@
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-12">
+                <p>
+                    {{ __('contact.text_1') }}
+                </p>
+
                 <form id="form-contact" action="{{ route('contact.save') }}" method="post">
                     <div class="mb-3 field-input">
-                        <label for="nama" class="form-label">Nama&nbsp;*</label>
-                        <input type="text" class="form-control form-control-sm" name="nama" id="nama" placeholder="Masukkan nama Anda">
+                        <label for="nama" class="form-label">{{ __('contact.label_1') }}&nbsp;*</label>
+                        <input type="text" class="form-control form-control-sm" name="nama" id="nama" placeholder="{{ __('contact.input_1') }}">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="email" class="form-label">Email&nbsp;*</label>
-                        <input type="text" class="form-control form-control-sm" name="email" id="email" placeholder="Masukkan email Anda">
+                        <label for="email" class="form-label">{{ __('contact.label_2') }}&nbsp;*</label>
+                        <input type="text" class="form-control form-control-sm" name="email" id="email" placeholder="{{ __('contact.input_2') }}">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="judul" class="form-label">Judul&nbsp;*</label>
-                        <input type="text" class="form-control form-control-sm" name="judul" id="judul" placeholder="Masukkan judul">
+                        <label for="judul" class="form-label">{{ __('contact.label_3') }}&nbsp;*</label>
+                        <input type="text" class="form-control form-control-sm" name="judul" id="judul" placeholder="{{ __('contact.input_3') }}">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="pesan" class="form-label">Pesan&nbsp;*</label>
-                        <textarea class="form-control form-control-sm" name="pesan" id="pesan" placeholder="Masukkan pesan Anda"></textarea>
+                        <label for="pesan" class="form-label">{{ __('contact.label_4') }}&nbsp;*</label>
+                        <textarea class="form-control form-control-sm" name="pesan" id="pesan" placeholder="{{ __('contact.input_4') }}"></textarea>
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="submit" class="btn btn-primary">{{ __('contact.button') }}</button>
                     </div>
                 </form>
             </div>

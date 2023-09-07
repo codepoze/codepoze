@@ -6,5 +6,6 @@ return [
     'contact'   => 'Contact Us',
     'sop'       => 'Service Policy',
     'product'   => 'Product',
+    'all'       => 'All',
     'testimony' => 'Testimony',
 ];

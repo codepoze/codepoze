@@ -27,37 +27,41 @@
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-12">
+                <p>
+                    {{ __('testimonies.text_1') }}
+                </p>
+
                 <form id="form-testimonies" action="{{ route('testimonies.save') }}" method="post">
                     <div class="mb-3">
-                        <label class="form-label">Name&nbsp;*</label>
+                        <label class="form-label">{{ __('testimonies.label_1') }}&nbsp;*</label>
                         <div class="row">
                             <div class="col field-input">
-                                <input type="text" name="first_name" id="first_name" class="form-control form-control-sm" placeholder="First name" />
+                                <input type="text" name="first_name" id="first_name" class="form-control form-control-sm" placeholder="{{ __('testimonies.input_11') }}" />
                                 <span class="invalid-feedback"></span>
                             </div>
                             <div class="col field-input">
-                                <input type="text" name="last_name" id="last_name" class="form-control form-control-sm" placeholder="Last name" />
+                                <input type="text" name="last_name" id="last_name" class="form-control form-control-sm" placeholder="{{ __('testimonies.input_12') }}" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="email" class="form-label">Email&nbsp;*</label>
-                        <input type="text" class="form-control form-control-sm" name="email" id="email" placeholder="Email">
+                        <label for="email" class="form-label">{{ __('testimonies.label_2') }}&nbsp;*</label>
+                        <input type="text" class="form-control form-control-sm" name="email" id="email" placeholder="{{ __('testimonies.input_2') }}">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="phone" class="form-label">Phone&nbsp;*</label>
-                        <input type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="Phone">
+                        <label for="phone" class="form-label">{{ __('testimonies.label_3') }}&nbsp;*</label>
+                        <input type="text" class="form-control form-control-sm" name="phone" id="phone" placeholder="{{ __('testimonies.input_3') }}">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="mb-3 field-input">
-                        <label for="message" class="form-label">Message&nbsp;*</label>
-                        <textarea class="form-control form-control-sm" name="message" id="message" placeholder="Message"></textarea>
+                        <label for="message" class="form-label">{{ __('testimonies.label_4') }}&nbsp;*</label>
+                        <textarea class="form-control form-control-sm" name="message" id="message" placeholder="{{ __('testimonies.input_4') }}"></textarea>
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="d-grid gap-2">
-                        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="submit" class="btn btn-primary">{{ __('testimonies.button') }}</button>
                     </div>
                 </form>
             </div>

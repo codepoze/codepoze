@@ -28,24 +28,24 @@
         <div class="row gx-4 gx-lg-5">
             <div class="col-lg-12">
                 <p>
-                    CodePoze adalah sebuah situs media online yang telah beroperasi sejak tahun 2019 dan secara resmi didirikan pada tanggal 23 September 2022. Fokus kami adalah menyediakan source code program aplikasi baik yang gratis maupun berbayar. Selain itu, kami juga menawarkan layanan source code program aplikasi, serta jasa pembuatan dan pengembangan aplikasi yang bertujuan untuk memenuhi kebutuhan Anda di bidang teknologi dan informasi.
+                    {{ __('about.text_1') }}
                 </p>
 
-                <h5>Visi</h5>
+                <h5>{{ __('about.text_2') }}</h5>
                 <p>
-                    Menjadi platform digital terdepan dalam penyediaan source code dan solusi aplikasi di bidang teknologi dan informasi.
+                    {{ __('about.text_3') }}
                 </p>
 
-                <h5>Misi</h5>
+                <h5>{{ __('about.text_4') }}</h5>
                 <ul>
                     <li>
-                        Menyediakan source code berkualitas bagi komunitas pengembang.
+                        {{ __('about.text_5') }}
                     </li>
                     <li>
-                        Menawarkan jasa pembuatan dan pengembangan aplikasi yang inovatif dan sesuai kebutuhan pelanggan.
+                        {{ __('about.text_6') }}
                     </li>
                     <li>
-                        Mempromosikan pengetahuan dan inovasi di bidang teknologi dan informasi melalui layanan kami.
+                        {{ __('about.text_7') }}
                     </li>
                 </ul>
             </div>

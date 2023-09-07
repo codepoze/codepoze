@@ -31,9 +31,9 @@
     <div class="page-header">
         <div id="particles-js"></div>
         <div class="container text-center text-white">
-            <h1 class="display-4 fw-bolder">Welcome to CodePoze</h1>
+            <h1 class="display-4 fw-bolder">{{ __('home.text_1') }}</h1>
             <p class="lead fw-normal text-white-50 mb-0">
-                Penyedia jasa source code program aplikasi gratis, berbayar, jasa pembuatan dan pengembangan.
+                {{ __('home.text_2') }}
             </p>
         </div>
     </div>
@@ -43,9 +43,9 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">
-                <h3 class="mb-4">Product Paid</h3>
+                <h3 class="mb-4">{{ __('home.text_3') }}</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Akses Source Code dan Layanan Aplikasi Berkualitas
+                    {{ __('home.text_4') }}
                 </p>
             </div>
         </div>
@@ -78,9 +78,9 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="alert alert-info">
-                    <strong>Info Message</strong>
+                    <strong>{{ __('home.info') }}</strong>
                     <hr class="message-inner-separator">
-                    <p>Maaf, produk belum tersedia.</p>
+                    <p>{{ __('home.text_5') }}</p>
                 </div>
             </div>
         </div>
@@ -93,9 +93,9 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">
-                <h3 class="mb-4">Product Free</h3>
+                <h3 class="mb-4">{{ __('home.text_6') }}</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Akses Source Code Gratis untuk Semua
+                    {{ __('home.text_7') }}
                 </p>
             </div>
         </div>
@@ -128,9 +128,9 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="alert alert-info">
-                    <strong>Info Message</strong>
+                    <strong>{{ __('home.info') }}</strong>
                     <hr class="message-inner-separator">
-                    <p>Maaf, produk belum tersedia.</p>
+                    <p>{{ __('home.text_8') }}</p>
                 </div>
             </div>
         </div>
@@ -143,9 +143,9 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row justify-content-center">
             <div class="col-md-12 col-xl-12 text-center">
-                <h3 class="mb-4">Testimonials</h3>
+                <h3 class="mb-4">{{ __('home.text_9') }}</h3>
                 <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                    Pengalaman Luar Biasa dengan Layanan CodePoze
+                    {{ __('home.text_10') }}
                 </p>
             </div>
         </div>
@@ -165,9 +165,9 @@
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12">
                 <div class="alert alert-info">
-                    <strong>Info Message</strong>
+                    <strong>{{ __('home.info') }}</strong>
                     <hr class="message-inner-separator">
-                    <p>Maaf, testimonials belum tersedia.</p>
+                    <p>{{ __('home.text_11') }}</p>
                 </div>
             </div>
         </div>
