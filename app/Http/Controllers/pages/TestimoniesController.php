@@ -28,20 +28,20 @@ class TestimoniesController extends Controller
         ];
 
         $messages = [
-            'first_name.required'  => 'Nama Depan harus diisi!',
-            'last_name.required'   => 'Nama Belakang harus diisi!',
-            'email.required'       => 'Email harus diisi!',
-            'email.email'          => 'Email tidak valid!',
-            'phone.required'       => 'No. HP harus diisi!',
-            'phone.numeric'        => 'No. HP harus angka!',
-            'phone.digits_between' => 'No. HP harus 10-13 digit!',
-            'message.required'     => 'Pesan harus diisi!',
+            'first_name.required'  => __('testimonies.validasi_11'),
+            'last_name.required'   => __('testimonies.validasi_12'),
+            'email.required'       => __('testimonies.validasi_21'),
+            'email.email'          => __('testimonies.validasi_22'),
+            'phone.required'       => __('testimonies.validasi_31'),
+            'phone.numeric'        => __('testimonies.validasi_32'),
+            'phone.digits_between' => __('testimonies.validasi_33'),
+            'message.required'     => __('testimonies.validasi_4'),
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            $response = ['title'  => 'Gagal!', 'text'   => 'Data gagal ditambahkan!', 'type'   => 'error', 'button' => 'Okay!', 'class'  => 'danger', 'errors' => $validator->errors()];
+            $response = ['title' => __('testimonies.danger_title'), 'text' => __('testimonies.danger_text'), 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger', 'errors' => $validator->errors()];
 
             return Response::json($response);
         }
@@ -58,9 +58,9 @@ class TestimoniesController extends Controller
 
             Notification::send($id, 'admin.testimony.det', 'Ada testimoni baru dari ' . $request->first_name . ' ' . $request->last_name);
 
-            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
+            $response = ['title' => __('testimonies.success_title'), 'text' => __('testimonies.success_text'), 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {
-            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Simpan!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
+            $response = ['title' => __('testimonies.danger_title'), 'text' => __('testimonies.danger_text'), 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
         }
 
         return Response::json($response);

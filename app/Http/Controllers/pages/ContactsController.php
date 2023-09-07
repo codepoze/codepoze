@@ -27,17 +27,17 @@ class ContactsController extends Controller
         ];
 
         $messages = [
-            'nama.required'  => 'Nama harus diisi!',
-            'email.required' => 'Email harus diisi!',
-            'email.email'    => 'Email tidak valid!',
-            'judul.required' => 'Judul harus diisi!',
-            'pesan.required' => 'Pesan harus diisi!',
+            'nama.required'  => __('contact.validasi_1'),
+            'email.required' => __('contact.validasi_21'),
+            'email.email'    => __('contact.validasi_22'),
+            'judul.required' => __('contact.validasi_3'),
+            'pesan.required' => __('contact.validasi_4'),
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
         if ($validator->fails()) {
-            $response = ['title'  => 'Gagal!', 'text'   => 'Data gagal ditambahkan!', 'type'   => 'error', 'button' => 'Okay!', 'class'  => 'danger', 'errors' => $validator->errors()];
+            $response = ['title' => __('contact.danger_title'), 'text' => __('contact.danger_text'), 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger', 'errors' => $validator->errors()];
 
             return Response::json($response);
         }
@@ -52,9 +52,9 @@ class ContactsController extends Controller
 
             Notification::send($id, 'admin.contact.det', 'Ada kontak baru dari ' . $request->nama);
 
-            $response = ['title' => 'Berhasil!', 'text' => 'Data Sukses di Simpan!', 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
+            $response = ['title' => __('contact.success_title'), 'text' => __('contact.success_text'), 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {
-            $response = ['title' => 'Gagal!', 'text' => 'Data Gagal di Simpan!', 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
+            $response = ['title' => __('contact.danger_title'), 'text' => __('contact.danger_text'), 'type' => 'error', 'button' => 'Okay!', 'class' => 'danger'];
         }
 
         return Response::json($response);
