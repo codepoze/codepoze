@@ -26,7 +26,10 @@
 
         <!-- begin:: content -->
         <div class="row gx-4 gx-lg-5">
-            <div class="col-lg-12" style="text-align: justify;">
+            <div class="col-lg-4 my-2">
+                <img class="img-fluid rounded" src="{{ asset_pages('images/codepoze.png') }}" alt="CodePoze">
+            </div>
+            <div class="col-lg-8" style="text-align: justify;">
                 <p>
                     {{ __('about.text_1') }}
                 </p>
