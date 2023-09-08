@@ -50,17 +50,17 @@
                         </div>
                         <div class="card-body pt-0">
                             <div class="auth-logo">
-                                <a href="index-2.html" class="auth-logo-light">
+                                <a href="{{ route('home') }}" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset_pages('images/logo.png') }}" alt="" class="rounded-circle" height="70">
+                                            <img src="{{ asset_admin('images/codepoze-light.png') }}" alt="" class="rounded-circle" height="70">
                                         </span>
                                     </div>
                                 </a>
-                                <a href="index-2.html" class="auth-logo-dark">
+                                <a href="{{ route('home') }}" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset_pages('images/logo.png') }}" alt="" class="rounded-circle" height="70">
+                                            <img src="{{ asset_admin('images/codepoze-dark.png') }}" alt="" class="rounded-circle" height="70">
                                         </span>
                                     </div>
                                 </a>
@@ -91,9 +91,6 @@
                                     <div class="mt-3 d-grid">
                                         <button class="btn btn-primary waves-effect waves-light" type="submit" id="submit">Log In</button>
                                     </div>
-                                    <div class="mt-4 text-center">
-                                        <a href="auth-recoverpw.html" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
-                                    </div>
                                 </form>
                             </div>
 
@@ -101,10 +98,7 @@
                     </div>
                     <div class="mt-5 text-center">
                         <div>
-                            <p><em>&copy; 2017 - <script type="text/javascript">
-                                        var thunskrg = new Date().getFullYear();
-                                        document.write(thunskrg);
-                                    </script>. Developed with <span style="color: #e25555;">&#9829;</span> by <a href="https://alanlengkoan.com">alanlengkoan</a>.</em></p>
+                            <p class="copyright my-auto"></p>
                         </div>
                     </div>
                 </div>
