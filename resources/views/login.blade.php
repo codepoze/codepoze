@@ -53,14 +53,14 @@
                                 <a href="index-2.html" class="auth-logo-light">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset_admin('images/logo.png') }}" alt="" class="rounded-circle" height="70">
+                                            <img src="{{ asset_pages('images/logo.png') }}" alt="" class="rounded-circle" height="70">
                                         </span>
                                     </div>
                                 </a>
                                 <a href="index-2.html" class="auth-logo-dark">
                                     <div class="avatar-md profile-user-wid mb-4">
                                         <span class="avatar-title rounded-circle bg-light">
-                                            <img src="{{ asset_admin('images/logo.png') }}" alt="" class="rounded-circle" height="70">
+                                            <img src="{{ asset_pages('images/logo.png') }}" alt="" class="rounded-circle" height="70">
                                         </span>
                                     </div>
                                 </a>
