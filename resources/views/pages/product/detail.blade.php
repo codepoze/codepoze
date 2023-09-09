@@ -4,6 +4,17 @@
 
 <!-- begin:: css local -->
 @section('css')
+<style>
+    .modal a.close {
+        right: 0;
+        outline: 0;
+    }
+
+    #gallery-lightbox img:hover {
+        opacity: 0.9;
+        transition: 0.5s ease-out;
+    }
+</style>
 @endsection
 <!-- end:: css local -->
 
@@ -40,14 +51,49 @@
                         {!! $product->deskripsi !!}
                     </section>
                     @if (count($product->toProductPicture) > 0)
-                    <div class="row my-4">
-                        @foreach ($product->toProductPicture as $row)
+                    <div class="row my-4" id="gallery-lightbox" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        @foreach ($product->toProductPicture as $key => $row)
                         <div class="col-md-12 col-lg-6 col-xl-6 my-2">
                             <a href="{{ asset_upload('picture/'.$row->picture) }}">
-                                <img class="img-fluid" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $row->judul }}" />
+                                <img class="img-fluid" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}" data-bs-target="#carouselExample" data-bs-slide-to="{{ $key }}" />
                             </a>
                         </div>
                         @endforeach
+                    </div>
+
+                    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-modal="true">
+                        <a href="#" class="close m-0 p-3 text-white position-absolute right-0" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content bg-transparent">
+                                <div class="modal-body p-0">
+                                    <div id="carouselExample" class="carousel slide carousel-fade" data-bs-ride="false">
+                                        <div class="carousel-inner">
+                                            @foreach ($product->toProductPicture as $key => $row)
+                                            @if ($key === 0)
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}">
+                                            </div>
+                                            @else
+                                            <div class="carousel-item">
+                                                <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}">
+                                            </div>
+                                            @endif
+                                            @endforeach
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     @endif
                     <div class="d-flex justify-content-center align-items-start">

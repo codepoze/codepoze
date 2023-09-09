@@ -89,7 +89,7 @@
                                         </label>
                                     </div>
                                     <div class="mt-3 d-grid">
-                                        <button class="btn btn-primary waves-effect waves-light" type="submit" id="submit">Log In</button>
+                                        <button class="btn btn-primary waves-effect waves-light" type="submit" id="submit">Masuk</button>
                                     </div>
                                 </form>
                             </div>
