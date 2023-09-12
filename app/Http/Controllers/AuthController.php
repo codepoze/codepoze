@@ -50,6 +50,8 @@ class AuthController extends Controller
             'active'   => 'y'
         ];
 
+        $remember_me  = (!empty($request->remember_me) && $request->remember_me === 'on') ? TRUE : FALSE;
+
         if (Auth::attempt($checking)) {
             // untuk data users
             $users = Auth::user();
@@ -60,6 +62,8 @@ class AuthController extends Controller
             $request->session()->put('nama', $users->nama);
             $request->session()->put('roles', $users->roles);
             $request->session()->put('foto', $users->foto);
+
+            Auth::login($users, $remember_me);
 
             // untuk check role
             if ($users->roles === 'admin') {
