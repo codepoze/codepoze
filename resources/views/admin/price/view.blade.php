@@ -62,7 +62,7 @@
                         <div class="mb-3 row field-input">
                             <label for="nilai_normal" class="col-sm-3 col-form-label">Nilai Normal&nbsp;*</label>
                             <div class="col-md-9 my-auto">
-                                <input type="text" name="nilai_normal" id="nilai_normal" class="form-control form-control-sm inputNumber" placeholder="Masukkan nilai normal" />
+                                <input type="text" name="nilai_normal" id="nilai_normal" class="form-control form-control-sm" onkeydown="return justAngka(event)" onkeyup="javascript:this.value=autoSeparator(this.value);" placeholder="Masukkan nilai normal" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                         <div class="mb-3 row field-input">
                             <label for="nilai_diskon" class="col-sm-3 col-form-label">Nilai Diskon&nbsp;*</label>
                             <div class="col-md-9 my-auto">
-                                <input type="text" name="nilai_diskon" id="nilai_diskon" class="form-control form-control-sm inputNumber" placeholder="Masukkan nilai diskon" />
+                                <input type="text" name="nilai_diskon" id="nilai_diskon" class="form-control form-control-sm" onkeydown="return justAngka(event)" onkeyup="javascript:this.value=autoSeparator(this.value);" placeholder="Masukkan nilai diskon" />
                                 <span class="invalid-feedback"></span>
                             </div>
                         </div>

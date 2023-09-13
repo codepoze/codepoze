@@ -20,14 +20,14 @@
 
         @if (count($social_media) > 0)
         <div class="row">
-            <div class="col-12 col-sm-12 col-lg-6 col-lg-6 d-flex justify-content-center py-2">
-                <p class="copyright my-auto"></p>
+            <div class="col-6 col-sm-6 col-lg-6 col-lg-6 d-flex justify-content-start py-2">
+                <p class="copyright fs-6 my-auto"></p>
             </div>
-            <div class="col-12 col-sm-12 col-lg-6 col-lg-6 d-flex justify-content-center py-2">
+            <div class="col-6 col-sm-6 col-lg-6 col-lg-6 d-flex justify-content-end py-2">
                 <ul class="nav d-flex justify-content-end list-unstyled links">
                     @foreach ($social_media as $row)
                     <li class="ms-3">
-                        <a href="{{ $row->link }}">
+                        <a href="{{ $row->link }}" target="_blank">
                             <i class="fa {{ $row->icon }} display-6"></i>
                         </a>
                     </li>
@@ -37,7 +37,7 @@
         </div>
         @else
         <div class="d-flex justify-content-center py-2">
-            <p class="copyright my-auto"></p>
+            <p class="copyright fs-6 my-auto"></p>
         </div>
         @endif
     </div>

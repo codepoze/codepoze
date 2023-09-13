@@ -58,16 +58,23 @@ class ProductsController extends Controller
             'product' => $product
         ];
 
-        return Template::pages('Product', 'product', 'type', $data);
+        return Template::pages(__('menu.product'), 'product', 'type', $data);
     }
 
     public function detail($slug, $id)
     {
         $data = [
             'type'    => Type::whereSingkatan($slug)->first(),
-            'product' => Product::with(['toProductStack.toStack', 'toProductPicture'])->whereIdProduct($id)->firstOrFail()
+            'product' => Product::with([
+                'toProductStack' => function ($query) {
+                    $query->orderBy('id_stack', 'asc');
+                },
+                'toProductPicture'
+            ])->whereIdProduct($id)->firstOrFail()
         ];
 
-        return Template::pages('Product', 'product', 'detail', $data);
+        // dd($data['product']);
+
+        return Template::pages(__('menu.product'), 'product', 'detail', $data);
     }
 }

@@ -61,7 +61,16 @@ class PriceController extends Controller
 
     public function show(Request $request)
     {
-        $response = Price::find(my_decrypt($request->id));
+        $data = Price::find(my_decrypt($request->id));
+
+        $response = [
+            'id_price'     => $data->id_price,
+            'jenis'        => $data->jenis,
+            'nilai_normal' => create_separator($data->nilai_normal),
+            'diskon'       => $data->diskon,
+            'nilai_diskon' => create_separator($data->nilai_diskon),
+            'by_users'     => $data->by_users,
+        ];
 
         return Response::json($response);
     }
@@ -97,9 +106,9 @@ class PriceController extends Controller
                 ],
                 [
                     'jenis'        => $request->jenis,
-                    'nilai_normal' => $request->nilai_normal,
+                    'nilai_normal' => remove_separator($request->nilai_normal),
                     'diskon'       => $request->diskon,
-                    'nilai_diskon' => $request->nilai_diskon,
+                    'nilai_diskon' => remove_separator($request->nilai_diskon),
                     'by_users'     => $this->session['id_users'],
                 ]
             );

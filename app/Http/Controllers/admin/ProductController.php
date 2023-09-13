@@ -64,7 +64,7 @@ class ProductController extends Controller
 
     public function get_data_dt()
     {
-        $data = Product::latest()->get();
+        $data = Product::latest('updated_at')->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
