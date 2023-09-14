@@ -39,7 +39,7 @@
                                 <h6 class="m-0" key="t-notifications"> Notifications </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="{{ route('admin.notification.notification', 'unread') }}" class="small" key="t-view-all"> View All</a>
+                                <a href="{{ route('admin.notification.index', 'unread') }}" class="small" key="t-view-all"> View All</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('admin.profil.profil') }}">
+                    <a class="dropdown-item" href="{{ route('admin.profil.index') }}">
                         <i class="bx bx-user font-size-16 align-middle me-1"></i><span>Profile</span>
                     </a>
                     <div class="dropdown-divider"></div>

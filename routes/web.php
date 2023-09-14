@@ -60,7 +60,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: profil
         Route::controller(ProfilController::class)->prefix('profil')->as('profil.')->group(function () {
-            Route::get('/', 'index')->name('profil');
+            Route::get('/', 'index')->name('index');
             Route::post('/save_picture', 'save_picture')->name('save_picture');
             Route::post('/save_account', 'save_account')->name('save_account');
             Route::post('/save_security', 'save_security')->name('save_security');
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: based
         Route::controller(BasedController::class)->prefix('based')->as('based.')->group(function () {
-            Route::get('/', 'index')->name('based');
+            Route::get('/', 'index')->name('index');
             Route::get('/get_all', 'get_all')->name('get_all');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/show', 'show')->name('show');
@@ -80,7 +80,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: stack
         Route::controller(StackController::class)->prefix('stack')->as('stack.')->group(function () {
-            Route::get('/', 'index')->name('stack');
+            Route::get('/', 'index')->name('index');
             Route::get('/get_all', 'get_all')->name('get_all');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/show', 'show')->name('show');
@@ -91,7 +91,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: type
         Route::controller(TypeController::class)->prefix('type')->as('type.')->group(function () {
-            Route::get('/', 'index')->name('type');
+            Route::get('/', 'index')->name('index');
             Route::get('/get_all', 'get_all')->name('get_all');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/show', 'show')->name('show');
@@ -102,7 +102,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: price
         Route::controller(PriceController::class)->prefix('price')->as('price.')->group(function () {
-            Route::get('/', 'index')->name('price');
+            Route::get('/', 'index')->name('index');
             Route::get('/get_all', 'get_all')->name('get_all');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/show', 'show')->name('show');
@@ -113,7 +113,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: social_media
         Route::controller(SocialMediaController::class)->prefix('social_media')->as('social_media.')->group(function () {
-            Route::get('/', 'index')->name('social_media');
+            Route::get('/', 'index')->name('index');
             Route::get('/get_all', 'get_all')->name('get_all');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/show', 'show')->name('show');
@@ -124,7 +124,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: product
         Route::controller(ProductController::class)->prefix('product')->as('product.')->group(function () {
-            Route::get('/', 'index')->name('product');
+            Route::get('/', 'index')->name('index');
             Route::get('/add', 'add')->name('add');
             Route::get('/upd/{id}', 'upd')->name('upd');
             Route::get('/det/{id}', 'det')->name('det');
@@ -141,7 +141,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: project
         Route::controller(ProjectController::class)->prefix('project')->as('project.')->group(function () {
-            Route::get('/', 'index')->name('project');
+            Route::get('/', 'index')->name('index');
             Route::get('/add', 'add')->name('add');
             Route::get('/upd/{id}', 'upd')->name('upd');
             Route::get('/det/{id}', 'det')->name('det');
@@ -158,7 +158,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: contact
         Route::controller(ContactController::class)->prefix('contact')->as('contact.')->group(function () {
-            Route::get('/', 'index')->name('contact');
+            Route::get('/', 'index')->name('index');
             Route::get('/det/{id}', 'det')->name('det');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/del', 'del')->name('del');
@@ -167,7 +167,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: testimony
         Route::controller(TestimonyController::class)->prefix('testimony')->as('testimony.')->group(function () {
-            Route::get('/', 'index')->name('testimony');
+            Route::get('/', 'index')->name('index');
             Route::get('/det/{id}', 'det')->name('det');
             Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
             Route::post('/posting', 'posting')->name('posting');
@@ -177,7 +177,7 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
 
         // begin:: notification
         Route::controller(NotificationController::class)->prefix('notification')->as('notification.')->group(function () {
-            Route::get('/{status}', 'index')->name('notification');
+            Route::get('/{status}', 'index')->name('index');
             Route::post('/load', 'load')->name('load');
             Route::post('/read', 'read')->name('read');
             Route::post('/read_all', 'read_all')->name('read_all');

@@ -17,11 +17,11 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link mb-2 {{ (Request::segment(3) === 'unread' ? 'active' : '') }}" href="{{ route('admin.notification.notification', 'unread') }}">
+                            <a class="nav-link mb-2 {{ (Request::segment(3) === 'unread' ? 'active' : '') }}" href="{{ route('admin.notification.index', 'unread') }}">
                                 <i class="fa fa-times"></i>&nbsp;
                                 Unread
                             </a>
-                            <a class="nav-link mb-2 {{ (Request::segment(3) === 'read' ? 'active' : '') }}" href="{{ route('admin.notification.notification', 'read') }}">
+                            <a class="nav-link mb-2 {{ (Request::segment(3) === 'read' ? 'active' : '') }}" href="{{ route('admin.notification.index', 'read') }}">
                                 <i class="fa fa-check"></i>&nbsp;
                                 Read
                             </a>

@@ -58,115 +58,115 @@ Breadcrumbs::for('admin.dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('admin.dashboard'));
 });
 
-Breadcrumbs::for('admin.profil.profil', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.profil.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Profil', route('admin.profil.profil'));
+    $trail->push('Profil', route('admin.profil.index'));
 });
 
-Breadcrumbs::for('admin.based.based', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.based.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Based', route('admin.based.based'));
+    $trail->push('Based', route('admin.based.index'));
 });
 
-Breadcrumbs::for('admin.stack.stack', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.stack.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Stack', route('admin.stack.stack'));
+    $trail->push('Stack', route('admin.stack.index'));
 });
 
-Breadcrumbs::for('admin.type.type', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.type.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Type', route('admin.type.type'));
+    $trail->push('Type', route('admin.type.index'));
 });
 
-Breadcrumbs::for('admin.price.price', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.price.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Price', route('admin.price.price'));
+    $trail->push('Price', route('admin.price.index'));
 });
 
-Breadcrumbs::for('admin.social_media.social_media', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.social_media.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Social Media', route('admin.social_media.social_media'));
+    $trail->push('Social Media', route('admin.social_media.index'));
 });
 
-Breadcrumbs::for('admin.product.product', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.product.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Product', route('admin.product.product'));
+    $trail->push('Product', route('admin.product.index'));
 });
 
 Breadcrumbs::for('admin.product.add', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.product.product');
+    $trail->parent('admin.product.index');
 
     $trail->push('Add', route('admin.product.add'));
 });
 
 Breadcrumbs::for('admin.product.upd', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.product.product');
+    $trail->parent('admin.product.index');
 
     $trail->push('Ubah', '#');
 });
 
 Breadcrumbs::for('admin.product.det', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.product.product');
+    $trail->parent('admin.product.index');
 
     $trail->push('Detail', '#');
 });
 
-Breadcrumbs::for('admin.project.project', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.project.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Project', route('admin.project.project'));
+    $trail->push('Project', route('admin.project.index'));
 });
 
 Breadcrumbs::for('admin.project.add', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.project.project');
+    $trail->parent('admin.project.index');
 
     $trail->push('Add', route('admin.project.add'));
 });
 
 Breadcrumbs::for('admin.project.upd', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.project.project');
+    $trail->parent('admin.project.index');
 
     $trail->push('Ubah', '#');
 });
 
 Breadcrumbs::for('admin.project.det', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.project.project');
+    $trail->parent('admin.project.index');
 
     $trail->push('Detail', '#');
 });
 
-Breadcrumbs::for('admin.contact.contact', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.contact.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Contact', route('admin.contact.contact'));
+    $trail->push('Contact', route('admin.contact.index'));
 });
 
 Breadcrumbs::for('admin.contact.det', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.contact.contact');
+    $trail->parent('admin.contact.index');
 
     $trail->push('Detail', '#');
 });
 
-Breadcrumbs::for('admin.testimony.testimony', function (BreadcrumbTrail $trail) {
+Breadcrumbs::for('admin.testimony.index', function (BreadcrumbTrail $trail) {
     $trail->parent('admin.dashboard');
 
-    $trail->push('Testimony', route('admin.testimony.testimony'));
+    $trail->push('Testimony', route('admin.testimony.index'));
 });
 
 Breadcrumbs::for('admin.testimony.det', function (BreadcrumbTrail $trail) {
-    $trail->parent('admin.testimony.testimony');
+    $trail->parent('admin.testimony.index');
 
     $trail->push('Detail', '#');
 });
 
-Breadcrumbs::for('admin.notification.notification', function ($trail) {
+Breadcrumbs::for('admin.notification.index', function ($trail) {
     $trail->parent('admin.dashboard');
 
     $trail->push('Notification');

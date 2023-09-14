@@ -17,25 +17,25 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('admin.based.based') }}">
+                            <a href="{{ route('admin.based.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Based</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.stack.stack') }}">
+                            <a href="{{ route('admin.stack.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Stack</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.type.type') }}">
+                            <a href="{{ route('admin.type.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Type</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.price.price') }}">
+                            <a href="{{ route('admin.price.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Price</span>
                             </a>
@@ -57,20 +57,20 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('admin.social_media.social_media') }}" class="waves-effect">
+                    <a href="{{ route('admin.social_media.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Social Media</span>
                     </a>
                 </li>
                 <li class="menu-title">Pustaka</li>
                 <li>
-                    <a href="{{ route('admin.product.product') }}" class="waves-effect">
+                    <a href="{{ route('admin.product.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Produk</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.project.project') }}" class="waves-effect">
+                    <a href="{{ route('admin.project.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Project</span>
                     </a>
@@ -82,13 +82,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.contact.contact') }}" class="waves-effect">
+                    <a href="{{ route('admin.contact.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Contact</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.testimony.testimony') }}" class="waves-effect">
+                    <a href="{{ route('admin.testimony.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Testimony</span>
                     </a>
