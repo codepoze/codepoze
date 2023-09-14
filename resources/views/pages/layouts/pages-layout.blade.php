@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <meta name="description" content="CodePoze">
-    <meta name="keywords" content="CodePoze">
-    <meta name="author" content="CodePoze">
-    <title>CodePoze | {{ $title }}</title>
+    <meta name="description" content="{{ config('app.name') }}">
+    <meta name="keywords" content="{{ config('app.name') }}">
+    <meta name="author" content="{{ config('app.name') }}">
+    <title>{{ config('app.name') }} | {{ $title }}</title>
 
     <!-- begin:: icon -->
     <link rel="apple-touch-icon" href="{{ asset_admin('images/icon/apple-touch-icon.png') }}" sizes="180x180" />
@@ -28,21 +28,21 @@
     <script type="text/javascript" src="{{ asset_admin('libs/jquery/jquery.min.js') }}"></script>
 
     <!-- begin:: css local -->
-    @yield('css')
+    @stack('css')
     <!-- end:: css local -->
 </head>
 
 <body>
     <!-- begin:: navbar -->
-    @include('pages.layouts.navbar')
+    <x-pages-navbar />
     <!-- end:: navbar -->
 
     <!-- begin:: body -->
-    @yield('content')
+    {{ $slot }}
     <!-- end:: body -->
 
     <!-- begin:: footer -->
-    @include('pages.layouts.footer')
+    <x-pages-footer />
     <!-- end:: footer -->
 
     <!-- begin:: js global -->
@@ -54,7 +54,7 @@
     <!-- end:: js global -->
 
     <!-- begin:: js local -->
-    @yield('js')
+    @stack('js')
     <!-- end:: js local -->
 </body>
 

@@ -23,9 +23,9 @@
                         <li>
                             <a class="dropdown-item" href="{{ route('products') }}">{{ __('menu.all') }}</a>
                         </li>
-                        @foreach ($products as $product)
+                        @foreach ($type as $row)
                         <li>
-                            <a class="dropdown-item" href="{{ route('products.type', $product->singkatan) }}">{{ $product->nama }}</a>
+                            <a class="dropdown-item" href="{{ route('products.type', $row->singkatan) }}">{{ $row->nama }}</a>
                         </li>
                         @endforeach
                     </ul>

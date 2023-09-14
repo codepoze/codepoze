@@ -1,23 +1,17 @@
-<!-- begin:: base -->
-@extends('admin/base')
-<!-- end:: base -->
+<x-admin-layout title="{{ $title }}">
+    <!-- begin:: css local -->
+    @push('css')
+    @endpush
+    <!-- end:: css local -->
 
-<!-- begin:: css local -->
-@section('css')
-@endsection
-<!-- end:: css local -->
-
-<!-- begin:: content -->
-@section('content')
-<div class="row">
-    <div class="col-lg-12">
-        <h2>Dashboard</h2>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Dashboard</h2>
+        </div>
     </div>
-</div>
-@endsection
-<!-- end:: content -->
 
-<!-- begin:: js local -->
-@section('js')
-@endsection
-<!-- end:: js local -->
+    <!-- begin:: js local -->
+    @push('js')
+    @endpush
+    <!-- end:: js local -->
+</x-admin-layout>
