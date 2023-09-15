@@ -56,7 +56,7 @@ class ProductController extends Controller
     public function det($id)
     {
         $data = [
-            'product' => Product::with(['toType', 'toBased', 'toPrice', 'toProductStack', 'toProductPicture'])->findOrFail(my_decrypt($id)),
+            'product' => Product::findOrFail(my_decrypt($id)),
         ];
 
         return Template::load($this->session['roles'], 'Detail Product', 'product', 'det', $data);

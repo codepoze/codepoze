@@ -20,6 +20,9 @@ class ProductStack extends Model
         'by_users',
     ];
 
+    // untuk relasi
+    protected  $with = ['toStack'];
+
     // untuk relasi ke tabel product
     public function toProduct()
     {

@@ -73,8 +73,6 @@ class ProductsController extends Controller
             ])->whereIdProduct($id)->firstOrFail()
         ];
 
-        // dd($data['product']);
-
         return Template::pages(__('menu.product'), 'product', 'detail', $data);
     }
 }

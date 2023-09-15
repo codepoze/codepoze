@@ -47,7 +47,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">Deskripsi</label>
                         <div class="col-md-9 my-auto">
-                            {{ $product->deskripsi }}
+                            {!! $product->deskripsi !!}
                         </div>
                     </div>
                     <div class="mb-3 row">
