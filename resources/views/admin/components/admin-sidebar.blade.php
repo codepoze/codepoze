@@ -3,7 +3,7 @@
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('admin.dashboard') }}" class="waves-effect">
+                    <a href="{{ route('admin.dashboard.index') }}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Dashboard</span>
                     </a>
@@ -91,6 +91,12 @@
                     <a href="{{ route('admin.testimony.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Testimony</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.visitor.index') }}" class="waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Visitor</span>
                     </a>
                 </li>
             </ul>

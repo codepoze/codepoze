@@ -133,7 +133,6 @@
             });
         }();
 
-
         let untukHapusData = function() {
             $(document).on('click', '#del', function() {
                 var ini = $(this);

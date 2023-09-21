@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\SocialMediaController;
 use App\Http\Controllers\admin\StackController;
 use App\Http\Controllers\admin\TestimonyController;
 use App\Http\Controllers\admin\TypeController;
+use App\Http\Controllers\admin\VisitorController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\pages\AboutController;
 use App\Http\Controllers\pages\ContactsController;
@@ -56,7 +57,11 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
     // begin:: admin
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::controller(DashboardController::class)->as('dashboard.')->group(function () {
+            Route::get('/', [DashboardController::class, 'index'])->name('index');
+            Route::get('/count_visitors', [DashboardController::class, 'count_visitors'])->name('count_visitors');
+            Route::get('/count_visitors_loc', [DashboardController::class, 'count_visitors_loc'])->name('count_visitors_loc');
+        });
 
         // begin:: profil
         Route::controller(ProfilController::class)->prefix('profil')->as('profil.')->group(function () {
@@ -174,6 +179,13 @@ Route::group(['middleware' => ['session.auth', 'prevent.back.history']], functio
             Route::post('/del', 'del')->name('del');
         });
         // end:: testimony
+
+        // begin:: visitor
+        Route::controller(VisitorController::class)->prefix('visitor')->as('visitor.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/get_data_dt', 'get_data_dt')->name('get_data_dt');
+        });
+        // end:: visitor
 
         // begin:: notification
         Route::controller(NotificationController::class)->prefix('notification')->as('notification.')->group(function () {

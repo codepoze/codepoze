@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <div class="navbar-brand-box">
-                <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
+                <a href="{{ route('admin.dashboard.index') }}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset_admin('images/codepoze-dark.png') }}" alt="CodePoze Logo" height="50">
                     </span>
@@ -11,7 +11,7 @@
                     </span>
                 </a>
 
-                <a href="{{ route('admin.dashboard') }}" class="logo logo-light">
+                <a href="{{ route('admin.dashboard.index') }}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ asset_admin('images/codepoze-light.png') }}" alt="CodePoze Logo" height="50">
                     </span>
