@@ -19,6 +19,10 @@ return [
     'label_4'     => "Message",
     'input_4'     => "Enter message",
     'validasi_4'  => "The Message field is required!",
+    'label_5'     => "Publish your testimonials?",
+    'input_51'    => "I agree",
+    'input_52'    => "Don't agree",
+    'validasi_5'  => "The Status field is required!",
     'button'      => "Submit",
     'loading'     => "Waiting...",
 

@@ -55,6 +55,20 @@
                             <textarea class="form-control form-control-sm" name="message" id="message" placeholder="{{ __('testimonies.input_4') }}"></textarea>
                             <span class="invalid-feedback"></span>
                         </div>
+                        <div class="mb-3 field-input">
+                            <label class="form-label">{{ __('testimonies.label_5') }}&nbsp;*</label>
+                            <br />
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="yes" value="1">
+                                <label class="form-check-label" for="yes">{{ __('testimonies.input_51') }}</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="no" value="0">
+                                <label class="form-check-label" for="no">{{ __('testimonies.input_52') }}</label>
+                            </div>
+                            <input type="radio" name="status" id="status" style="display: none;">
+                            <span class="invalid-feedback"></span>
+                        </div>
                         <div class="d-grid gap-2">
                             <button type="submit" id="submit" class="btn btn-primary">{{ __('testimonies.button') }}</button>
                         </div>
@@ -103,6 +117,8 @@
                                     if (($('#' + key).prop('tagName') === 'INPUT' || $('#' + key).prop('tagName') === 'TEXTAREA')) {
                                         $('#' + key).addClass('is-invalid');
                                         $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
+                                    } else if ($('#' + key).prop("checked") !== true) {
+                                        $('#' + key).parents('.field-input').find('.invalid-feedback').html(value);
                                     }
                                 }
                             });
@@ -142,6 +158,16 @@
                     $(this).removeClass('is-valid').addClass('is-invalid');
                 } else {
                     $(this).removeClass('is-invalid').addClass('is-valid');
+                }
+            });
+
+            $(document).on('change', '#form-testimonies input[type=radio]', function(e) {
+                e.preventDefault();
+
+                if ($(this).val() == '') {
+                    $('#status').removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $('#status').removeClass('is-invalid').addClass('is-valid');
                 }
             });
         }();

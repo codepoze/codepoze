@@ -18,13 +18,14 @@ class TestimoniesController extends Controller
     }
 
     public function save(Request $request)
-    {
+    {        
         $rules = [
             'first_name' => 'required',
             'last_name'  => 'required',
             'email'      => 'required|email',
             'phone'      => 'required|numeric|digits_between:10,13',
             'message'    => 'required',
+            'status'     => 'required',
         ];
 
         $messages = [
@@ -36,6 +37,7 @@ class TestimoniesController extends Controller
             'phone.numeric'        => __('testimonies.validasi_32'),
             'phone.digits_between' => __('testimonies.validasi_33'),
             'message.required'     => __('testimonies.validasi_4'),
+            'status.required'      => __('testimonies.validasi_5')
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -53,7 +55,7 @@ class TestimoniesController extends Controller
                 'email'      => $request->email,
                 'phone'      => $request->phone,
                 'message'    => $request->message,
-                'status'     => '0',
+                'status'     => $request->status,
             ])->id_testimonies;
 
             Notification::send($id, 'admin.testimony.det', 'Ada testimoni baru dari ' . $request->first_name . ' ' . $request->last_name);
