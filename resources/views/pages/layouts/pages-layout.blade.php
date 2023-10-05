@@ -27,6 +27,20 @@
 
     <script type="text/javascript" src="{{ asset_admin('libs/jquery/jquery.min.js') }}"></script>
 
+    <!-- begin:: google analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYHV0TEJRX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SYHV0TEJRX');
+    </script>
+    <!-- end:: google analytics -->
+
     <!-- begin:: css local -->
     @stack('css')
     <!-- end:: css local -->
