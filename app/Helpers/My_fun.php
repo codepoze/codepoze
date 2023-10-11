@@ -339,3 +339,10 @@ if (!function_exists('paginate')) {
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
     }
 }
+
+if (!function_exists('read_more')) {
+    function read_more($text)
+    {
+        return substr_replace($text, "...", 50);
+    }
+}

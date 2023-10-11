@@ -39,6 +39,9 @@ class TestimonyController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('message', function ($row) {
+                return read_more($row->message);
+            })
             ->addColumn('posting', function ($row) {
                 $status = ($row->status == '1') ? '<i class="fa fa-check"></i>&nbsp;<span>Aktif</span>' : '<i class="fa fa-times"></i>&nbsp;<span>Tidak Aktif</span>';
                 $button = ($row->status == '1') ? 'btn-success' : 'btn-warning';
