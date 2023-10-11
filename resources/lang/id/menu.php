@@ -2,7 +2,7 @@
 
 return [
     'home'      => 'Beranda',
-    'about'     => 'Tentang Kami',
+    'about'     => 'Tentang Kamii',
     'contact'   => 'Hubungi Kami',
     'sop'       => 'Kebijakan Layanan',
     'product'   => 'Produk',
