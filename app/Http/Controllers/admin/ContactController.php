@@ -38,6 +38,9 @@ class ContactController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('pesan', function ($row) {
+                return read_more($row->pesan);
+            })
             ->addColumn('action', function ($row) {
                 return '
                     <a href="' . route('admin.contact.det', my_encrypt($row->id_contact)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
