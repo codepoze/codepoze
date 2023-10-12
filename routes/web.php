@@ -30,6 +30,7 @@ Route::get('/lang/{locale}', function () {
 Route::group(['middleware' => ['guest', 'set.locale']], function () {
     // begin:: no auth
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('/visitor', [HomeController::class, 'visitor'])->name('visitor');
     Route::get('/about', [AboutController::class, 'index'])->name('about');
     Route::get('/sop', [SopController::class, 'index'])->name('sop');
     Route::controller(ContactsController::class)->prefix('contact')->group(function () {

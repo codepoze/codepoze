@@ -184,6 +184,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+            $.post("{{ route('visitor') }}", function(response) {
+                log(response);
+            }, 'json');
+        });
+
         particlesJS("particles-js", {
             particles: {
                 number: {
