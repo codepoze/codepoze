@@ -7,6 +7,7 @@ use App\Libraries\Template;
 use App\Models\Product;
 use App\Models\Testimony;
 use App\Models\Visitors;
+use Illuminate\Support\Facades\Response;
 
 class HomeController extends Controller
 {
