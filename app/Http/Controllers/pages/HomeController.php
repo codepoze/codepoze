@@ -33,7 +33,7 @@ class HomeController extends Controller
     {
         $ip = get_visitor_IP();
 
-        $curl_ip = curl_init('https://ipinfo.io/' . $ip . '/json?token=' . env('IPINFO_TOKEN'));
+        $curl_ip = curl_init('https://ipinfo.io/' . $ip . '/json?token=' . env('IPINFO_KEY'));
         curl_setopt($curl_ip, CURLOPT_RETURNTRANSFER, TRUE);
         $res_ip  = curl_exec($curl_ip);
         $info_ip = json_decode($res_ip, true);
