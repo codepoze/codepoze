@@ -35,8 +35,8 @@ Route::group(
         Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
         Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
-            Route::controller(DashboardController::class)->as('dashboard.')->group(function () {
-                Route::get('/dashboard', [DashboardController::class, 'index'])->name('index');
+            Route::controller(DashboardController::class)->prefix('dashboard')->as('dashboard.')->group(function () {
+                Route::get('/', [DashboardController::class, 'index'])->name('index');
                 Route::get('/count_visitors', [DashboardController::class, 'count_visitors'])->name('count_visitors');
                 Route::get('/count_visitors_loc', [DashboardController::class, 'count_visitors_loc'])->name('count_visitors_loc');
             });
