@@ -29,6 +29,9 @@ class VisitorController extends Controller
 
         return DataTables::of($data)
             ->addIndexColumn()
+            ->addColumn('created_at', function ($row) {
+                return sql_datetime($row->created_at);
+            })
             ->make(true);
     }
 }

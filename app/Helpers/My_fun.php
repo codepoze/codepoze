@@ -102,6 +102,13 @@ if (!function_exists('sql_date')) {
     }
 }
 
+if (!function_exists('sql_datetime')) {
+    function sql_datetime($date)
+    {
+        return date("Y-m-d H:i:s", strtotime($date));
+    }
+}
+
 if (!function_exists('get_bulan')) {
     function get_bulan($bln)
     {
