@@ -27,31 +27,17 @@ Route::get('/lang/{locale}', function () {
     return redirect()->back();
 })->name('lang');
 
-// Route::domain('admin.' . env('APP_URL'))->group(function () {
-//     Route::get('posts', function () {
-//         return 'Second subdomain landing page';
-//     });
-//     Route::get('post/{id}', function ($id) {
-//         return 'Post ' . $id . ' in second subdomain';
-//     });
-// });
-
-// Route::domain()->group(function () {
-//     Route::get('/', function () {
-//         return 'First sub domain';
-//     });
-// });
-
 Route::group([
     'domain' => 'admin.' . config('app.short_url')
 ], function () {
     Route::get('/', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
 // Route::group(['middleware' => ['guest', 'set.locale']], function () {
 //     // begin:: no auth
-//     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 //     Route::post('/visitor', [HomeController::class, 'visitor'])->name('visitor');
 //     Route::get('/about', [AboutController::class, 'index'])->name('about');
 //     Route::get('/sop', [SopController::class, 'index'])->name('sop');
@@ -69,13 +55,7 @@ Route::group([
 //         Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
 //     });
 //     // end:: no auth
-
-//     // begin:: auth
-//     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-//     Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
-//     // end:: auth
 // });
-// Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 // Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
 //     // begin:: admin
