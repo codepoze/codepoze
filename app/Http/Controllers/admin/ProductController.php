@@ -216,7 +216,7 @@ class ProductController extends Controller
                 $pictures = $request->product_picture;
                 if ($pictures !== null) {
                     for ($i = 0; $i < count($pictures); $i++) {
-                        $nama_foto[$i] = add_picture($request->picture[$i]);
+                        $nama_foto[$i] = add_picture($request->product_picture[$i]);
 
                         $product_picture[] = [
                             'id_product' => $product->id_product,
