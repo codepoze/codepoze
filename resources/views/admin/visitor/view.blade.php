@@ -39,7 +39,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.visitor.get_data_dt') }}",
+                ajax: "{{ route('visitor.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',

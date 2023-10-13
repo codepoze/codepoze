@@ -29,7 +29,7 @@
                             <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
                                 <!-- begin:: foto -->
                                 <div class="tab-pane fade show active" id="v-pills-foto" role="tabpanel" aria-labelledby="v-pills-foto-tab">
-                                    <form id="form-foto" action="{{ route('admin.profil.save_picture') }}" method="POST">
+                                    <form id="form-foto" action="{{ route('profil.save_picture') }}" method="POST">
                                         <div class="row">
                                             <div class="col-lg-6 align-self-center">
                                                 <div class="field-input">
@@ -50,7 +50,7 @@
                                 <!-- end:: foto -->
                                 <!-- begin:: akun -->
                                 <div class="tab-pane fade" id="v-pills-akun" role="tabpanel" aria-labelledby="v-pills-akun-tab">
-                                    <form id="form-akun" action="{{ route('admin.profil.save_account') }}" method="POST">
+                                    <form id="form-akun" action="{{ route('profil.save_account') }}" method="POST">
                                         <div class="mb-3 row field-input">
                                             <label for="i_nama" class="col-sm-3 col-form-label">Nama&nbsp;*</label>
                                             <div class="col-md-9 my-auto">
@@ -80,7 +80,7 @@
                                 <!-- end:: akun -->
                                 <!-- begin:: keamanan -->
                                 <div class="tab-pane fade" id="v-pills-keamanan" role="tabpanel" aria-labelledby="v-pills-keamanan-tab">
-                                    <form id="form-keamanan" action="{{ route('admin.profil.save_security') }}" method="POST">
+                                    <form id="form-keamanan" action="{{ route('profil.save_security') }}" method="POST">
                                         <div class="mb-3 row field-input">
                                             <label for="i_pass_lama" class="col-sm-3 col-form-label">Password Lama&nbsp;*</label>
                                             <div class="col-md-9 my-auto">

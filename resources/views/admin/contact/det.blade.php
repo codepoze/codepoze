@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end">
-                        <a href="{{ route('admin.contact.index') }}" id="back" class="btn btn-primary btn-sm">
+                        <a href="{{ route('contact.index') }}" id="back" class="btn btn-primary btn-sm">
                             <i class="fa fa-arrow-left"></i>&nbsp;Back
                         </a>
                     </div>

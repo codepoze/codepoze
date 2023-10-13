@@ -13,7 +13,7 @@
                     <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
                 </div>
                 <div class="card-body">
-                    <form id="form-add-upd" class="form" action="{{ route('admin.project.save') }}" method="POST" enctype="multipart/form-data">
+                    <form id="form-add-upd" class="form" action="{{ route('project.save') }}" method="POST" enctype="multipart/form-data">
                         <!-- begin:: id -->
                         <input type="hidden" name="id_project" id="id_project" value="{{ $project->id_project }}" />
                         <!-- end:: id -->
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="hstack gap-2 justify-content-end">
-                            <a href="{{ route('admin.project.index') }}" id="cancel" class="btn btn-warning btn-sm">
+                            <a href="{{ route('project.index') }}" id="cancel" class="btn btn-warning btn-sm">
                                 <i class="fa fa-times"></i>&nbsp;Batal
                             </a>
                             <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Simpan</button>
@@ -103,7 +103,7 @@
         let StackChoice;
 
         let untukMultipleSelectStack = function() {
-            $.get("{{ route('admin.stack.get_all') }}", function(response) {
+            $.get("{{ route('stack.get_all') }}", function(response) {
                 StackChoice = new Choices('#project_stack', {
                     removeItemButton: true,
                     removeItems: true,
@@ -112,7 +112,7 @@
                 });
             }, 'json');
 
-            $.get("{{ route('admin.project.get_stack_detail', $project->id_project) }}", function(response) {
+            $.get("{{ route('project.get_stack_detail', $project->id_project) }}", function(response) {
                 StackChoice.setChoiceByValue(response);
             }, 'json');
         }();
@@ -153,7 +153,7 @@
                                 },
                                 buttonsStyling: false,
                             }).then((value) => {
-                                location.href = "{{ route('admin.project.index') }}";
+                                location.href = "{{ route('project.index') }}";
                             });
                         } else {
                             $.each(response.errors, function(key, value) {
@@ -243,7 +243,7 @@
         }();
 
         let untukDetailGambar = function() {
-            $.get("{{ route('admin.project.get_picture_detail', $project->id_project) }}", function(response) {
+            $.get("{{ route('project.get_picture_detail', $project->id_project) }}", function(response) {
                 $.each(response, function(i, item) {
                     var checkGambar = (item.picture === null ? '//placehold.co/150' : `{{ asset_upload('picture/` + item.picture + `') }}`);
                     var html = `<div class="col-lg-3 pt-3 pb-3"><button type="button" data-id="` + item.id_project_picture + `" class="btn btn-danger btn-delete mb-1"><span>&times;</span></button><img class="img-fluid" src="` + checkGambar + `"></div>`;
@@ -290,7 +290,7 @@
 
                 $.ajax({
                     type: "post",
-                    url: "{{ route('admin.project.del_picture_detail') }}",
+                    url: "{{ route('project.del_picture_detail') }}",
                     dataType: 'json',
                     data: {
                         id: ini.data('id'),

@@ -39,7 +39,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.testimony.get_data_dt') }}",
+                ajax: "{{ route('testimony.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',
@@ -104,7 +104,7 @@
                 }).then(function(result) {
                     $.ajax({
                         type: "post",
-                        url: "{{ route('admin.testimony.posting') }}",
+                        url: "{{ route('testimony.posting') }}",
                         dataType: 'json',
                         data: {
                             id: ini.data('id'),
@@ -151,7 +151,7 @@
                     if (del.isConfirmed) {
                         $.ajax({
                             type: "post",
-                            url: "{{ route('admin.testimony.del') }}",
+                            url: "{{ route('testimony.del') }}",
                             dataType: 'json',
                             data: {
                                 id: ini.data('id'),

@@ -99,11 +99,11 @@
 
     <script>
         am5.ready(function() {
-            $.get("{{ route('admin.dashboard.count_visitors') }}", function(response) {
+            $.get("{{ route('dashboard.count_visitors') }}", function(response) {
                 chartCountVisitors(response);
             });
 
-            $.get("{{ route('admin.dashboard.count_visitors_loc') }}", function(response) {
+            $.get("{{ route('dashboard.count_visitors_loc') }}", function(response) {
                 chartCountVisitorsLoc(response);
             });
         });

@@ -3,7 +3,7 @@
         <div id="sidebar-menu">
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li>
-                    <a href="{{ route('admin.dashboard.index') }}" class="waves-effect">
+                    <a href="{{ route('dashboard.index') }}" class="waves-effect">
                         <i class="bx bx-home-circle"></i>
                         <span>Dashboard</span>
                     </a>
@@ -17,25 +17,25 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('admin.based.index') }}">
+                            <a href="{{ route('based.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Based</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.stack.index') }}">
+                            <a href="{{ route('stack.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Stack</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.type.index') }}">
+                            <a href="{{ route('type.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Type</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('admin.price.index') }}">
+                            <a href="{{ route('price.index') }}">
                                 <i class="bx bx-box"></i>
                                 <span>Price</span>
                             </a>
@@ -57,20 +57,20 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('admin.social_media.index') }}" class="waves-effect">
+                    <a href="{{ route('social_media.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Social Media</span>
                     </a>
                 </li>
                 <li class="menu-title">Pustaka</li>
                 <li>
-                    <a href="{{ route('admin.product.index') }}" class="waves-effect">
+                    <a href="{{ route('product.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Produk</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.project.index') }}" class="waves-effect">
+                    <a href="{{ route('project.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Project</span>
                     </a>
@@ -82,19 +82,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.contact.index') }}" class="waves-effect">
+                    <a href="{{ route('contact.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Contact</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.testimony.index') }}" class="waves-effect">
+                    <a href="{{ route('testimony.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Testimony</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.visitor.index') }}" class="waves-effect">
+                    <a href="{{ route('visitor.index') }}" class="waves-effect">
                         <i class="bx bx-box"></i>
                         <span>Visitor</span>
                     </a>

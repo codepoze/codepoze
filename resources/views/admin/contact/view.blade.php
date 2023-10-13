@@ -39,7 +39,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.contact.get_data_dt') }}",
+                ajax: "{{ route('contact.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',
@@ -95,7 +95,7 @@
                     if (del.isConfirmed) {
                         $.ajax({
                             type: "post",
-                            url: "{{ route('admin.contact.del') }}",
+                            url: "{{ route('contact.del') }}",
                             dataType: 'json',
                             data: {
                                 id: ini.data('id'),

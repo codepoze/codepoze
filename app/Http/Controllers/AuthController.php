@@ -69,7 +69,7 @@ class AuthController extends Controller
             if ($users->roles === 'admin') {
                 $response = [
                     'status' => 'success',
-                    'url'    => url('/admin')
+                    'url'    => url('/dashboard')
                 ];
             } else {
                 $response = [

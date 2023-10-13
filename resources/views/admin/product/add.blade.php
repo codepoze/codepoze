@@ -13,7 +13,7 @@
                     <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
                 </div>
                 <div class="card-body">
-                    <form id="form-add-upd" class="form" action="{{ route('admin.product.save') }}" method="POST" enctype="multipart/form-data">
+                    <form id="form-add-upd" class="form" action="{{ route('product.save') }}" method="POST" enctype="multipart/form-data">
                         <!-- begin:: id -->
                         <input type="hidden" name="id_product" id="id_product" />
                         <!-- end:: id -->
@@ -114,7 +114,7 @@
                             </div>
                         </div>
                         <div class="hstack gap-2 justify-content-end">
-                            <a href="{{ route('admin.product.index') }}" id="cancel" class="btn btn-warning btn-sm">
+                            <a href="{{ route('product.index') }}" id="cancel" class="btn btn-warning btn-sm">
                                 <i class="fa fa-times"></i>&nbsp;Batal
                             </a>
                             <button type="submit" id="save" class="btn btn-success btn-sm"><i class="fa fa-save"></i>&nbsp;Simpan</button>
@@ -138,7 +138,7 @@
         });
 
         let untukMultipleSelectStack = function() {
-            $.get("{{ route('admin.stack.get_all') }}", function(response) {
+            $.get("{{ route('stack.get_all') }}", function(response) {
                 new Choices('#product_stack', {
                     removeItemButton: true,
                     removeItems: true,
@@ -182,7 +182,7 @@
                                 },
                                 buttonsStyling: false,
                             }).then((value) => {
-                                location.href = "{{ route('admin.product.index') }}";
+                                location.href = "{{ route('product.index') }}";
                             });
                         } else {
                             $.each(response.errors, function(key, value) {

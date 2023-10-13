@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end">
-                        <a href="{{ route('admin.testimony.index') }}" id="back" class="btn btn-primary btn-sm">
+                        <a href="{{ route('testimony.index') }}" id="back" class="btn btn-primary btn-sm">
                             <i class="fa fa-arrow-left"></i>&nbsp;Back
                         </a>
                     </div>

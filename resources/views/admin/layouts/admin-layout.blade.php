@@ -122,7 +122,7 @@
         function load_notification() {
             $.ajax({
                 type: 'POST',
-                url: '{{ route("admin.notification.load") }}',
+                url: '{{ route("notification.load") }}',
                 dataType: 'json',
                 success: function(response) {
                     if (response.count > 0) {
@@ -165,7 +165,7 @@
             var url = ini.data('url');
             var id = ini.data('id');
 
-            $.post('{{ route("admin.notification.read") }}', {
+            $.post('{{ route("notification.read") }}', {
                 id: ini.data('id')
             });
 

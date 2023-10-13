@@ -12,11 +12,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'unread' ? 'active' : '') }}" href="{{ route('admin.notification.index', 'unread') }}">
+                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'unread' ? 'active' : '') }}" href="{{ route('notification.index', 'unread') }}">
                                     <i class="fa fa-times"></i>&nbsp;
                                     Unread
                                 </a>
-                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'read' ? 'active' : '') }}" href="{{ route('admin.notification.index', 'read') }}">
+                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'read' ? 'active' : '') }}" href="{{ route('notification.index', 'read') }}">
                                     <i class="fa fa-check"></i>&nbsp;
                                     Read
                                 </a>
@@ -184,7 +184,7 @@
 
                 if (id.length > 0) {
                     $.ajax({
-                        url: "{{ route('admin.notification.read_all') }}",
+                        url: "{{ route('notification.read_all') }}",
                         method: "POST",
                         data: {
                             id: id,
@@ -227,7 +227,7 @@
 
                 if (id.length > 0) {
                     $.ajax({
-                        url: "{{ route('admin.notification.delete_all') }}",
+                        url: "{{ route('notification.delete_all') }}",
                         method: "POST",
                         data: {
                             id: id,

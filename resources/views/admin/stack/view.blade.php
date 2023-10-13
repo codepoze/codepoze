@@ -32,7 +32,7 @@
                     <h5 class="modal-title"><span id="judul-add-upd"></span> {{ $title }}</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="form-add-upd" action="{{ route('admin.stack.save') }}" method="POST">
+                    <form id="form-add-upd" action="{{ route('stack.save') }}" method="POST">
                         <!-- begin:: id -->
                         <input type="hidden" name="id_stack" id="id_stack" />
                         <!-- end:: id -->
@@ -91,7 +91,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.stack.get_data_dt') }}",
+                ajax: "{{ route('stack.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',
@@ -214,7 +214,7 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: "{{ route('admin.stack.show') }}",
+                    url: "{{ route('stack.show') }}",
                     data: {
                         id: ini.data('id')
                     },
@@ -268,7 +268,7 @@
                     if (del.isConfirmed) {
                         $.ajax({
                             type: "post",
-                            url: "{{ route('admin.stack.del') }}",
+                            url: "{{ route('stack.del') }}",
                             dataType: 'json',
                             data: {
                                 id: ini.data('id'),

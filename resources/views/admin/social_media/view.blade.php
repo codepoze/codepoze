@@ -32,7 +32,7 @@
                     <h5 class="modal-title"><span id="judul-add-upd"></span> {{ $title }}</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="form-add-upd" action="{{ route('admin.social_media.save') }}" method="POST">
+                    <form id="form-add-upd" action="{{ route('social_media.save') }}" method="POST">
                         <!-- begin:: id -->
                         <input type="hidden" name="id_social_media" id="id_social_media" />
                         <!-- end:: id -->
@@ -97,7 +97,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.social_media.get_data_dt') }}",
+                ajax: "{{ route('social_media.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',
@@ -225,7 +225,7 @@
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
-                    url: "{{ route('admin.social_media.show') }}",
+                    url: "{{ route('social_media.show') }}",
                     data: {
                         id: ini.data('id')
                     },
@@ -279,7 +279,7 @@
                     if (del.isConfirmed) {
                         $.ajax({
                             type: "post",
-                            url: "{{ route('admin.social_media.del') }}",
+                            url: "{{ route('social_media.del') }}",
                             dataType: 'json',
                             data: {
                                 id: ini.data('id'),

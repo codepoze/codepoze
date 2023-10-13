@@ -12,7 +12,7 @@
                 <div class="card-header bg-transparent border-bottom align-items-center d-flex">
                     <h4 class="card-title mb-0 flex-grow-1">{{ $title }}</h4>
                     <div class="flex-shrink-0">
-                        <a href="{{ route('admin.product.add') }}" id="add" class="btn btn-secondary btn-sm">
+                        <a href="{{ route('product.add') }}" id="add" class="btn btn-secondary btn-sm">
                             <i class="fa fa-plus"></i>&nbsp;Tambah
                         </a>
                     </div>
@@ -44,7 +44,7 @@
                     emptyTable: "Tak ada data yang tersedia pada tabel ini.",
                     processing: "Data sedang diproses...",
                 },
-                ajax: "{{ route('admin.product.get_data_dt') }}",
+                ajax: "{{ route('product.get_data_dt') }}",
                 columns: [{
                         title: 'No.',
                         data: 'DT_RowIndex',
@@ -105,7 +105,7 @@
                     if (del.isConfirmed) {
                         $.ajax({
                             type: "post",
-                            url: "{{ route('admin.product.del') }}",
+                            url: "{{ route('product.del') }}",
                             dataType: 'json',
                             data: {
                                 id: ini.data('id'),

@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <div class="navbar-brand-box">
-                <a href="{{ route('admin.dashboard.index') }}" class="logo logo-dark">
+                <a href="{{ route('dashboard.index') }}" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="{{ asset_admin('images/codepoze-dark.png') }}" alt="CodePoze Logo" height="50">
                     </span>
@@ -11,7 +11,7 @@
                     </span>
                 </a>
 
-                <a href="{{ route('admin.dashboard.index') }}" class="logo logo-light">
+                <a href="{{ route('dashboard.index') }}" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="{{ asset_admin('images/codepoze-light.png') }}" alt="CodePoze Logo" height="50">
                     </span>
@@ -39,7 +39,7 @@
                                 <h6 class="m-0" key="t-notifications"> Notifications </h6>
                             </div>
                             <div class="col-auto">
-                                <a href="{{ route('admin.notification.index', 'unread') }}" class="small" key="t-view-all"> View All</a>
+                                <a href="{{ route('notification.index', 'unread') }}" class="small" key="t-view-all"> View All</a>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                     </span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="{{ route('admin.profil.index') }}">
+                    <a class="dropdown-item" href="{{ route('profil.index') }}">
                         <i class="bx bx-user font-size-16 align-middle me-1"></i><span>Profile</span>
                     </a>
                     <div class="dropdown-divider"></div>
