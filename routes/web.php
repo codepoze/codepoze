@@ -28,7 +28,7 @@ Route::get('/lang/{locale}', function () {
 })->name('lang');
 
 Route::group(
-    ['domain' => 'admin.' . config('app.short_url')],
+    ['domain' => 'admin.' . env('APP_URL')],
     function () {
         Route::get('/', [AuthController::class, 'login'])->name('auth.login');
         Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
