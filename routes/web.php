@@ -45,21 +45,9 @@ Route::get('/lang/{locale}', function () {
 Route::group([
     'domain' => 'admin.' . config('app.short_url')
 ], function () {
-    Route::get('/', function () {
-        return 'First sub domain';
-    });
+    Route::get('/', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
 });
-
-
-// Route::get('/', function () {
-//     return 'First sub domain';
-// })->domain('admin.' . env('APP_URL'));
-
-
-// Route::group(['domain' => 'admin.domain.com'], function () {
-//     // admin.domain.com/admin
-//     Route::get('/admin', 'App\Http\Controllers\KuponaiController@patvirtinimokodas')->name('dashboard');
-// });
 
 // Route::group(['middleware' => ['guest', 'set.locale']], function () {
 //     // begin:: no auth
