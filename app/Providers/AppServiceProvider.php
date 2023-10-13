@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ($this->app->isProduction()) {
-            URL::forceScheme('https');
-        }
+        // if ($this->app->isProduction()) {
+        //     URL::forceScheme('https');
+        // }
         
         Model::preventLazyLoading(!$this->app->isProduction());
     }
