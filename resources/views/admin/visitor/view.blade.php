@@ -80,6 +80,11 @@
                         data: 'timezone',
                         class: 'text-center'
                     },
+                    {
+                        title: 'Created At',
+                        data: 'created_at',
+                        class: 'text-center'
+                    }
                 ],
             });
         }();
