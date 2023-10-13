@@ -27,6 +27,13 @@ Route::get('/lang/{locale}', function () {
     return redirect()->back();
 })->name('lang');
 
+Route::group(['domain' => 'admin.' . config('app.short_url')], function () {
+        Route::get('/', [AuthController::class, 'login'])->name('auth.login');
+        Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
+        Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    }
+);
+
 Route::group(['middleware' => ['guest', 'set.locale']], function () {
     // begin:: no auth
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -49,13 +56,7 @@ Route::group(['middleware' => ['guest', 'set.locale']], function () {
     // end:: no auth
 });
 
-Route::group([
-    'domain' => 'admin.' . config('app.short_url')
-], function () {
-    Route::get('/', [AuthController::class, 'login'])->name('auth.login');
-    Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-});
+
 
 
 
