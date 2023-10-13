@@ -36,11 +36,20 @@ Route::get('/lang/{locale}', function () {
 //     });
 // });
 
-Route::domain('admin.' . config('app.short_url'))->group(function () {
+// Route::domain()->group(function () {
+//     Route::get('/', function () {
+//         return 'First sub domain';
+//     });
+// });
+
+Route::group([
+    'domain' => 'admin.' . config('app.short_url')
+], function () {
     Route::get('/', function () {
         return 'First sub domain';
     });
 });
+
 
 // Route::get('/', function () {
 //     return 'First sub domain';
