@@ -27,6 +27,28 @@ Route::get('/lang/{locale}', function () {
     return redirect()->back();
 })->name('lang');
 
+Route::group(['middleware' => ['guest', 'set.locale']], function () {
+    // begin:: no auth
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::post('/visitor', [HomeController::class, 'visitor'])->name('visitor');
+    Route::get('/about', [AboutController::class, 'index'])->name('about');
+    Route::get('/sop', [SopController::class, 'index'])->name('sop');
+    Route::controller(ContactsController::class)->prefix('contact')->group(function () {
+        Route::get('/', 'index')->name('contact');
+        Route::post('/save', 'save')->name('contact.save');
+    });
+    Route::controller(TestimoniesController::class)->prefix('testimonies')->group(function () {
+        Route::get('/', 'index')->name('testimonies');
+        Route::post('/save', 'save')->name('testimonies.save');
+    });
+    Route::controller(ProductsController::class)->prefix('products')->group(function () {
+        Route::get('/', 'index')->name('products');
+        Route::get('/{slug}', 'type')->name('products.type');
+        Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
+    });
+    // end:: no auth
+});
+
 Route::group([
     'domain' => 'admin.' . config('app.short_url')
 ], function () {
@@ -35,27 +57,7 @@ Route::group([
     Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-// Route::group(['middleware' => ['guest', 'set.locale']], function () {
-//     // begin:: no auth
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-//     Route::post('/visitor', [HomeController::class, 'visitor'])->name('visitor');
-//     Route::get('/about', [AboutController::class, 'index'])->name('about');
-//     Route::get('/sop', [SopController::class, 'index'])->name('sop');
-//     Route::controller(ContactsController::class)->prefix('contact')->group(function () {
-//         Route::get('/', 'index')->name('contact');
-//         Route::post('/save', 'save')->name('contact.save');
-//     });
-//     Route::controller(TestimoniesController::class)->prefix('testimonies')->group(function () {
-//         Route::get('/', 'index')->name('testimonies');
-//         Route::post('/save', 'save')->name('testimonies.save');
-//     });
-//     Route::controller(ProductsController::class)->prefix('products')->group(function () {
-//         Route::get('/', 'index')->name('products');
-//         Route::get('/{slug}', 'type')->name('products.type');
-//         Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
-//     });
-//     // end:: no auth
-// });
+
 
 // Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
 //     // begin:: admin
