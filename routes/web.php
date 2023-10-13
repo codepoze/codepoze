@@ -27,6 +27,29 @@ Route::get('/lang/{locale}', function () {
     return redirect()->back();
 })->name('lang');
 
+// Route::domain('admin.' . env('APP_URL'))->group(function () {
+//     Route::get('posts', function () {
+//         return 'Second subdomain landing page';
+//     });
+//     Route::get('post/{id}', function ($id) {
+//         return 'Post ' . $id . ' in second subdomain';
+//     });
+// });
+
+Route::domain('admin.' . config('app.short_url'))->group(function () {
+    Route::get('posts', function () {
+        return 'Second subdomain landing page';
+    });
+    Route::get('post/{id}', function ($id) {
+        return 'Post ' . $id . ' in second subdomain';
+    });
+});
+
+// Route::group(['domain' => 'admin.domain.com'], function () {
+//     // admin.domain.com/admin
+//     Route::get('/admin', 'App\Http\Controllers\KuponaiController@patvirtinimokodas')->name('dashboard');
+// });
+
 Route::group(['middleware' => ['guest', 'set.locale']], function () {
     // begin:: no auth
     Route::get('/', [HomeController::class, 'index'])->name('home');
