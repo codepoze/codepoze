@@ -36,14 +36,19 @@ Route::get('/lang/{locale}', function () {
 //     });
 // });
 
-Route::domain('admin.' . config('app.short_url'))->group(function () {
-    Route::get('posts', function () {
-        return 'Second subdomain landing page';
-    });
-    Route::get('post/{id}', function ($id) {
-        return 'Post ' . $id . ' in second subdomain';
-    });
-});
+// Route::domain('admin.' . config('app.short_url'))->group(function () {
+//     Route::get('posts', function () {
+//         return 'Second subdomain landing page';
+//     });
+//     Route::get('post/{id}', function ($id) {
+//         return 'Post ' . $id . ' in second subdomain';
+//     });
+// });
+
+Route::get('/', function () {
+    return 'First sub domain';
+})->domain('admin.' . env('APP_URL'));
+
 
 // Route::group(['domain' => 'admin.domain.com'], function () {
 //     // admin.domain.com/admin
