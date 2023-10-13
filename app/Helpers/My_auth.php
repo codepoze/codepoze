@@ -8,7 +8,7 @@ if (!function_exists('checking_role_session')) {
         if ($has_roles) {
             $users = get_users_detail($session['id_users']);
             if ($users->roles !== $roles) {
-                return redirect()->away('/' . $users->roles)->send();
+                return redirect()->away('/dashboard')->send();
             }
         }
     }
