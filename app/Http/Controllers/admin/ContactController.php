@@ -43,7 +43,7 @@ class ContactController extends Controller
             })
             ->addColumn('action', function ($row) {
                 return '
-                    <a href="' . route('admin.contact.det', my_encrypt($row->id_contact)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
+                    <a href="' . route('contact.det', my_encrypt($row->id_contact)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
                     <button type="button" id="del" data-id="' . my_encrypt($row->id_contact) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
                 ';
             })

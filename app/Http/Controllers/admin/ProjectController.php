@@ -70,8 +70,8 @@ class ProjectController extends Controller
             })
             ->addColumn('action', function ($row) {
                 return '
-                    <a href="' . route('admin.project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
-                    <a href="' . route('admin.project.upd', my_encrypt($row->id_project)) . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Ubah</a>&nbsp;
+                    <a href="' . route('project.det', my_encrypt($row->id_project)) . '" class="btn btn-info btn-sm"><i class="fa fa-info-circle"></i>&nbsp;Detail</a>&nbsp;
+                    <a href="' . route('project.upd', my_encrypt($row->id_project)) . '" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i>&nbsp;Ubah</a>&nbsp;
                     <button type="button" id="del" data-id="' . my_encrypt($row->id_project) . '" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>&nbsp;Hapus</button>
                 ';
             })
