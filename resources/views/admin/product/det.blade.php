@@ -54,7 +54,7 @@
                         <label class="col-sm-3 col-form-label">Stacks</label>
                         <div class="col-md-9 my-auto">
                             <div class="row">
-                                @foreach($product->toproductStack as $row)
+                                @foreach($product->toProductStack as $row)
                                 <div class="col-lg-2 align-items-center text-center">
                                     <i class="devicon-{{ $row->toStack->icon }} colored" style="font-size: 35px;"></i>
                                     <br>
@@ -90,7 +90,7 @@
                         <label class="col-sm-3 col-form-label">Gambar</label>
                         <div class="col-md-9 my-auto">
                             <div class="row">
-                                @foreach($product->toproductPicture as $row)
+                                @foreach($product->toProductPicture as $row)
                                 <div class="col-lg-3 pt-3 pb-3">
                                     <img src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $row->judul }}" class="img-fluid" width="300" />
                                 </div>

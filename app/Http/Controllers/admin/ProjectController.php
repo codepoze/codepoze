@@ -50,7 +50,7 @@ class ProjectController extends Controller
     public function det($id)
     {
         $data = [
-            'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
+            'project' => Project::findOrFail(my_decrypt($id)),
         ];
 
         return Template::load($this->session['roles'], 'Detail Project', 'project', 'det', $data);

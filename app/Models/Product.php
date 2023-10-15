@@ -25,6 +25,7 @@ class Product extends Model
         'link_github',
         'by_users',
     ];
+    
     // untuk relasi
     protected  $with = ['toType', 'toBased', 'toPrice', 'toProductStack', 'toProductPicture'];
 

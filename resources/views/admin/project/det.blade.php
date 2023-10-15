@@ -27,7 +27,7 @@
                     <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">Deskripsi</label>
                         <div class="col-md-9 my-auto">
-                            <textarea class="form-control-plaintext" readonly>{{ $project->deskripsi }}</textarea>
+                            {{ $project->deskripsi }}
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -36,7 +36,7 @@
                             <div class="row">
                                 @foreach($project->toProjectStack as $row)
                                 <div class="col-lg-2 align-items-center text-center">
-                                    <i class="devicon-{{ $row->toStack->icon }}-plain colored" style="font-size: 35px;"></i>
+                                    <i class="devicon-{{ $row->toStack->icon }} colored" style="font-size: 35px;"></i>
                                     <br>
                                     {{ $row->toStack->nama }}
                                 </div>
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <div class="hstack gap-2 justify-content-end">
-                        <a href="{{ route('project.project') }}" id="back" class="btn btn-primary btn-sm">
+                        <a href="{{ route('project.index') }}" id="back" class="btn btn-primary btn-sm">
                             <i class="fa fa-arrow-left"></i>&nbsp;Back
                         </a>
                     </div>
@@ -78,7 +78,6 @@
 
     <!-- begin:: js local -->
     @push('js')
-
     @endpush
     <!-- end:: js local -->
 </x-admin-layout>

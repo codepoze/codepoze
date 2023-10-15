@@ -20,6 +20,9 @@ class ProjectStack extends Model
         'by_users',
     ];
 
+    // untuk relasi
+    protected  $with = ['toStack'];
+
     // untuk relasi ke project
     public function toProject()
     {

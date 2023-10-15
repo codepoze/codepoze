@@ -24,6 +24,9 @@ class Project extends Model
         'by_users',
     ];
 
+    // untuk relasi
+    protected $with = ['toBased', 'toProjectStack', 'toProjectPicture'];
+
     // untuk relasi ke based
     public function toBased()
     {
