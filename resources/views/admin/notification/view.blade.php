@@ -12,11 +12,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'unread' ? 'active' : '') }}" href="{{ route('notification.index', 'unread') }}">
+                                <a class="nav-link mb-2 {{ (Request::segment(2) === 'unread' ? 'active' : '') }}" href="{{ route('notification.index', 'unread') }}">
                                     <i class="fa fa-times"></i>&nbsp;
                                     Unread
                                 </a>
-                                <a class="nav-link mb-2 {{ (Request::segment(3) === 'read' ? 'active' : '') }}" href="{{ route('notification.index', 'read') }}">
+                                <a class="nav-link mb-2 {{ (Request::segment(2) === 'read' ? 'active' : '') }}" href="{{ route('notification.index', 'read') }}">
                                     <i class="fa fa-check"></i>&nbsp;
                                     Read
                                 </a>
@@ -25,7 +25,7 @@
                         <div class="col-md-9">
                             <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
                                 <!-- begin:: unread -->
-                                <div class="tab-pane fade {{ (Request::segment(3) === 'unread' ? 'show active' : '') }}" role="tabpanel" aria-labelledby="v-pills-foto-tab">
+                                <div class="tab-pane fade {{ (Request::segment(2) === 'unread' ? 'show active' : '') }}" role="tabpanel" aria-labelledby="v-pills-foto-tab">
                                     @if($notifikasi->count() > 0)
                                     <div class="d-flex justify-content-between py-2">
                                         <div class="d-flex">
@@ -63,7 +63,7 @@
                                 </div>
                                 <!-- end:: unread -->
                                 <!-- begin:: read -->
-                                <div class="tab-pane fade {{ (Request::segment(3) === 'read' ? 'show active' : '') }}" role="tabpanel" aria-labelledby="v-pills-akun-tab">
+                                <div class="tab-pane fade {{ (Request::segment(2) === 'read' ? 'show active' : '') }}" role="tabpanel" aria-labelledby="v-pills-akun-tab">
                                     @if($notifikasi->count() > 0)
                                     <div class="d-flex justify-content-between py-2">
                                         <div class="d-flex">
