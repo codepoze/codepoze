@@ -50,7 +50,7 @@ class ContactsController extends Controller
                 'pesan' => $request->pesan,
             ])->id_contact;
 
-            Notification::send($id, 'admin.contact.det', 'Ada kontak baru dari ' . $request->nama);
+            Notification::send($id, 'contact.det', 'Ada kontak baru dari ' . $request->nama);
 
             $response = ['title' => __('contact.success_title'), 'text' => __('contact.success_text'), 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {

@@ -58,7 +58,7 @@ class TestimoniesController extends Controller
                 'status'     => $request->status,
             ])->id_testimonies;
 
-            Notification::send($id, 'admin.testimony.det', 'Ada testimoni baru dari ' . $request->first_name . ' ' . $request->last_name);
+            Notification::send($id, 'testimony.det', 'Ada testimoni baru dari ' . $request->first_name . ' ' . $request->last_name);
 
             $response = ['title' => __('testimonies.success_title'), 'text' => __('testimonies.success_text'), 'type' => 'success', 'button' => 'Okay!', 'class' => 'success'];
         } catch (\Exception $e) {
