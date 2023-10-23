@@ -13,10 +13,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $product_paid = Product::without('toBased')->whereHas('toPrice', function ($query) {
+        $product_paid = Product::inRandomOrder()->without('toBased')->whereHas('toPrice', function ($query) {
             $query->whereJenis('paid');
         })->limit(4)->get();
-        $product_free = Product::without('toBased')->whereHas('toPrice', function ($query) {
+        $product_free = Product::inRandomOrder()->without('toBased')->whereHas('toPrice', function ($query) {
             $query->whereJenis('free');
         })->limit(4)->get();
         $testimony    = Testimony::inRandomOrder()->whereStatus('1')->limit(3)->get();
