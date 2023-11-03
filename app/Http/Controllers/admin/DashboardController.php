@@ -44,18 +44,30 @@ class DashboardController extends Controller
         return Template::load($this->session['roles'], 'Dashboard', 'dashboard', 'view', $data);
     }
 
-    public function count_visitors()
+    public function count_visitors_day()
     {
-        $visitors = Visitors::selectRaw('count(*) as total, DATE_FORMAT(created_at, "%m") as bulan')
-            ->whereYear('created_at', date('Y'))
-            ->groupBy('bulan')
-            ->get();
+        $dates = get_all_dates_in_month(date('Y'), date('m'));
 
-        $response = [];
-        foreach ($visitors as $key => $value) {
+        foreach ($dates as $key => $value) {
+            $visitors = Visitors::whereDate('created_at', $value)->count();
             $response[] = [
-                'key'   => $this->bulan[$value->bulan],
-                'value' => $value->total,
+                'key'   => $value,
+                'value' => $visitors,
+            ];
+        }
+
+        return Response::json($response);
+    }
+
+    public function count_visitors_mon()
+    {
+        $years = get_all_months_in_year(date('Y'));
+
+        foreach ($years as $key => $value) {
+            $visitors = Visitors::whereMonth('created_at', $key)->count();
+            $response[] = [
+                'key'   => $value,
+                'value' => $visitors,
             ];
         }
 

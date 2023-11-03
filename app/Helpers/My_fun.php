@@ -384,3 +384,35 @@ if (!function_exists('get_visitor_IP')) {
         return $_SERVER['REMOTE_ADDR'];
     }
 }
+
+if (!function_exists('get_all_dates_in_month')) {
+    function get_all_dates_in_month($year, $month)
+    {
+        $days_in_month = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        $dates = [];
+        for ($i = 1; $i <= $days_in_month; $i++) {
+            $dates[] = date('Y-m-d', strtotime($year . '-' . $month . '-' . $i));
+        }
+        return $dates;
+    }
+}
+
+if (!function_exists('get_all_months_in_year')) {
+    function get_all_months_in_year($year)
+    {
+        return array(
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember',
+        );
+    }
+}
