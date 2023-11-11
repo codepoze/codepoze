@@ -53,17 +53,22 @@
                         <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
                         <div class="card-body">
                             <div class="text-center">
-                                <h5 class="fw-bolder">{{ $row->judul }}</h5>
+                                <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">
+                                    <h5 class="fw-bolder">{{ $row->judul }}</h5>
+                                </a>
                                 @if ($row->toPrice->diskon === 'y')
                                 <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
                                 @else
                                 <span class="align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</span>
                                 @endif
                             </div>
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a class="btn btn-sm btn-primary mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
+                            <div class="row g-2 mt-3">
+                                <div class="col-6 text-muted text-start fs-6">
+                                    {{ tgl_inggris($row->created_at) }}
+                                </div>
+                                <div class="col-6 text-end fs-6">
+                                    <a href="{{ route('products.type', $row->toType->singkatan) }}">{{ strtoupper($row->toType->singkatan) }}</a>
+                                </div>
                             </div>
                         </div>
                     </div>

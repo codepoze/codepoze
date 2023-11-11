@@ -95,6 +95,21 @@ if (!function_exists('tgl_indo')) {
     }
 }
 
+if (!function_exists('tgl_inggris')) {
+    function tgl_inggris($tgl)
+    {
+        if ($tgl == "0000-00-00") {
+            return "-";
+        } else {
+            $tanggal = substr($tgl, 8, 2);
+            $bulan   = get_month(substr($tgl, 5, 2));
+            $tahun   = substr($tgl, 0, 4);
+
+            return $bulan . ' ' . $tanggal . ', ' . $tahun;
+        }
+    }
+}
+
 if (!function_exists('sql_date')) {
     function sql_date($date)
     {
@@ -148,6 +163,50 @@ if (!function_exists('get_bulan')) {
                 break;
             case 12:
                 return "Desember";
+                break;
+        }
+    }
+}
+
+if (!function_exists('get_month')) {
+    function get_month($bln)
+    {
+        switch ($bln) {
+            case 1:
+                return "Jan";
+                break;
+            case 2:
+                return "Feb";
+                break;
+            case 3:
+                return "Mar";
+                break;
+            case 4:
+                return "Apr";
+                break;
+            case 5:
+                return "Mei";
+                break;
+            case 6:
+                return "Jun";
+                break;
+            case 7:
+                return "Jul";
+                break;
+            case 8:
+                return "Agu";
+                break;
+            case 9:
+                return "Sep";
+                break;
+            case 10:
+                return "Okt";
+                break;
+            case 11:
+                return "Nov";
+                break;
+            case 12:
+                return "Des";
                 break;
         }
     }
