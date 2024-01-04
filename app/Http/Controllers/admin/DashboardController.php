@@ -64,7 +64,7 @@ class DashboardController extends Controller
         $years = get_all_months_in_year(date('Y'));
 
         foreach ($years as $key => $value) {
-            $visitors = Visitors::whereMonth('created_at', $key)->count();
+            $visitors = Visitors::whereMonth('created_at', $key)->whereYear('created_at', date('Y'))->count();
             $response[] = [
                 'key'   => $value,
                 'value' => $visitors,
