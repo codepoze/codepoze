@@ -11,6 +11,12 @@
     <meta name="author" content="{{ config('app.name') }}">
     <title>{{ config('app.name') }} | {{ $title }}</title>
 
+    <!-- begin:: font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- end:: font -->
+
     <!-- begin:: icon -->
     <link rel="apple-touch-icon" href="{{ asset_admin('images/icon/apple-touch-icon.png') }}" sizes="180x180" />
     <link rel="icon" href="{{ asset_admin('images/icon/favicon-32x32.png') }}" type="image/x-icon" sizes="32x32" />

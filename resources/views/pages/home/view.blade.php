@@ -33,6 +33,33 @@
             </div>
         </div>
     </header>
+
+    <section class="container py-5 mt-5">
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="p-3">
+                    <i class="fa fa-check-circle fs-1 text-primary"></i>
+                    <h3 class="h4 mt-3">Kualitas Terjamin</h3>
+                    <p class="text-muted">Semua produk dibuat oleh praktisi berpengalaman di bidangnya.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-3">
+                    <i class="fa fa-arrow-down fs-1 text-primary"></i>
+                    <h3 class="h4 mt-3">Akses Instan</h3>
+                    <p class="text-muted">Unduh dan akses produk digital Anda langsung setelah pembayaran.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="p-3">
+                    <i class="fa fa-life-ring fs-1 text-primary"></i>
+                    <h3 class="h4 mt-3">Dukungan Penuh</h3>
+                    <p class="text-muted">Tim kami siap membantu jika Anda mengalami kendala.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- begin:: product berbayar -->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
