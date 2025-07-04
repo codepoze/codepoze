@@ -1,7 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 bg-dark my-nav">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 my-nav background-overlay">
     <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="{{ asset_pages('images/logo.png') }}" alt="CodePoze" width="50" height="50" />
+            <h1 class="logo-text">
+                <span class="code">Code</span><span class="poze">Poze</span>
+            </h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

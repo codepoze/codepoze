@@ -22,7 +22,8 @@
     @endpush
     <!-- end:: css local -->
 
-    <header class="py-4 intro section-shaped bg-dark">
+    <!-- <header class="py-4 intro section-shaped hero-section"> -->
+    <header class="py-4 my-section background-overlay">
         <div class="page-header">
             <div id="particles-js"></div>
             <div class="container text-center text-white">

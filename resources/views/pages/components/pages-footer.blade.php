@@ -1,4 +1,4 @@
-<footer class="py-5 bg-dark my-foot">
+<footer class="py-5 my-foot background-overlay">
     <div class="container px-4 px-lg-5">
         <ul class="list-inline nav justify-content-center border-bottom pb-3 mb-3 links">
             <li class="list-inline-item">
