@@ -74,5 +74,6 @@ class Kernel extends HttpKernel
         'session.auth'         => \App\Http\Middleware\Auth::class,
         'prevent.back.history' => \App\Http\Middleware\PreventBackHistory::class,
         'set.locale'           => \App\Http\Middleware\SetLocale::class,
+        'visitor'              => \App\Http\Middleware\Visitor::class,
     ];
 }
