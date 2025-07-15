@@ -25,8 +25,8 @@
     <!-- end:: icon -->
 
     <!-- begin:: css global -->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset_admin('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link href="{{ asset_admin('libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset_pages('css/styles.css') }}" rel="stylesheet" type="text/css" />
     <!-- end:: css global -->
@@ -66,12 +66,13 @@
     <!-- end:: footer -->
 
     <!-- begin:: js global -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="{{ asset_admin('libs/sweetalert2/sweetalert2.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
-    <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js?t=12345') }}"></script>
+    <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js') }}"></script>
     <script type="text/javascript" src="{{ asset_pages('js/scripts.js') }}"></script>
     <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
+
     <script>
         window.start.init({
             title: "Hi there ✌️",

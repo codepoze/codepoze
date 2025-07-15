@@ -1,15 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3 my-nav background-overlay">
-    <div class="container px-4 px-lg-5">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
             <h1 class="logo-text">
-                <span class="code">Code</span><span class="poze">Poze</span>
+                CodePoze
             </h1>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ms-auto ">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">{{ __('menu.about') }}</a>
                 </li>

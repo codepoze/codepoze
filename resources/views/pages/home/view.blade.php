@@ -1,216 +1,248 @@
 <x-pages-layout title="{{ $title }}">
     <!-- begin:: css local -->
     @push('css')
-    <style>
-        .card {
-            box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-            transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-            border: 0;
-            border-radius: 1rem;
-        }
-
-        .card-img-top {
-            border-top-left-radius: calc(1rem - 1px);
-            border-top-right-radius: calc(1rem - 1px)
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
-        }
-    </style>
     @endpush
     <!-- end:: css local -->
 
-    <!-- <header class="py-4 intro section-shaped hero-section"> -->
-    <header class="py-4 my-section background-overlay">
-        <div class="page-header">
-            <div id="particles-js"></div>
-            <div class="container text-center text-white">
-                <h1 class="display-4 fw-bolder">{{ __('home.text_1') }}</h1>
-                <p class="lead fw-normal text-white-50 mb-0">
-                    {{ __('home.text_2') }}
-                </p>
-            </div>
+    <header id="hero">
+        <div id="particles-js"></div>
+        <div class="container">
+            <h1>{{ __('home.text_1') }}</h1>
+            <p>{{ __('home.text_2') }}</p>
         </div>
     </header>
 
-    <section class="container py-5 mt-5">
-        <div class="row text-center">
-            <div class="col-md-4 mb-4">
-                <div class="p-3">
-                    <i class="fa fa-check-circle fs-1 text-primary"></i>
-                    <h3 class="h4 mt-3">Kualitas Terjamin</h3>
-                    <p class="text-muted">Semua produk dibuat oleh praktisi berpengalaman di bidangnya.</p>
+    <main>
+        <section id="layanan" class="section-bg">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2>Layanan Kami</h2>
+                    <p>
+                        Kami menyediakan solusi digital yang fleksibel sesuai kebutuhan Anda.</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-3">
-                    <i class="fa fa-arrow-down fs-1 text-primary"></i>
-                    <h3 class="h4 mt-3">Akses Instan</h3>
-                    <p class="text-muted">Unduh dan akses produk digital Anda langsung setelah pembayaran.</p>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="p-3">
-                    <i class="fa fa-life-ring fs-1 text-primary"></i>
-                    <h3 class="h4 mt-3">Dukungan Penuh</h3>
-                    <p class="text-muted">Tim kami siap membantu jika Anda mengalami kendala.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- begin:: product berbayar -->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-xl-12 text-center">
-                    <h3 class="mb-4">{{ __('home.text_3') }}</h3>
-                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                        {{ __('home.text_4') }}
-                    </p>
+                <div class="row gy-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <div class="service-icon"><i class="bi bi-cloud-download"></i></div>
+                            <h4>Source Code Gratis</h4>
+                            <p>Dapatkan akses ke berbagai source code program aplikasi gratis
+                                untuk proyek belajar atau prototipe Anda.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <div class="service-icon"><i class="bi bi-gem"></i></div>
+                            <h4>Source Code Premium</h4>
+                            <p>Beli source code berkualitas tinggi dengan dokumentasi lengkap
+                                dan dukungan penuh untuk proyek komersial.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+                            <h4>Jasa Pembuatan Aplikasi</h4>
+                            <p>Tim ahli kami siap membangun aplikasi web atau mobile dari awal
+                                sesuai dengan spesifikasi unik Anda.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="service-card text-center">
+                            <div class="service-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                            <h4>Pengembangan & Maintenance</h4>
+                            <p>Kami membantu mengembangkan fitur baru, optimasi, dan
+                                pemeliharaan rutin untuk aplikasi Anda.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            @if (count($product_paid) > 0)
-            <div class="row justify-content-center">
-                @foreach ($product_paid as $row)
-                <div class="col-md-12 col-lg-4 col-xl-4 mb-2">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
-                        <div class="card-body">
-                            <div class="text-center">
-                                <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">
-                                    <h5 class="fw-bolder">{{ $row->judul }}</h5>
-                                </a>
-                                @if ($row->toPrice->diskon === 'y')
-                                <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
-                                @else
-                                <span class="align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</span>
-                                @endif
+        <section id="produk">
+            <div class="container">
+                <!-- begin:: product berbayar -->
+                <div class="text-center mb-5">
+                    <h2>{{ __('home.text_3') }}</h2>
+                    <p>{{ __('home.text_4') }}</p>
+                </div>
+                <div class="row gy-4 mb-5">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <div class="card-img-container">
+                                <span class="discount-badge">Diskon</span>
+                                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=2070&auto=format&fit=crop"
+                                    class="card-img-top" alt="Produk Berbayar 1">
                             </div>
-                            <div class="row g-2 mt-3">
-                                <div class="col-6 text-muted text-start fs-6">
-                                    {{ tgl_inggris($row->created_at) }}
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Aplikasi E-Commerce Lengkap</h5>
+                                <p class="card-text flex-grow-1">Sistem toko online modern dengan manajemen produk,
+                                    inventori, dan gateway pembayaran.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <div class="price-container d-flex align-items-center">
+                                        <del class="original-price">Rp
+                                            2.000.000</del>
+                                        <span class="price">Rp 1.500.000</span>
+                                    </div>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
                                 </div>
-                                <div class="col-6 text-end fs-6">
-                                    <a href="{{ route('products.type', $row->toType->singkatan) }}">{{ strtoupper($row->toType->singkatan) }}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                                class="card-img-top" alt="Produk Berbayar 2">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Sistem Informasi Sekolah</h5>
+                                <p class="card-text flex-grow-1">Aplikasi untuk manajemen data siswa, guru, jadwal
+                                    pelajaran, dan nilai akademik.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="price">Rp 1.200.000</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
-                <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                    <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
-                </div>
-            </div>
-            @else
-            <div class="row">
-                <div class="col-md-12 col-lg-12 col-xl-12">
-                    <div class="alert alert-info">
-                        <strong>{{ __('home.info') }}</strong>
-                        <hr class="message-inner-separator">
-                        <p>{{ __('home.text_5') }}</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1974&auto=format&fit=crop"
+                                class="card-img-top" alt="Produk Berbayar 3">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Landing Page Builder</h5>
+                                <p class="card-text flex-grow-1">Script PHP untuk membuat landing page dinamis tanpa
+                                    perlu coding, lengkap dengan template.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="price">Rp 750.000</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 text-center">
+                        <a class="btn btn-primary mt-auto" href="#">Lihat Semua</a>
                     </div>
                 </div>
-            </div>
-            @endif
-        </div>
-    </section>
-    <!-- end:: product berbayar -->
-    <!-- begin:: product gratis -->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-xl-12 text-center">
-                    <h3 class="mb-4">{{ __('home.text_6') }}</h3>
-                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
-                        {{ __('home.text_7') }}
-                    </p>
-                </div>
-            </div>
+                <!-- end:: product berbayar -->
 
-            @if (count($product_free) > 0)
-            <div class="row justify-content-center">
-                @foreach ($product_free as $row)
-                <div class="col-md-12 col-lg-4 col-xl-4 mb-2">
-                    <div class="card">
-                        <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5 class="fw-bolder">{{ $row->judul }}</h5>
-                                @if ($row->toPrice->diskon === 'y')
-                                <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
-                                @else
-                                <span class="align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center">
-                                <a class="btn btn-sm btn-primary mt-auto" href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">Detail</a>
+                <!-- begin:: product gratis -->
+                <div class="text-center mb-5">
+                    <h2>{{ __('home.text_6') }}</h2>
+                    <p>{{ __('home.text_7') }}</p>
+                </div>
+                <div class="row gy-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
+                                class="card-img-top" alt="Produk Gratis 1">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Template Portofolio Pribadi</h5>
+                                <p class="card-text flex-grow-1">Template website portofolio sederhana menggunakan HTML,
+                                    CSS, dan Bootstrap.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="price">Gratis</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Unduh</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                @endforeach
-                <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                    <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
-                </div>
-            </div>
-            @else
-            <div class="row">
-                <div class="col-md-12 col-lg-12 col-xl-12">
-                    <div class="alert alert-info">
-                        <strong>{{ __('home.info') }}</strong>
-                        <hr class="message-inner-separator">
-                        <p>{{ __('home.text_8') }}</p>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1560415755-bd80d06eda60?q=80&w=1974&auto=format&fit=crop"
+                                class="card-img-top" alt="Produk Gratis 2">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Sistem Login Sederhana (PHP)</h5>
+                                <p class="card-text flex-grow-1">Source code sistem login dan registrasi dasar
+                                    menggunakan PHP dan MySQLi.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="price">Gratis</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Unduh</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card product-card h-100">
+                            <img src="https://images.unsplash.com/photo-1599696848783-0573934f2d93?q=80&w=2070&auto=format&fit=crop"
+                                class="card-img-top" alt="Produk Gratis 3">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Aplikasi Kalkulator (JavaScript)</h5>
+                                <p class="card-text flex-grow-1">Aplikasi kalkulator fungsional yang dibangun dengan
+                                    Vanilla JavaScript untuk latihan.</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="price">Gratis</span>
+                                    <a href="#" class="btn btn-sm btn-outline-primary">Unduh</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 text-center">
+                        <a class="btn btn-primary mt-auto" href="#">Lihat Semua</a>
                     </div>
                 </div>
             </div>
-            @endif
-        </div>
-    </section>
-    <!-- end:: product gratis -->
-    <!-- begin:: testimonies -->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-12 col-xl-12 text-center">
-                    <h3 class="mb-4">{{ __('home.text_9') }}</h3>
-                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+            <!-- end:: product gratis -->
+        </section>
+
+        <section id="testimoni" class="section-bg">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2>{{ __('home.text_9') }}</h2>
+                    <p>
                         {{ __('home.text_10') }}
                     </p>
                 </div>
-            </div>
-
-            @if (count($testimony) > 0)
-            <div class="row justify-content-center">
-                @foreach ($testimony as $row)
-                <div class="col-md-4 mb-5 mb-md-0 text-center">
-                    <h5 class="mb-3">{{ $row->first_name }} {{ $row->last_name }}</h5>
-                    <p class="px-xl-3">
-                        <i class="fa fa-quote-left pe-2"></i>{{ $row->message }}
-                    </p>
-                </div>
-                @endforeach
-            </div>
-            @else
-            <div class="row">
-                <div class="col-md-12 col-lg-12 col-xl-12">
-                    <div class="alert alert-info">
-                        <strong>{{ __('home.info') }}</strong>
-                        <hr class="message-inner-separator">
-                        <p>{{ __('home.text_11') }}</p>
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                     </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="testimonial-item">
+                                <img src="https://i.pravatar.cc/150?img=1" alt="Klien 1">
+                                <p>"Pelayanannya sangat profesional dan cepat. Aplikasi
+                                    yang dibuat sesuai dengan ekspektasi kami. Sangat direkomendasikan!"</p>
+                                <h5>Andi Wijaya</h5>
+                                <span>CEO, Startup Maju</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-item">
+                                <img src="https://i.pravatar.cc/150?img=2" alt="Klien 2">
+                                <p>"Source code premiumnya sangat membantu mempercepat
+                                    proyek kami. Kodenya bersih, mudah dimodifikasi, dan dokumentasinya jelas."</p>
+                                <h5>Citra Lestari</h5>
+                                <span>Lead Developer, Tech Corp</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="testimonial-item">
+                                <img src="https://i.pravatar.cc/150?img=3" alt="Klien 3">
+                                <p>"Tim support sangat responsif. Setiap ada kendala,
+                                    mereka selalu siap membantu. Terima kasih KodeVortex!"</p>
+                                <h5>Budi Santoso</h5>
+                                <span>Project Manager, Digital Agency</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
-            @endif
-        </div>
-    </section>
-    <!-- end:: testimonies -->
+        </section>
+    </main>
 
     <!-- begin:: js local -->
     @push('js')

@@ -43,7 +43,7 @@
                     <div class="col-lg-12 mb-5">
                         <form action="{{ route('products') }}" method="get">
                             <div class="input-group">
-                                <input class="form-control" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
+                                <input class="form-control rounded-start-pill" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
                                 <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>
                             </div>
                         </form>
