@@ -187,7 +187,7 @@
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                             <div class="testimonial-item">
                                 <img src="https://i.pravatar.cc/150?img={{ $loop->index }}" alt="Klien {{ $loop->index }}">
-                                <p><i class="bi bi-quote-left pe-2"></i>{{ $row->message }}</p>
+                                <p><i class="bi bi-quote pe-2"></i>{{ $row->message }}</p>
                                 <h5>{{ $row->first_name }} {{ $row->last_name }}</h5>
                             </div>
                         </div>
