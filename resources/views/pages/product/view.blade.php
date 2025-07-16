@@ -40,21 +40,24 @@
             <!-- begin:: content -->
             <div class="gx-4 gx-lg-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 mb-5">
-                        <form action="{{ route('products') }}" method="get">
-                            <div class="input-group">
-                                <input class="form-control rounded-start-pill" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
-                                <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>
-                            </div>
-                        </form>
-                    </div>
                     @if (count($product) > 0)
                     <div class="row">
                         <div class="col-md-12 col-lg-8 col-xl-8">
                             <div class="row">
+                                <div class="col-lg-12 mb-5">
+                                    <form action="{{ route('products') }}" method="get">
+                                        <div class="input-group">
+                                            <input class="form-control rounded-start-pill" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
+                                            <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
                                 @foreach ($product as $row)
                                 <div class="col-md-12 col-lg-4 col-xl-4 mb-2">
                                     <div class="card">
+                                        @if ($row->toPrice->diskon === 'y')
+                                        <span class="discount-badge">Diskon</span>
+                                        @endif
                                         <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
                                         <div class="card-body">
                                             <div class="text-center">
