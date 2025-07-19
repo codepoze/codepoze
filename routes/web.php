@@ -193,8 +193,6 @@ Route::group(['middleware' => ['guest', 'visitor', 'set.locale']], function () {
         Route::post('/save', 'save')->name('testimonies.save');
     });
     Route::controller(ProductsController::class)->prefix('products')->group(function () {
-        // Route::get('/', 'index')->name('products');
-        
         Route::get('/{slug?}', 'index')->name('products');
         Route::get('/{slug}/detail/{id}', 'detail')->name('products.detail');
     });

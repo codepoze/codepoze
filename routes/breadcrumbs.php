@@ -4,28 +4,33 @@ use App\Models\Product;
 use App\Models\Type;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+use Illuminate\Support\Facades\Route;
 
 // begin:: pages
 Breadcrumbs::for('home', function (BreadcrumbTrail $trail) {
     $trail->push(__('menu.home'), route('home'));
 });
 
-Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
-    $trail->parent('home');
+Breadcrumbs::for('products', function (BreadcrumbTrail $trail, Type $type = null) {
+    if ($type) {
+        $trail->parent('home');
 
-    $trail->push(__('menu.product'), route('products'));
-});
+        $trail->push(__('menu.product'), route('products'));
 
-Breadcrumbs::for('products.type', function (BreadcrumbTrail $trail, Type $type) {
-    $trail->parent('products');
+        $trail->push(ucfirst($type->singkatan), '#');
+    } else {
+        $trail->parent('home');
 
-    $trail->push(ucfirst($type->singkatan), route('products', $type->singkatan));
+        $trail->push(__('menu.product'), route('products'));
+    }
 });
 
 Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type, Product $product) {
-    $trail->parent('products.type', $type);
+    $trail->parent('products');
 
-    $trail->push('Detail', route('products.detail', ['slug' => $type->singkatan, 'id' => $product->id_product]));
+    $trail->push(ucfirst($type->singkatan), route('products', $type->singkatan));
+
+    $trail->push($product->judul, '#');
 });
 
 Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {

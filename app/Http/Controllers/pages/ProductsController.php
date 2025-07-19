@@ -51,7 +51,7 @@ class ProductsController extends Controller
         }
 
         $data = [
-            'type'    => $slug,
+            'type'    => Type::whereSingkatan($slug)->first(),
             'product' => $product
         ];
 

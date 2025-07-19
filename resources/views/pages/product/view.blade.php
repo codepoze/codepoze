@@ -30,7 +30,7 @@
                     <h3>{{ $title }}</h4>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
-                                @if (isset($type))
+                                @if ($type)
                                 {{ Breadcrumbs::render(Route::currentRouteName(), $type) }}
                                 @else
                                 {{ Breadcrumbs::render(Route::currentRouteName()) }}
