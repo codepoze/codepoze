@@ -49,7 +49,7 @@
                         <div class="col-md-12 col-lg-8 col-xl-8">
                             <div class="row">
                                 <div class="col-lg-12 mb-5">
-                                    <form action="{{ route('products', $type) }}" method="get">
+                                    <form action="{{ route('products', $type->singkatan ?? null) }}" method="get">
                                         <div class="input-group">
                                             <input class="form-control rounded-start-pill" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
                                             <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>

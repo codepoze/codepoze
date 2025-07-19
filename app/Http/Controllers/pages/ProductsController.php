@@ -26,24 +26,13 @@ class ProductsController extends Controller
                 $product = paginate($get, 6);
                 $product->setPath('products?q=' . $request->q);
             }
-        } else if ($request->type) {
-            if ($slug) {
-                $get = Product::whereHas('toType', function ($query) use ($slug) {
-                    $query->whereSingkatan($slug);
-                })->whereHas('toPrice', function ($query) use ($request) {
-                    $query->whereJenis($request->type);
-                })->get();
+        } else if ($slug) {
+            $get = Product::whereHas('toType', function ($query) use ($slug) {
+                $query->whereSingkatan($slug);
+            })->get();
 
-                $product = paginate($get, 6);
-                $product->setPath($slug . '?type=' . $request->type);
-            } else {
-                $get = Product::whereHas('toPrice', function ($query) use ($request) {
-                    $query->whereJenis($request->type);
-                })->get();
-
-                $product = paginate($get, 6);
-                $product->setPath('products?type=' . $request->type);
-            }
+            $product = paginate($get, 6);
+            $product->setPath($slug . '?type=' . $slug);
         } else {
             $get = Product::all();
             $product = paginate($get, 6);
