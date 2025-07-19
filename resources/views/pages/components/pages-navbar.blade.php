@@ -28,7 +28,7 @@
                         </li>
                         @foreach ($type as $row)
                         <li>
-                            <a class="dropdown-item" href="{{ route('products.type', $row->singkatan) }}">{{ $row->nama }}</a>
+                            <a class="dropdown-item" href="{{ route('products', $row->singkatan) }}">{{ $row->nama }}</a>
                         </li>
                         @endforeach
                     </ul>

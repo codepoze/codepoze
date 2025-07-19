@@ -19,7 +19,7 @@ Breadcrumbs::for('products', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('products.type', function (BreadcrumbTrail $trail, Type $type) {
     $trail->parent('products');
 
-    $trail->push(ucfirst($type->singkatan), route('products.type', $type->singkatan));
+    $trail->push(ucfirst($type->singkatan), route('products', $type->singkatan));
 });
 
 Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type, Product $product) {

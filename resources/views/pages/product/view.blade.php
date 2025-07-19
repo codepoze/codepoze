@@ -30,7 +30,11 @@
                     <h3>{{ $title }}</h4>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
+                                @if (isset($type))
+                                {{ Breadcrumbs::render(Route::currentRouteName(), $type) }}
+                                @else
                                 {{ Breadcrumbs::render(Route::currentRouteName()) }}
+                                @endif
                             </nav>
                         </div>
                 </div>
@@ -45,7 +49,7 @@
                         <div class="col-md-12 col-lg-8 col-xl-8">
                             <div class="row">
                                 <div class="col-lg-12 mb-5">
-                                    <form action="{{ route('products') }}" method="get">
+                                    <form action="{{ route('products', $type) }}" method="get">
                                         <div class="input-group">
                                             <input class="form-control rounded-start-pill" type="text" name="q" id="q" placeholder="{{ __('product.input_1') }}">
                                             <button class="btn btn-primary" id="button-search" type="submit">{{ __('product.button') }}</button>
@@ -75,7 +79,7 @@
                                                     {{ tgl_inggris($row->created_at) }}
                                                 </div>
                                                 <div class="col-6 text-end fs-6">
-                                                    <a href="{{ route('products.type', $row->toType->singkatan) }}">{{ strtoupper($row->toType->singkatan) }}</a>
+                                                    <a href="{{ route('products', $row->toType->singkatan) }}">{{ strtoupper($row->toType->singkatan) }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +97,7 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
                                         <div class="ms-2 me-auto">
                                             <div class="fw-bold">
-                                                <a href="{{ route('products.type', $product->singkatan) }}">{{ $product->nama }}</a>
+                                                <a href="{{ route('products', $product->singkatan) }}">{{ $product->nama }}</a>
                                             </div>
                                         </div>
                                         <span class="badge bg-primary rounded-pill">{{ $product->jumlah }}</span>

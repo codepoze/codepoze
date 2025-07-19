@@ -117,7 +117,7 @@
                             <li class="list-group-item d-flex justify-content-between align-items-start">
                                 <div class="ms-2 me-auto">
                                     <div class="fw-bold">
-                                        <a href="{{ route('products.type', $product->singkatan) }}">{{ $product->nama }}</a>
+                                        <a href="{{ route('products', $product->singkatan) }}">{{ $product->nama }}</a>
                                     </div>
                                 </div>
                                 <span class="badge bg-primary rounded-pill">{{ $product->jumlah }}</span>
