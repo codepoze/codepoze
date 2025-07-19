@@ -71,30 +71,6 @@
     <script type="text/javascript" src="{{ asset_admin('my_assets/parsley/2.9.2/parsley.js') }}"></script>
     <script type="text/javascript" src="{{ asset_admin('my_assets/my_fun.js') }}"></script>
     <script type="text/javascript" src="{{ asset_pages('js/scripts.js') }}"></script>
-    <script type="text/javascript" src="https://popupsmart.com/freechat.js"></script>
-
-    <script>
-        window.start.init({
-            title: "Hi there ✌️",
-            message: "How may we help you? Just send us a message now to get assistance.",
-            color: "#1C86FA",
-            position: "right",
-            placeholder: "Enter your message",
-            withText: "Write with",
-            viaWhatsapp: "Or write us directly via Whatsapp",
-            gty: "Go to your",
-            awu: "and write us",
-            connect: "Connect now",
-            button: "Write us",
-            device: "everywhere",
-            logo: "https://d2r80wdbkwti6l.cloudfront.net/1w6S12SqPOx2Groy9I6iu6ks4Nlc8gqS.jpg",
-            person: "https://d2r80wdbkwti6l.cloudfront.net/MXOcnqypfGUMK1CPKO7dWcUhHjCWobQj.jpg",
-            services: [{
-                "name": "whatsapp",
-                "content": "+6285242907595"
-            }]
-        })
-    </script>
     <!-- end:: js global -->
 
     <!-- begin:: js local -->

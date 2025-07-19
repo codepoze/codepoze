@@ -7,8 +7,8 @@
     <header id="hero">
         <div id="particles-js"></div>
         <div class="container">
-            <h1>{{ __('home.text_1') }}</h1>
-            <p>{{ __('home.text_2') }}</p>
+            <h1>{{ __('home.title') }}</h1>
+            <p>{{ __('home.subtitle') }}</p>
         </div>
     </header>
 
@@ -16,42 +16,39 @@
         <section id="layanan" class="section-bg">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h2>Layanan Kami</h2>
+                    <h2>{{ __('home.layanan_title') }}</h2>
                     <p>
-                        Kami menyediakan solusi digital yang fleksibel sesuai kebutuhan Anda.</p>
+                        {{ __('home.layanan_subtitle') }}
+                    </p>
                 </div>
 
                 <div class="row gy-4">
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-cloud-download"></i></div>
-                            <h4>Source Code Gratis</h4>
-                            <p>Dapatkan akses ke berbagai source code program aplikasi gratis
-                                untuk proyek belajar atau prototipe Anda.</p>
+                            <h4>{{ __('home.layanan_text_11') }}</h4>
+                            <p>{{ __('home.layanan_text_12') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-gem"></i></div>
-                            <h4>Source Code Premium</h4>
-                            <p>Beli source code berkualitas tinggi dengan dokumentasi lengkap
-                                dan dukungan penuh untuk proyek komersial.</p>
+                            <h4>{{ __('home.layanan_text_21') }}</h4>
+                            <p>{{ __('home.layanan_text_22') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-code-slash"></i></div>
-                            <h4>Jasa Pembuatan Aplikasi</h4>
-                            <p>Tim ahli kami siap membangun aplikasi web atau mobile dari awal
-                                sesuai dengan spesifikasi unik Anda.</p>
+                            <h4>{{ __('home.layanan_text_31') }}</h4>
+                            <p>{{ __('home.layanan_text_32') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-gear-wide-connected"></i></div>
-                            <h4>Pengembangan & Maintenance</h4>
-                            <p>Kami membantu mengembangkan fitur baru, optimasi, dan
-                                pemeliharaan rutin untuk aplikasi Anda.</p>
+                            <h4>{{ __('home.layanan_text_41') }}</h4>
+                            <p>{{ __('home.layanan_text_42') }}</p>
                         </div>
                     </div>
                 </div>
@@ -63,8 +60,8 @@
             <div class="container">
                 <!-- begin:: product berbayar -->
                 <div class="text-center mb-5">
-                    <h2>{{ __('home.text_3') }}</h2>
-                    <p>{{ __('home.text_4') }}</p>
+                    <h2>{{ __('home.product_paid_title') }}</h2>
+                    <p>{{ __('home.product_paid_subtitle') }}</p>
                 </div>
                 @if (count($product_paid) > 0)
                 <div class="row justify-content-center gy-4 mb-5">
@@ -89,14 +86,14 @@
                                     @else
                                     <span class="price">{{ rupiah($row->toPrice->nilai_normal) }}</span>
                                     @endif
-                                    <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
+                                    <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}" class="btn btn-sm btn-outline-primary">{{ __('home.button_detail') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @endforeach
                     <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
+                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">{{ __('home.button_see_more') }}</a>
                     </div>
                 </div>
                 @else
@@ -105,7 +102,7 @@
                         <div class="alert alert-info">
                             <strong>{{ __('home.info') }}</strong>
                             <hr class="message-inner-separator">
-                            <p>{{ __('home.text_5') }}</p>
+                            <p>{{ __('home.product_paid_not_available') }}</p>
                         </div>
                     </div>
                 </div>
@@ -114,8 +111,8 @@
 
                 <!-- begin:: product gratis -->
                 <div class="text-center mb-5">
-                    <h2>{{ __('home.text_6') }}</h2>
-                    <p>{{ __('home.text_7') }}</p>
+                    <h2>{{ __('home.product_free_title') }}</h2>
+                    <p>{{ __('home.product_free_subtitle') }}</p>
                 </div>
                 @if (count($product_free) > 0)
                 <div class="row justify-content-center gy-4 mb-5">
@@ -140,14 +137,14 @@
                                     @else
                                     <span class="price">{{ rupiah($row->toPrice->nilai_normal) }}</span>
                                     @endif
-                                    <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}" class="btn btn-sm btn-outline-primary">Lihat Detail</a>
+                                    <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}" class="btn btn-sm btn-outline-primary">{{ __('home.button_detail') }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @endforeach
                     <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">Lihat Semua</a>
+                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">{{ __('home.button_see_more') }}</a>
                     </div>
                 </div>
                 @else
@@ -156,7 +153,7 @@
                         <div class="alert alert-info">
                             <strong>{{ __('home.info') }}</strong>
                             <hr class="message-inner-separator">
-                            <p>{{ __('home.text_5') }}</p>
+                            <p>{{ __('home.product_free_not_available') }}</p>
                         </div>
                     </div>
                 </div>
@@ -170,9 +167,9 @@
         <section id="testimoni" class="section-bg">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h2>{{ __('home.text_9') }}</h2>
+                    <h2>{{ __('home.testimoni_title') }}</h2>
                     <p>
-                        {{ __('home.text_10') }}
+                        {{ __('home.testimoni_subtitle') }}
                     </p>
                 </div>
                 @if (count($testimony) > 0)
@@ -210,7 +207,7 @@
                         <div class="alert alert-info">
                             <strong>{{ __('home.info') }}</strong>
                             <hr class="message-inner-separator">
-                            <p>{{ __('home.text_11') }}</p>
+                            <p>{{ __('home.testimoni_not_available') }}</p>
                         </div>
                     </div>
                 </div>

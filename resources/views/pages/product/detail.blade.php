@@ -42,9 +42,9 @@
                             @endforeach
                         </header>
                         <figure class="mb-4"><img class="img-fluid rounded" src="{{ asset_upload('picture/'.$product->gambar)  }}" alt="{{ $product->judul }}" /></figure>
-                        <section class="mb-5">
+                        <div class="mb-4">
                             {!! $product->deskripsi !!}
-                        </section>
+                        </div>
                         @if (count($product->toProductPicture) > 0)
                         <div class="row my-4" id="gallery-lightbox" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             @foreach ($product->toProductPicture as $key => $row)
@@ -55,7 +55,6 @@
                             </div>
                             @endforeach
                         </div>
-
                         <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-modal="true">
                             <a href="#" class="close m-0 p-3 text-white position-absolute right-0" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -98,6 +97,15 @@
                             @if ($product->link_github !== null)
                             <a class="btn btn-primary mx-2" href="{{ $product->link_github }}">Link Github</a>
                             @endif
+                        </div>
+                        <div class="mb-4">
+                            <p><strong>Beli Sekarang</strong></p>
+                            <p><strong>Catatan:</strong> Dengan membeli aplikasi ini, Anda menyetujui <a href="{{ route('sop') }}" target="_blank">{{ __('menu.sop') }}</a> yang berlaku.</p>
+                            <a href="https://wa.me/6285242907595?text=Halo%2C%20saya%20tertarik%20untuk%20membeli%20aplikasi%20{{ $product->judul }}%20yang%20Anda%20tawarkan.%20Mohon%20informasinya%20lebih%20lanjut."
+                                target="_blank"
+                                style="background-color: #25D366; color: white; padding: 10px 16px; border-radius: 5px; text-decoration: none; display: inline-block;">
+                                <i class="bi bi-whatsapp"></i>
+                            </a>
                         </div>
                     </article>
                 </div>

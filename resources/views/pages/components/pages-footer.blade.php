@@ -8,7 +8,7 @@
                         CodePoze
                     </h1>
                 </a>
-                <p>{{ __('home.text_2') }}</p>
+                <p>{{ __('home.subtitle') }}</p>
                 <div class="social-links d-flex mt-4">
                     @foreach ($social_media as $row)
                     <a href="{{ $row->link }}" target="_blank">
@@ -19,7 +19,7 @@
             </div>
 
             <div class="col-lg-3 col-6 footer-links">
-                <h4>Tautan Berguna</h4>
+                <h4>{{ __('menu.useful_links') }}</h4>
                 <ul>
                     <li>
                         <i class="bi bi-chevron-right"></i> <a href="{{ route('home') }}">{{ __('menu.home') }}</a>
@@ -37,7 +37,7 @@
             </div>
 
             <div class="col-lg-4 col-md-12 footer-contact">
-                <h4>Kontak</h4>
+                <h4>{{ __('menu.contact') }}</h4>
                 <p>
                     <strong>Phone:</strong> +62 852 4290 7595<br>
                     <strong>Email:</strong> codepoze@gmail.com<br>
