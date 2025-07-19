@@ -65,7 +65,7 @@
                                                     <h5 class="fw-bolder">{{ $row->judul }}</h5>
                                                 </a>
                                                 @if ($row->toPrice->diskon === 'y')
-                                                <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
+                                                <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><br /><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
                                                 @else
                                                 <span class="align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</span>
                                                 @endif
