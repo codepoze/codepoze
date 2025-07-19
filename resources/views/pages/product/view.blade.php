@@ -44,7 +44,6 @@
             <!-- begin:: content -->
             <div class="gx-4 gx-lg-5">
                 <div class="row justify-content-center">
-                    @if (count($product) > 0)
                     <div class="row">
                         <div class="col-md-12 col-lg-8 col-xl-8">
                             <div class="row">
@@ -56,6 +55,8 @@
                                         </div>
                                     </form>
                                 </div>
+
+                                @if (count($product) > 0)
                                 @foreach ($product as $row)
                                 <div class="col-md-12 col-lg-4 col-xl-4 mb-4">
                                     <div class="card">
@@ -87,6 +88,25 @@
                                 </div>
                                 @endforeach
                                 {{ $product->onEachSide(0)->links('partials.custom') }}
+                                @else
+                                @if (Request::get('q'))
+                                <div class="col-lg-12">
+                                    <div class="alert alert-warning">
+                                        <strong>{{ __('product.info') }}</strong>
+                                        <hr class="message-inner-separator">
+                                        <p>{{ __('product.text_1') }} <strong>{{ Request::get('q') }}</strong> {{ __('product.text_2') }}</p>
+                                    </div>
+                                </div>
+                                @else
+                                <div class="col-lg-12">
+                                    <div class="alert alert-info">
+                                        <strong>{{ __('product.info') }}</strong>
+                                        <hr class="message-inner-separator">
+                                        <p>{{ __('product.text_3') }}</p>
+                                    </div>
+                                </div>
+                                @endif
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-4 col-xl-4">
@@ -107,25 +127,6 @@
                             </div>
                         </div>
                     </div>
-                    @else
-                    @if (Request::get('q'))
-                    <div class="col-lg-12">
-                        <div class="alert alert-warning">
-                            <strong>{{ __('product.info') }}</strong>
-                            <hr class="message-inner-separator">
-                            <p>{{ __('product.text_1') }} <strong>{{ Request::get('q') }}</strong> {{ __('product.text_2') }}</p>
-                        </div>
-                    </div>
-                    @else
-                    <div class="col-lg-12">
-                        <div class="alert alert-info">
-                            <strong>{{ __('product.info') }}</strong>
-                            <hr class="message-inner-separator">
-                            <p>{{ __('product.text_3') }}</p>
-                        </div>
-                    </div>
-                    @endif
-                    @endif
                 </div>
             </div>
         </div>
