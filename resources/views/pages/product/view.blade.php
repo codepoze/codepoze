@@ -57,7 +57,7 @@
                                     </form>
                                 </div>
                                 @foreach ($product as $row)
-                                <div class="col-md-12 col-lg-4 col-xl-4 mb-2">
+                                <div class="col-md-12 col-lg-4 col-xl-4 mb-4">
                                     <div class="card">
                                         @if ($row->toPrice->diskon === 'y')
                                         <span class="discount-badge">Diskon</span>
