@@ -25,12 +25,12 @@ Breadcrumbs::for('products', function (BreadcrumbTrail $trail, Type $type = null
     }
 });
 
-Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type, Product $product) {
+Breadcrumbs::for('products.detail', function (BreadcrumbTrail $trail, Type $type) {
     $trail->parent('products');
 
     $trail->push(ucfirst($type->singkatan), route('products', $type->singkatan));
 
-    $trail->push($product->judul, '#');
+    $trail->push('Detail', '#');
 });
 
 Breadcrumbs::for('about', function (BreadcrumbTrail $trail) {
