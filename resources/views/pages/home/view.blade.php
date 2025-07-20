@@ -93,7 +93,7 @@
                     </div>
                     @endforeach
                     <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">{{ __('home.button_see_more') }}</a>
+                        <a class="btn btn-primary mt-auto" href="{{ route('products') }}">{{ __('home.button_see_more') }}</a>
                     </div>
                 </div>
                 @else
@@ -144,7 +144,7 @@
                     </div>
                     @endforeach
                     <div class="col-md-12 col-lg-12 col-xl-12 text-center">
-                        <a class="btn btn-primary mt-auto" href="{{ route('products', 'type='.$row->toPrice->jenis) }}">{{ __('home.button_see_more') }}</a>
+                        <a class="btn btn-primary mt-auto" href="{{ route('products') }}">{{ __('home.button_see_more') }}</a>
                     </div>
                 </div>
                 @else

@@ -32,7 +32,7 @@ class ProductsController extends Controller
             })->get();
 
             $product = paginate($get, 6);
-            $product->setPath($slug . '?type=' . $slug);
+            $product->setPath($slug);
         } else {
             $get = Product::all();
             $product = paginate($get, 6);
