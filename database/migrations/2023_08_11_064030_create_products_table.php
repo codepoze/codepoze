@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->integer('id_type')->unsigned()->nullable();
             $table->integer('id_based')->unsigned()->nullable();
             $table->integer('id_price')->unsigned()->nullable();
-            $table->string('judul', 50)->nullable();
+            $table->string('judul', 100)->nullable();
             $table->binary('gambar')->nullable();
             $table->text('deskripsi')->nullable();
             $table->text('link_demo')->nullable();

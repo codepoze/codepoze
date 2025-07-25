@@ -82,7 +82,7 @@ class DashboardController extends Controller
         foreach ($visitors as $key => $value) {
             $response[] = [
                 'key'   => $value->city,
-                'value' => $value->total,
+                'value' => (int) $value->total,
             ];
         }
 
