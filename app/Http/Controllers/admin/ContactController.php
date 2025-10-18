@@ -7,7 +7,7 @@ use App\Libraries\Template;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class ContactController extends Controller
 {

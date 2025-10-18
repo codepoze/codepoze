@@ -7,7 +7,7 @@ use App\Libraries\Template;
 use App\Models\Visitors;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
-use Yajra\DataTables\DataTables;
+use Yajra\DataTables\Facades\DataTables;
 
 class VisitorController extends Controller
 {
