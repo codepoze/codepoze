@@ -2,21 +2,20 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Visitor as ModelsVisitor;
+use App\Models\Visitor;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Symfony\Component\HttpFoundation\Response;
 
-class Visitor
+class VisitorMiddleware
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         if (App::isProduction()) {
             $ip      = get_visitor_IP();
@@ -25,10 +24,10 @@ class Visitor
             $res_ip  = curl_exec($curl_ip);
             $info_ip = json_decode($res_ip, true);
 
-            $visitor = ModelsVisitor::whereIp($ip)->first();
+            $visitor = Visitor::whereIp($ip)->first();
 
             if ($visitor === null) {
-                $visitor = new ModelsVisitor();
+                $visitor = new Visitor();
                 $visitor->ip       = $ip;
                 $visitor->city     = $info_ip['city'];
                 $visitor->country  = $info_ip['country'];

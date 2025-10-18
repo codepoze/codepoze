@@ -12,19 +12,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfilController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
         $data = [
             'user' => User::find($this->session['id_users']),
         ];
-        return Template::load($this->session['roles'], 'Profil', 'profil', 'view', $data);
+        return Template::load($this->session->roles, 'Profil', 'profil', 'view', $data);
     }
 
     public function save_picture(Request $request)

@@ -56,13 +56,6 @@ class AuthController extends Controller
             // untuk data users
             $users = Auth::user();
 
-            // untuk mengaktifkan session
-            $request->session()->put('id', $users->id);
-            $request->session()->put('id_users', $users->id_users);
-            $request->session()->put('nama', $users->nama);
-            $request->session()->put('roles', $users->roles);
-            $request->session()->put('foto', $users->foto);
-
             Auth::login($users, $remember_me);
 
             // untuk check role

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Libraries\Template;
 use App\Models\Contact;
 use App\Models\Testimony;
-use App\Models\Visitors;
+use App\Models\Visitor;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
@@ -27,21 +27,14 @@ class DashboardController extends Controller
         '12' => 'Desember',
     ];
 
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
         $data = [
             'count_contact'   => Contact::count(),
             'count_testimony' => Testimony::count(),
-            'count_visitor'   => Visitors::count(),
+            'count_visitor'   => Visitor::count(),
         ];
-        return Template::load($this->session['roles'], 'Dashboard', 'dashboard', 'view', $data);
+        return Template::load($this->session->roles, 'Dashboard', 'dashboard', 'view', $data);
     }
 
     public function count_visitors_day()
@@ -49,7 +42,7 @@ class DashboardController extends Controller
         $dates = get_all_dates_in_month(date('Y'), date('m'));
 
         foreach ($dates as $key => $value) {
-            $visitors = Visitors::whereDate('created_at', $value)->count();
+            $visitors = Visitor::whereDate('created_at', $value)->count();
             $response[] = [
                 'key'   => $value,
                 'value' => $visitors,
@@ -64,7 +57,7 @@ class DashboardController extends Controller
         $years = get_all_months_in_year(date('Y'));
 
         foreach ($years as $key => $value) {
-            $visitors = Visitors::whereMonth('created_at', $key)->whereYear('created_at', date('Y'))->count();
+            $visitors = Visitor::whereMonth('created_at', $key)->whereYear('created_at', date('Y'))->count();
             $response[] = [
                 'key'   => $value,
                 'value' => $visitors,

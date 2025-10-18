@@ -11,16 +11,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ContactController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
-        return Template::load($this->session['roles'], 'Contact', 'contact', 'view');
+        return Template::load($this->session->roles, 'Contact', 'contact', 'view');
     }
 
     public function det($id)
@@ -29,7 +22,7 @@ class ContactController extends Controller
             'contact' => Contact::find(my_decrypt($id))
         ];
 
-        return Template::load($this->session['roles'], 'Contact', 'contact', 'det', $data);
+        return Template::load($this->session->roles, 'Contact', 'contact', 'det', $data);
     }
 
     public function get_data_dt()

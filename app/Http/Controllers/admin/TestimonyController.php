@@ -12,16 +12,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class TestimonyController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
-        return Template::load($this->session['roles'], 'Testimony', 'testimony', 'view');
+        return Template::load($this->session->roles, 'Testimony', 'testimony', 'view');
     }
 
     public function det($id)
@@ -30,7 +23,7 @@ class TestimonyController extends Controller
             'testimony' => Testimony::find(my_decrypt($id))
         ];
 
-        return Template::load($this->session['roles'], 'Testimony', 'testimony', 'det', $data);
+        return Template::load($this->session->roles, 'Testimony', 'testimony', 'det', $data);
     }
 
     public function get_data_dt()

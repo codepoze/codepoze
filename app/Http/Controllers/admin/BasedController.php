@@ -12,16 +12,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class BasedController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
-        return Template::load($this->session['roles'], 'Based', 'based', 'view');
+        return Template::load($this->session->roles, 'Based', 'based', 'view');
     }
 
     public function get_all()

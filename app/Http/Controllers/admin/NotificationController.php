@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\Response;
 
 class NotificationController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index($status)
     {
         $data         = Notification::whereStatus($status)->latest('id_notification')->get();

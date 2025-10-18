@@ -18,16 +18,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
-        return Template::load($this->session['roles'], 'Product', 'product', 'view');
+        return Template::load($this->session->roles, 'Product', 'product', 'view');
     }
 
     public function add()
@@ -38,7 +31,7 @@ class ProductController extends Controller
             'price' => Price::all(),
         ];
 
-        return Template::load($this->session['roles'], 'Tambah Product', 'product', 'add', $data);
+        return Template::load($this->session->roles, 'Tambah Product', 'product', 'add', $data);
     }
 
     public function upd($id)
@@ -50,7 +43,7 @@ class ProductController extends Controller
             'product' => Product::findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Ubah Product', 'product', 'upd', $data);
+        return Template::load($this->session->roles, 'Ubah Product', 'product', 'upd', $data);
     }
 
     public function det($id)
@@ -59,7 +52,7 @@ class ProductController extends Controller
             'product' => Product::findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Detail Product', 'product', 'det', $data);
+        return Template::load($this->session->roles, 'Detail Product', 'product', 'det', $data);
     }
 
     public function get_data_dt()

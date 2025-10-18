@@ -16,16 +16,9 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProjectController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        // untuk deteksi session
-        detect_role_session($this->session, session()->has('roles'), 'admin');
-    }
-
     public function index()
     {
-        return Template::load($this->session['roles'], 'Project', 'project', 'view');
+        return Template::load($this->session->roles, 'Project', 'project', 'view');
     }
 
     public function add()
@@ -34,7 +27,7 @@ class ProjectController extends Controller
             'based' => Based::all(),
         ];
 
-        return Template::load($this->session['roles'], 'Tambah Project', 'project', 'add', $data);
+        return Template::load($this->session->roles, 'Tambah Project', 'project', 'add', $data);
     }
 
     public function upd($id)
@@ -44,7 +37,7 @@ class ProjectController extends Controller
             'project' => Project::with(['toBased', 'toProjectStack', 'toProjectPicture'])->findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Ubah Project', 'project', 'upd', $data);
+        return Template::load($this->session->roles, 'Ubah Project', 'project', 'upd', $data);
     }
 
     public function det($id)
@@ -53,7 +46,7 @@ class ProjectController extends Controller
             'project' => Project::findOrFail(my_decrypt($id)),
         ];
 
-        return Template::load($this->session['roles'], 'Detail Project', 'project', 'det', $data);
+        return Template::load($this->session->roles, 'Detail Project', 'project', 'det', $data);
     }
 
     public function get_data_dt()

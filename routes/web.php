@@ -34,7 +34,7 @@ Route::group(
         Route::post('/check', [AuthController::class, 'check'])->name('auth.check');
         Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-        Route::group(['middleware' => ['session.auth', 'prevent.back.history']], function () {
+        Route::group(['middleware' => ['auth.session', 'prevent.back.history']], function () {
             Route::controller(DashboardController::class)->prefix('dashboard')->as('dashboard.')->group(function () {
                 Route::get('/', [DashboardController::class, 'index'])->name('index');
                 Route::get('/count_visitors_day', [DashboardController::class, 'count_visitors_day'])->name('count_visitors_day');
