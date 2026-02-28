@@ -69,7 +69,7 @@ class DashboardController extends Controller
 
     public function count_visitors_loc()
     {
-        $visitors = DB::select('SELECT v.city, COUNT( v.city) AS total FROM visitors AS v GROUP BY v.city ORDER BY COUNT( v.city) DESC');
+        $visitors = DB::select('SELECT v.city, COUNT( v.city) AS total FROM visitors AS v GROUP BY v.city ORDER BY COUNT( v.city) DESC LIMIT 10');
 
         $response = [];
         foreach ($visitors as $key => $value) {
