@@ -140,7 +140,9 @@
 
     <!-- begin:: structured data -->
     @push('structured_data')
-        {!! generate_product_schema($product) !!}
+        @if(function_exists('generate_product_schema') && isset($product) && isset($product->judul))
+            {!! generate_product_schema($product) !!}
+        @endif
     @endpush
     <!-- end:: structured data -->
 </x-pages-layout>

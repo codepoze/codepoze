@@ -89,22 +89,27 @@ if (!function_exists('generate_breadcrumb_schema')) {
 if (!function_exists('generate_product_schema')) {
     function generate_product_schema($product)
     {
+        // Validasi data product
+        if (!$product || !isset($product->judul)) {
+            return '';
+        }
+
         $schema = [
             '@context'    => 'https://schema.org',
             '@type'       => 'Product',
-            'name'        => $product->judul,
-            'description' => strip_tags($product->deskripsi),
-            'image'       => asset_upload('picture/' . $product->gambar),
+            'name'        => $product->judul ?? 'Product',
+            'description' => isset($product->deskripsi) ? strip_tags($product->deskripsi) : 'Product description',
+            'image'       => isset($product->gambar) ? asset_upload('picture/' . $product->gambar) : asset_pages('images/codepoze.png'),
             'brand'       => [
                 '@type' => 'Brand',
                 'name'  => config('app.name')
             ]
         ];
 
-        if (isset($product->toPrice)) {
-            $price = $product->toPrice->diskon === 'y'
-                ? $product->toPrice->nilai_diskon
-                :  $product->toPrice->nilai_normal;
+        if (isset($product->toPrice) && is_object($product->toPrice)) {
+            $price = (isset($product->toPrice->diskon) && $product->toPrice->diskon === 'y')
+                ? ($product->toPrice->nilai_diskon ?? 0)
+                : ($product->toPrice->nilai_normal ?? 0);
 
             $schema['offers'] = [
                 '@type'         => 'Offer',
