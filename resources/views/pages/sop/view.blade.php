@@ -9,7 +9,7 @@
             <!-- begin:: breadcrumb -->
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
-                    <h3>{{ $title }}</h4>
+                    <h1>{{ $title }}</h1>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
                                 {{ Breadcrumbs::render(Route::currentRouteName()) }}
@@ -22,14 +22,14 @@
             <!-- begin:: content -->
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-12 " style="text-align: justify;">
-                    <h4>{{ __('sop.text_1') }}</h4>
+                    <h2>{{ __('sop.text_1') }}</h2>
                     <p>
                         {{ __('sop.text_2') }}
                     </p>
 
                     <ol type="1">
                         <li>
-                            <h5>{{ __('sop.text_3') }}</h5>
+                            <h3>{{ __('sop.text_3') }}</h3>
                             <ul>
                                 <li>
                                     {{ __('sop.text_4') }}
@@ -49,7 +49,7 @@
                             </ul>
                         </li>
                         <li>
-                            <h5>{{ __('sop.text_9') }}</h5>
+                            <h3>{{ __('sop.text_9') }}</h3>
                             <ul>
                                 <li>
                                     {{ __('sop.text_10') }}
@@ -69,7 +69,7 @@
                             </ul>
                         </li>
                         <li>
-                            <h5>{{ __('sop.text_15') }}</h5>
+                            <h3>{{ __('sop.text_15') }}</h3>
                             <ul>
                                 <li>
                                     {{ __('sop.text_16') }}

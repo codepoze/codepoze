@@ -9,7 +9,7 @@
             <!-- begin:: breadcrumb -->
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
-                    <h3>{{ $title }}</h3>
+                    <h1>{{ $title }}</h1>
                     <div class="fs-6">
                         <nav aria-label="breadcrumb">
                             {{ Breadcrumbs::render(Route::currentRouteName()) }}
@@ -29,12 +29,12 @@
                         {{ __('about.text_1') }}
                     </p>
 
-                    <h5>{{ __('about.text_2') }}</h5>
+                    <h2>{{ __('about.text_2') }}</h2>
                     <p>
                         {{ __('about.text_3') }}
                     </p>
 
-                    <h5>{{ __('about.text_4') }}</h5>
+                    <h2>{{ __('about.text_4') }}</h2>
                     <ul>
                         <li>
                             {{ __('about.text_5') }}

@@ -3,10 +3,10 @@
         <div class="row gy-4">
 
             <div class="col-lg-5 col-md-12 footer-info">
-                <a href="{{ route('home') }}" class="logo d-flex align-items-center mb-3 text-white text-decoration-none">
-                    <h1 class="logo-text">
+                <a href="{{ route('home') }}" class="logo d-flex align-items-center mb-3 text-white text-decoration-none" aria-label="CodePoze Home">
+                    <div class="logo-text fs-1 fw-bold">
                         CodePoze
-                    </h1>
+                    </div>
                 </a>
                 <p>{{ __('home.subtitle') }}</p>
                 <div class="social-links d-flex mt-4">

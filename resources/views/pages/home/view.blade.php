@@ -26,28 +26,28 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-cloud-download"></i></div>
-                            <h4>{{ __('home.layanan_text_11') }}</h4>
+                            <h3>{{ __('home.layanan_text_11') }}</h3>
                             <p>{{ __('home.layanan_text_12') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-gem"></i></div>
-                            <h4>{{ __('home.layanan_text_21') }}</h4>
+                            <h3>{{ __('home.layanan_text_21') }}</h3>
                             <p>{{ __('home.layanan_text_22') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-code-slash"></i></div>
-                            <h4>{{ __('home.layanan_text_31') }}</h4>
+                            <h3>{{ __('home.layanan_text_31') }}</h3>
                             <p>{{ __('home.layanan_text_32') }}</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="service-card text-center">
                             <div class="service-icon"><i class="bi bi-gear-wide-connected"></i></div>
-                            <h4>{{ __('home.layanan_text_41') }}</h4>
+                            <h3>{{ __('home.layanan_text_41') }}</h3>
                             <p>{{ __('home.layanan_text_42') }}</p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                                 <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top" loading="lazy" width="350" height="200">
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ $row->judul }}</h5>
+                                <h3 class="card-title">{{ $row->judul }}</h3>
                                 <p class="card-text flex-grow-1">{{ strtoupper($row->toType->singkatan) }}</p>
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     @if ($row->toPrice->diskon === 'y')
@@ -126,7 +126,7 @@
                                 <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top" loading="lazy" width="350" height="200">
                             </div>
                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title">{{ $row->judul }}</h5>
+                                <h3 class="card-title">{{ $row->judul }}</h3>
                                 <p class="card-text flex-grow-1">{{ strtoupper($row->toType->singkatan) }}</p>
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     @if ($row->toPrice->diskon === 'y')
@@ -185,7 +185,7 @@
                             <div class="testimonial-item">
                                 <img src="https://i.pravatar.cc/150?img={{ $loop->index }}" alt="Klien {{ $loop->index }}" loading="lazy" width="150" height="150">
                                 <p><i class="bi bi-quote pe-2"></i>{{ $row->message }}</p>
-                                <h5>{{ $row->first_name }} {{ $row->last_name }}</h5>
+                                <h3>{{ $row->first_name }} {{ $row->last_name }}</h3>
                             </div>
                         </div>
                         @endforeach

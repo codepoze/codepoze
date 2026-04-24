@@ -9,7 +9,7 @@
             <!-- begin:: breadcrumb -->
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
-                    <h3>{{ $title }}</h4>
+                    <h1>{{ $title }}</h1>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
                                 {{ Breadcrumbs::render(Route::currentRouteName()) }}

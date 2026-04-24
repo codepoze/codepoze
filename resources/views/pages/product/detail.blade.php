@@ -20,7 +20,7 @@
             <!-- begin:: breadcrumb -->
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
-                    <h3>{{ $title }}</h4>
+                    <h2>{{ $title }}</h2>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
                                 {{ Breadcrumbs::render(Route::currentRouteName(), $type, $product) }}
@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-md-12 col-lg-4 col-xl-4">
                     <div class="mb-4">
-                        <h4 class="blockquote-footer fs-4">Categories</h4>
+                        <h2 class="blockquote-footer fs-4">Categories</h2>
                         <ol class="list-group list-group-numbered">
                             @foreach ($products as $product)
                             <li class="list-group-item d-flex justify-content-between align-items-start">

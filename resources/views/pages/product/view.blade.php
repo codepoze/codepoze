@@ -27,7 +27,7 @@
             <!-- begin:: breadcrumb -->
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
-                    <h3>{{ $title }}</h4>
+                    <h1>{{ $title }}</h1>
                         <div class="fs-6">
                             <nav aria-label="breadcrumb">
                                 @if ($type)
@@ -67,7 +67,7 @@
                                         <div class="card-body">
                                             <div class="text-center">
                                                 <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">
-                                                    <h5 class="fw-bolder">{{ $row->judul }}</h5>
+                                                    <h2 class="fw-bolder h5">{{ $row->judul }}</h2>
                                                 </a>
                                                 @if ($row->toPrice->diskon === 'y')
                                                 <s class="text-muted me-2 small align-middle">{{ rupiah($row->toPrice->nilai_normal) }}</s><br /><span class="align-middle">{{ rupiah($row->toPrice->nilai_diskon) }}</span>
@@ -111,7 +111,7 @@
                         </div>
                         <div class="col-md-12 col-lg-4 col-xl-4">
                             <div class="mb-4">
-                                <h4 class="blockquote-footer fs-4">Categories</h4>
+                                <h2 class="blockquote-footer fs-4">Categories</h2>
                                 <ol class="list-group list-group-numbered">
                                     @foreach ($products as $product)
                                     <li class="list-group-item d-flex justify-content-between align-items-start">
