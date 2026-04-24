@@ -5,4 +5,4 @@ Disallow: /logout
 Disallow: /api/
 Allow: /
 
-Sitemap: {{APP_URL}}/sitemap.xml
+Sitemap: https://codepoze.com/sitemap.xml

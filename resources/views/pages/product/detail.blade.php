@@ -92,19 +92,21 @@
                         @endif
                         <div class="d-flex justify-content-center align-items-start">
                             @if ($product->link_demo !== null)
-                            <a class="btn btn-primary mx-2" href="{{ $product->link_demo }}">Link Demo</a>
+                            <a class="btn btn-primary mx-2" href="{{ $product->link_demo }}" target="_blank" rel="noopener noreferrer">Link Demo</a>
                             @endif
                             @if ($product->link_github !== null)
-                            <a class="btn btn-primary mx-2" href="{{ $product->link_github }}">Link Github</a>
+                            <a class="btn btn-primary mx-2" href="{{ $product->link_github }}" target="_blank" rel="noopener noreferrer">Link Github</a>
                             @endif
                         </div>
                         <div class="mb-4">
                             <p><strong>Beli Sekarang</strong></p>
-                            <p><strong>Catatan:</strong> Dengan membeli aplikasi ini, Anda menyetujui <a href="{{ route('sop') }}" target="_blank">{{ __('menu.sop') }}</a> yang berlaku.</p>
+                            <p><strong>Catatan:</strong> Dengan membeli aplikasi ini, Anda menyetujui <a href="{{ route('sop') }}" target="_blank" rel="noopener noreferrer">{{ __('menu.sop') }}</a> yang berlaku.</p>
                             <a href="https://wa.me/6285242907595?text=Halo%2C%20saya%20tertarik%20untuk%20membeli%20aplikasi%20{{ $product->judul }}%20yang%20Anda%20tawarkan.%20Mohon%20informasinya%20lebih%20lanjut."
                                 target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Hubungi kami via WhatsApp"
                                 style="background-color: #25D366; color: white; padding: 10px 16px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                                <i class="bi bi-whatsapp"></i>
+                                <i class="bi bi-whatsapp"></i> Hubungi via WhatsApp
                             </a>
                         </div>
                     </article>

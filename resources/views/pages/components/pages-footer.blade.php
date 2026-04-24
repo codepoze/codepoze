@@ -11,7 +11,7 @@
                 <p>{{ __('home.subtitle') }}</p>
                 <div class="social-links d-flex mt-4">
                     @foreach ($social_media as $row)
-                    <a href="{{ $row->link }}" target="_blank">
+                    <a href="{{ $row->link }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $row->nama }}">
                         <i class="bi {{ $row->icon }}"></i>
                     </a>
                     @endforeach
