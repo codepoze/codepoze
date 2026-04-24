@@ -14,11 +14,18 @@ class TestimoniesController extends Controller
 {
     public function index()
     {
-        return Template::pages(__('menu.testimony'), 'testimonies', 'view');
+        $seoData = [
+            'title'       => __('menu.testimony'),
+            'description' => 'Baca testimoni dan ulasan pelanggan CodePoze. Lihat pengalaman mereka menggunakan produk dan layanan kami.',
+            'keywords'    => 'testimoni codepoze, ulasan, reviews, customer feedback, pengalaman pelanggan',
+            'type'        => 'website'
+        ];
+
+        return Template::pages(__('menu.testimony'), 'testimonies', 'view', [], $seoData);
     }
 
     public function save(Request $request)
-    {        
+    {
         $rules = [
             'first_name' => 'required',
             'last_name'  => 'required',

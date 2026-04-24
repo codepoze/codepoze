@@ -20,12 +20,17 @@ use App\Http\Controllers\pages\HomeController;
 use App\Http\Controllers\pages\ProductsController;
 use App\Http\Controllers\pages\SopController;
 use App\Http\Controllers\pages\TestimoniesController;
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/lang/{locale}', function () {
     session()->put('locale', request()->segment(2));
     return redirect()->back();
 })->name('lang');
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap.index');
+Route::get('/sitemap-pages.xml', [SitemapController::class, 'pages'])->name('sitemap.pages');
+Route::get('/sitemap-products.xml', [SitemapController::class, 'products'])->name('sitemap.products');
 
 Route::group(
     ['domain' => 'admin.' . env('APP_URL')],

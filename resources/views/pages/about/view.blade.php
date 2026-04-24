@@ -22,7 +22,7 @@
             <!-- begin:: content -->
             <div class="row gx-4 gx-lg-5">
                 <div class="col-lg-4 my-2">
-                    <img class="img-fluid rounded" src="{{ asset_pages('images/codepoze.png') }}" alt="CodePoze">
+                    <img class="img-fluid rounded" src="{{ asset_pages('images/codepoze.png') }}" alt="CodePoze Logo" loading="lazy" width="400" height="400">
                 </div>
                 <div class="col-lg-8" style="text-align: justify;">
                     <p>

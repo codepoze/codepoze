@@ -72,7 +72,7 @@
                                 @if ($row->toPrice->diskon === 'y')
                                 <span class="discount-badge">Diskon</span>
                                 @endif
-                                <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top">
+                                <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top" loading="lazy" width="350" height="200">
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ $row->judul }}</h5>
@@ -123,7 +123,7 @@
                                 @if ($row->toPrice->diskon === 'y')
                                 <span class="discount-badge">Diskon</span>
                                 @endif
-                                <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top">
+                                <img src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" class="card-img-top" loading="lazy" width="350" height="200">
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title">{{ $row->judul }}</h5>
@@ -183,7 +183,7 @@
                         @foreach ($testimony as $row)
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
                             <div class="testimonial-item">
-                                <img src="https://i.pravatar.cc/150?img={{ $loop->index }}" alt="Klien {{ $loop->index }}">
+                                <img src="https://i.pravatar.cc/150?img={{ $loop->index }}" alt="Klien {{ $loop->index }}" loading="lazy" width="150" height="150">
                                 <p><i class="bi bi-quote pe-2"></i>{{ $row->message }}</p>
                                 <h5>{{ $row->first_name }} {{ $row->last_name }}</h5>
                             </div>

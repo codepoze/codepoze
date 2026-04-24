@@ -50,7 +50,7 @@
                             @foreach ($product->toProductPicture as $key => $row)
                             <div class="col-md-12 col-lg-6 col-xl-6 my-2">
                                 <a href="{{ asset_upload('picture/'.$row->picture) }}">
-                                    <img class="img-fluid" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}" data-bs-target="#carouselExample" data-bs-slide-to="{{ $key }}" />
+                                    <img class="img-fluid" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $product->judul }} - Gallery {{ $key + 1 }}" data-bs-target="#carouselExample" data-bs-slide-to="{{ $key }}" loading="lazy" />
                                 </a>
                             </div>
                             @endforeach
@@ -67,11 +67,11 @@
                                                 @foreach ($product->toProductPicture as $key => $row)
                                                 @if ($key === 0)
                                                 <div class="carousel-item active">
-                                                    <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}">
+                                                    <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $product->judul }} - Image {{ $key + 1 }}">
                                                 </div>
                                                 @else
                                                 <div class="carousel-item">
-                                                    <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $key }}">
+                                                    <img class="d-block w-100" src="{{ asset_upload('picture/'.$row->picture) }}" alt="{{ $product->judul }} - Image {{ $key + 1 }}">
                                                 </div>
                                                 @endif
                                                 @endforeach
@@ -135,4 +135,10 @@
     @push('js')
     @endpush
     <!-- end:: js local -->
+
+    <!-- begin:: structured data -->
+    @push('structured_data')
+        {!! generate_product_schema($product) !!}
+    @endpush
+    <!-- end:: structured data -->
 </x-pages-layout>

@@ -33,7 +33,8 @@
         "files": [
             "app/Helpers/My_auth.php",
             "app/Helpers/My_fun.php",
-            "app/Helpers/My_url.php"
+            "app/Helpers/My_url.php",
+            "app/Helpers/My_seo.php"
         ]
     },
     "autoload-dev": {

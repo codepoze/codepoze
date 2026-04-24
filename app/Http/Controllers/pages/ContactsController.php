@@ -14,7 +14,14 @@ class ContactsController extends Controller
 {
     public function index()
     {
-        return Template::pages(__('menu.contact'), 'contact', 'view');
+        $seoData = [
+            'title'       => __('menu.contact'),
+            'description' => 'Hubungi CodePoze untuk konsultasi dan informasi lebih lanjut tentang produk dan layanan kami. Tim kami siap membantu kebutuhan digital Anda.',
+            'keywords'    => 'kontak codepoze, hubungi kami, contact us, customer service, konsultasi',
+            'type'        => 'website'
+        ];
+
+        return Template::pages(__('menu.contact'), 'contact', 'view', [], $seoData);
     }
 
     public function save(Request $request)

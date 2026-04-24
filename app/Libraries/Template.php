@@ -28,12 +28,14 @@ class Template
     }
 
     // untuk load pages
-    public static function pages($title, $module, $view, array $data = [])
+    public static function pages($title, $module, $view, array $data = [], array $seoData = [])
     {
         // untuk judul halaman
         $data['title'] = $title;
         // untuk produk
         $data['products'] = DB::select("SELECT t.nama, t.singkatan, IFNULL( a.jumlah, 0) AS jumlah FROM type AS t LEFT JOIN( SELECT p.id_type, COUNT(*) AS jumlah FROM product AS p GROUP BY p.id_type) AS a ON a.id_type = t.id_type ORDER BY t.created_at, IFNULL( a.jumlah, 0) ASC");
+        // untuk SEO data
+        $data['seoData'] = $seoData;
 
         return view("pages/{$module}/{$view}", $data);
     }

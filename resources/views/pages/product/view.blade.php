@@ -63,7 +63,7 @@
                                         @if ($row->toPrice->diskon === 'y')
                                         <span class="discount-badge">Diskon</span>
                                         @endif
-                                        <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" />
+                                        <img class="card-img-top" src="{{ asset_upload('picture/'.$row->gambar)  }}" alt="{{ $row->judul }}" loading="lazy" width="350" height="200" />
                                         <div class="card-body">
                                             <div class="text-center">
                                                 <a href="{{ route('products.detail', ['slug' => $row->toType->singkatan, 'id' => $row->id_product]) }}">

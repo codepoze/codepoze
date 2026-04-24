@@ -34,31 +34,53 @@ class ProductsController extends Controller
             $product = paginate($get, 6);
             $product->setPath($slug);
         } else {
-            $get = Product::all();
+            $get     = Product::all();
             $product = paginate($get, 6);
             $product->setPath('products');
         }
 
+        $type = Type::whereSingkatan($slug)->first();
+
         $data = [
-            'type'    => Type::whereSingkatan($slug)->first(),
+            'type'    => $type,
             'product' => $product
         ];
 
-        return Template::pages(__('menu.product'), 'product', 'view', $data);
+        $seoData = [
+            'title'       => $type ? $type->nama . ' - ' . __('menu.product') : __('menu.product'),
+            'description' => $type ? 'Jelajahi koleksi ' . $type->nama . ' berkualitas tinggi dari CodePoze. Source code siap pakai dengan dokumentasi lengkap.' : 'Jelajahi koleksi produk digital berkualitas tinggi dari CodePoze. Source code siap pakai dengan dokumentasi lengkap.',
+            'keywords'    => 'codepoze products, ' . ($type ? strtolower($type->nama) : 'aplikasi') . ', source code, ready to use',
+            'type'        => 'website'
+        ];
+
+        return Template::pages(__('menu.product'), 'product', 'view', $data, $seoData);
     }
 
     public function detail($slug, $id)
     {
+        $product = Product::with([
+            'toProductStack' => function ($query) {
+                $query->orderBy('id_stack', 'asc');
+            },
+            'toProductPicture',
+            'toPrice'
+        ])->whereIdProduct($id)->firstOrFail();
+
+        $type = Type::whereSingkatan($slug)->first();
+
         $data = [
-            'type'    => Type::whereSingkatan($slug)->first(),
-            'product' => Product::with([
-                'toProductStack' => function ($query) {
-                    $query->orderBy('id_stack', 'asc');
-                },
-                'toProductPicture'
-            ])->whereIdProduct($id)->firstOrFail()
+            'type'    => $type,
+            'product' => $product
         ];
 
-        return Template::pages(__('menu.product'), 'product', 'detail', $data);
+        $seoData = [
+            'title'       => $product->judul,
+            'description' => strip_tags(substr($product->deskripsi, 0, 160)) . '...',
+            'keywords'    => $product->judul . ', ' . ($type ? $type->nama : '') . ', source code, aplikasi',
+            'image'       => asset_upload('picture/' . $product->gambar),
+            'type'        => 'product'
+        ];
+
+        return Template::pages(__('menu.product'), 'product', 'detail', $data, $seoData);
     }
 }

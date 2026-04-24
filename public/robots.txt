@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /login
+Disallow: /logout
+Disallow: /api/
+Allow: /
+
+Sitemap: {{APP_URL}}/sitemap.xml
