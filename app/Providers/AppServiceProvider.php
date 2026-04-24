@@ -15,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Manual load SEO helper
+        $seoHelper = app_path('Helpers/My_seo.php');
+        if (file_exists($seoHelper)) {
+            require_once $seoHelper;
+        }
     }
 
     /**
