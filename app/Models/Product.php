@@ -23,6 +23,7 @@ class Product extends Model
         'deskripsi',
         'link_demo',
         'link_github',
+        'link_pembelian',
         'by_users',
     ];
     

@@ -77,6 +77,12 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label class="col-sm-3 col-form-label">Link Pembelian</label>
+                        <div class="col-md-9 my-auto">
+                            <input type="text" class="form-control-plaintext" value="{{ $product->link_pembelian ?? '-' }}" readonly />
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <label class="col-sm-3 col-form-label">Gambar</label>
                         <div class="col-md-9 my-auto">
                             <div class="row">

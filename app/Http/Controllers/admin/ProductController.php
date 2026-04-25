@@ -135,15 +135,16 @@ class ProductController extends Controller
 
                 // product
                 $product = new Product();
-                $product->judul       = $request->judul;
-                $product->id_type     = $request->id_type;
-                $product->id_based    = $request->id_based;
-                $product->id_price    = $request->id_price;
-                $product->deskripsi   = $request->deskripsi;
-                $product->link_demo   = $request->link_demo;
-                $product->link_github = $request->link_github;
-                $product->gambar      = $nama_gambar;
-                $product->by_users    = $this->session['id_users'];
+                $product->judul          = $request->judul;
+                $product->id_type        = $request->id_type;
+                $product->id_based       = $request->id_based;
+                $product->id_price       = $request->id_price;
+                $product->deskripsi      = $request->deskripsi;
+                $product->link_demo      = $request->link_demo;
+                $product->link_github    = $request->link_github;
+                $product->link_pembelian = $request->link_pembelian;
+                $product->gambar         = $nama_gambar;
+                $product->by_users       = $this->session['id_users'];
                 $product->save();
 
                 // product stack
@@ -181,13 +182,14 @@ class ProductController extends Controller
                     $product->gambar = $nama_gambar;
                 }
 
-                $product->judul     = $request->judul;
-                $product->id_type   = $request->id_type;
-                $product->id_based  = $request->id_based;
-                $product->id_price  = $request->id_price;
-                $product->deskripsi = $request->deskripsi;
-                $product->link_demo = $request->link_demo;
-                $product->link_github = $request->link_github;
+                $product->judul          = $request->judul;
+                $product->id_type        = $request->id_type;
+                $product->id_based       = $request->id_based;
+                $product->id_price       = $request->id_price;
+                $product->deskripsi      = $request->deskripsi;
+                $product->link_demo      = $request->link_demo;
+                $product->link_github    = $request->link_github;
+                $product->link_pembelian = $request->link_pembelian;
                 $product->by_users  = $this->session['id_users'];
                 $product->save();
 

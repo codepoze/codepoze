@@ -11,6 +11,22 @@
             opacity: 0.9;
             transition: 0.5s ease-out;
         }
+
+        .btn-link-action {
+            border-radius: 12px;
+            padding: 10px 24px;
+            font-weight: 600;
+            font-size: 1rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 576px) {
+            .btn-link-action {
+                width: 100%;
+                font-size: 0.95rem;
+                padding: 12px 16px;
+            }
+        }
     </style>
     @endpush
     <!-- end:: css local -->
@@ -21,11 +37,11 @@
             <div class="mb-3">
                 <div class="d-sm-flex align-items-center justify-content-between">
                     <h2>{{ $title }}</h2>
-                        <div class="fs-6">
-                            <nav aria-label="breadcrumb">
-                                {{ Breadcrumbs::render(Route::currentRouteName(), $type, $product) }}
-                            </nav>
-                        </div>
+                    <div class="fs-6">
+                        <nav aria-label="breadcrumb">
+                            {{ Breadcrumbs::render(Route::currentRouteName(), $type, $product) }}
+                        </nav>
+                    </div>
                 </div>
             </div>
             <!-- end:: breadcrumb -->
@@ -90,29 +106,30 @@
                             </div>
                         </div>
                         @endif
-                        <div class="d-flex justify-content-center align-items-start">
+                        <div class="d-flex flex-wrap justify-content-center align-items-start gap-2">
                             @if ($product->link_demo !== null)
-                            <a class="btn btn-primary mx-2" href="{{ $product->link_demo }}" target="_blank" rel="noopener noreferrer">Link Demo</a>
+                            <a class="btn btn-primary btn-link-action" href="{{ $product->link_demo }}" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-play-circle-fill me-1"></i> Link Demo
+                            </a>
                             @endif
                             @if ($product->link_github !== null)
-                            <a class="btn btn-primary mx-2" href="{{ $product->link_github }}" target="_blank" rel="noopener noreferrer">Link Github</a>
+                            <a class="btn btn-dark btn-link-action" href="{{ $product->link_github }}" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-github me-1"></i> Link Github
+                            </a>
+                            @endif
+                            @if ($product->link_pembelian !== null)
+                            <a class="btn btn-success btn-link-action" href="{{ $product->link_pembelian }}" target="_blank" rel="noopener noreferrer">
+                                <i class="bi bi-cart-fill me-1"></i> Link Pembelian
+                            </a>
                             @endif
                         </div>
-                        <div class="mb-4">
-                            <p><strong>Beli Sekarang</strong></p>
+                        <div class="mt-4">
                             <p><strong>Catatan:</strong> Dengan membeli aplikasi ini, Anda menyetujui <a href="{{ route('sop') }}" target="_blank" rel="noopener noreferrer">{{ __('menu.sop') }}</a> yang berlaku.</p>
-                            <a href="https://wa.me/6285242907595?text=Halo%2C%20saya%20tertarik%20untuk%20membeli%20aplikasi%20{{ $product->judul }}%20yang%20Anda%20tawarkan.%20Mohon%20informasinya%20lebih%20lanjut."
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Hubungi kami via WhatsApp"
-                                style="background-color: #25D366; color: white; padding: 10px 16px; border-radius: 5px; text-decoration: none; display: inline-block;">
-                                <i class="bi bi-whatsapp"></i> Hubungi via WhatsApp
-                            </a>
                         </div>
                     </article>
                 </div>
                 <div class="col-md-12 col-lg-4 col-xl-4">
-                    <div class="mb-4">
+                    <div class="mt-4 mb-4">
                         <h2 class="blockquote-footer fs-4">Categories</h2>
                         <ol class="list-group list-group-numbered">
                             @foreach ($products as $product)
@@ -140,9 +157,9 @@
 
     <!-- begin:: structured data -->
     @push('structured_data')
-        @if(function_exists('generate_product_schema') && isset($product) && isset($product->judul))
-            {!! generate_product_schema($product) !!}
-        @endif
+    @if(function_exists('generate_product_schema') && isset($product) && isset($product->judul))
+    {!! generate_product_schema($product) !!}
+    @endif
     @endpush
     <!-- end:: structured data -->
 </x-pages-layout>

@@ -83,6 +83,13 @@
                             </div>
                         </div>
                         <div class="mb-3 row field-input">
+                            <label for="link_pembelian" class="col-sm-3 col-form-label">Link Pembelian</label>
+                            <div class="col-md-9 my-auto">
+                                <input type="text" name="link_pembelian" id="link_pembelian" class="form-control" placeholder="Masukkan link pembelian" />
+                                <span class="invalid-feedback"></span>
+                            </div>
+                        </div>
+                        <div class="mb-3 row field-input">
                             <label for="product_stack" class="col-sm-3 col-form-label">Stack&nbsp;*</label>
                             <div class="col-md-9 my-auto">
                                 <select name="product_stack[]" id="product_stack" class="form-control" multiple="multiple">

@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration
             $table->text('deskripsi')->nullable();
             $table->text('link_demo')->nullable();
             $table->text('link_github')->nullable();
+            $table->text('link_pembelian')->nullable();
 
             $table->integer('by_users')->nullable();
             $table->timestamp('created_at')->useCurrent();
